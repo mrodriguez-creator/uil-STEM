@@ -205,9 +205,9 @@ function renderMenu() {
     <div class="header">
       <a href="../index.html" class="back-home">&larr; STEM Home</a>
       <h1>${subj.icon} UIL Science Trainer</h1>
-      <p>Biology, Chemistry & Physics practice</p>
+      <p>Biology, Chemistry, Physics & Book practice</p>
       <div class="tab-bar">
-        ${['biology','chemistry','physics'].map(s =>
+        ${['biology','chemistry','physics','book'].map(s =>
           `<button class="tab-btn ${state.subject === s ? 'active' : ''}" onclick="switchSubject('${s}')">${SUBJECTS[s].icon} ${SUBJECTS[s].name}</button>`
         ).join('')}
       </div>
@@ -225,13 +225,27 @@ function renderMenu() {
         </div>
       ` : ''}
 
+      ${state.subject === 'book' ? `
+        <div class="focus-card" style="border-color:#ecc94b;margin-bottom:16px;">
+          <div class="fc-head">
+            <div class="fc-icon">📖</div>
+            <div>
+              <h2 style="font-size:1.1rem;">Radioactivity: A History of a Mysterious Science</h2>
+              <p style="color:#ecc94b;font-size:0.82rem;margin-bottom:2px;">Marjorie C. Malley · ISBN: 978-0199766413</p>
+              <p>2025–2026 UIL Science assigned text. Covers the discovery and development of radioactivity from Becquerel (1896) through nuclear fission (1938).</p>
+            </div>
+          </div>
+        </div>
+      ` : ''}
       <div class="section-tag">Practice Modes</div>
       <div class="focus-card">
         <div class="fc-head">
           <div class="fc-icon">${subj.icon}</div>
           <div>
             <h2>${subj.name}</h2>
-            <p>Choose a practice mode to start training. Skills focus on specific topics, drills test you across all topics, and practice tests simulate UIL competition conditions.</p>
+            <p>${state.subject === 'book'
+              ? 'Practice questions from <em>Radioactivity: A History of a Mysterious Science</em> by Marjorie C. Malley — the 2025–2026 UIL assigned text.'
+              : 'Choose a practice mode to start training. Skills focus on specific topics, drills test you across all topics, and practice tests simulate UIL competition conditions.'}</p>
           </div>
         </div>
         <div class="mode-row">
@@ -270,7 +284,11 @@ function topicIcon(topic) {
     'Atomic Structure': '⚛️', 'Periodic Table': '📊', 'Chemical Bonding': '🔗',
     'Reactions': '💥', 'Acids & Bases': '🧪', 'Gas Laws': '💨', 'Solutions': '🫧',
     'Mechanics': '🏗️', 'Energy': '⚡', 'Waves': '🌊', 'Electricity': '🔌',
-    'Optics': '🔦', 'Thermodynamics': '🌡️', 'Momentum': '🎱'
+    'Optics': '🔦', 'Thermodynamics': '🌡️', 'Momentum': '🎱',
+    'The Beginnings': '🌅', 'The Curies': '👩‍🔬', 'Rutherford & Soddy': '⚛️',
+    'Radioactive Earth': '🌍', 'Radiochemistry': '🧪', 'Inside the Atom': '🔭',
+    'Sequel': '💥', 'Medicine & Safety': '🏥', 'New Industries': '🏭',
+    'Key Figures': '👥'
   };
   return icons[topic] || '📝';
 }
@@ -461,7 +479,7 @@ function renderStats() {
   const overallPct = Math.round(totalC / totalQ * 100);
 
   // Per-subject breakdowns
-  const subjectBreakdowns = ['biology', 'chemistry', 'physics'].map(subj => {
+  const subjectBreakdowns = ['biology', 'chemistry', 'physics', 'book'].map(subj => {
     const subjSessions = sessions.filter(s => s.subject === subj);
     const sq = subjSessions.reduce((s, x) => s + x.total, 0);
     const sc = subjSessions.reduce((s, x) => s + x.correct, 0);
