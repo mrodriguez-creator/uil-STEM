@@ -834,21 +834,49 @@ const CALC_PROBLEMS = [
     display: "<b>ISOSCELES TRIANGLE, SEGMENT, AND RECTANGLE</b>: An isosceles triangle with equal sides 0.951 inscribed in a circle of radius R = 0.931. Find the shaded area.",
     plain: "Isosceles triangle in circle R=0.931, sides=0.951, find shaded area",
     answerType: "standard", answer: 0.0402, tolerance: 0.0001, units: "",
-    explanation: "From the diagram and answer key: shaded area = 0.0402." },
+    explanation: "From the diagram and answer key: shaded area = 0.0402.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <circle cx="130" cy="95" r="60" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="70,120 130,40 190,120" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <text x="90" y="90" fill="#ed8936" font-size="10" transform="rotate(-55,90,90)">0.951</text>
+      <text x="165" y="85" fill="#ed8936" font-size="10" transform="rotate(55,165,85)">0.951</text>
+      <text x="185" y="65" fill="#ed8936" font-size="10">R=0.931</text>
+      <line x1="130" y1="95" x2="185" y2="75" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="100" y="170" fill="#8899aa" font-size="11" font-style="italic">Shaded = ?</text>
+    </svg>` },
 
   // 26A-64 (square and rectangle, Area(Square)=Area(Rectangle), AB=33.8, height=15.9)
   { id: "g21", category: "geometry", topic: "Combined",
     display: "<b>SQUARE AND RECTANGLE</b>: AB = 33.8. Area(Square) = Area(Rectangle). The height of the rectangle is 15.9. Find the unknown width of the square.",
     plain: "Square and rectangle: AB=33.8, rect height=15.9, area equal, find width",
     answerType: "standard", answer: 56.0, tolerance: 0.1, units: "",
-    explanation: "From the answer key: 56.0." },
+    explanation: "From the answer key: 56.0.",
+    svg: `<svg viewBox="0 0 300 140" class="geo-svg">
+      <rect x="20" y="20" width="90" height="90" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="140" y="30" width="140" height="70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="65" y="70" fill="#48bb78" font-size="11" text-anchor="middle">? × ?</text>
+      <text x="210" y="73" fill="#8899aa" font-size="10" text-anchor="middle">Rectangle</text>
+      <text x="65" y="15" fill="#8899aa" font-size="10" text-anchor="middle">Square</text>
+      <text x="125" y="65" fill="#ed8936" font-size="10" text-anchor="middle">AB=33.8</text>
+      <line x1="110" y1="60" x2="140" y2="60" stroke="#ed8936" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="287" y="70" fill="#ed8936" font-size="10" text-anchor="end">15.9</text>
+      <text x="210" y="108" fill="#8899aa" font-size="9" text-anchor="middle">Area(□) = Area(▭)</text>
+    </svg>` },
 
   // 26A-65 (equilateral triangle and identical sectors, shaded area=6800)
   { id: "g22", category: "geometry", topic: "Combined",
     display: "<b>EQUILATERAL TRIANGLE AND IDENTICAL SECTORS</b>: The shaded area (triangle minus three sectors at vertices) = 6800. Find the unknown side.",
     plain: "Equilateral triangle with sector cutouts, shaded area=6800, find unknown",
     answerType: "standard", answer: 411, tolerance: 1, units: "",
-    explanation: "From the answer key: 411 = 4.11×10²." },
+    explanation: "From the answer key: 411 = 4.11×10².",
+    svg: `<svg viewBox="0 0 260 200" class="geo-svg">
+      <polygon points="130,20 30,190 230,190" fill="none" stroke="#667eea" stroke-width="2"/>
+      <path d="M 30 190 A 40 40 0 0 0 60 165" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <path d="M 230 190 A 40 40 0 0 1 200 165" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <path d="M 115 45 A 40 40 0 0 1 145 45" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="130" y="130" fill="#8899aa" font-size="11" text-anchor="middle">Shaded = 6800</text>
+      <text x="75" y="115" fill="#48bb78" font-size="11" transform="rotate(-60,75,115)">s = ?</text>
+    </svg>` },
 
   // 26A-66
   { id: "n51", category: "numerical", topic: "Logarithms",
@@ -1034,14 +1062,30 @@ const CALC_PROBLEMS = [
     display: "<b>INSCRIBED ISOSCELES TRIANGLE</b> in a circle: The triangle has one side 3.29 and a base angle of 39.7°. Find the circumscribed circle radius r.",
     plain: "Isosceles triangle: side=3.29, angle=39.7°, find circumradius",
     answerType: "standard", answer: 0.594, tolerance: 0.001, units: "",
-    explanation: "Using law of sines: a/sin(A) = 2R. Apex angle = 180-2(39.7)=100.6°. 3.29/sin(100.6°) = 2R. R = 3.29/(2×sin(100.6°)) = 3.29/1.9641 = 1.675. Key says 0.594 — likely asking for incircle radius." },
+    explanation: "Using law of sines: a/sin(A) = 2R. Apex angle = 180-2(39.7)=100.6°. 3.29/sin(100.6°) = 2R. R = 3.29/(2×sin(100.6°)) = 3.29/1.9641 = 1.675. Key says 0.594 — likely asking for incircle radius.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <circle cx="130" cy="100" r="68" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="130,32 62,140 198,140" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <text x="88" y="88" fill="#ed8936" font-size="10" transform="rotate(-56,88,88)">3.29</text>
+      <text x="76" y="150" fill="#ed8936" font-size="10">39.7°</text>
+      <text x="172" y="150" fill="#ed8936" font-size="10">39.7°</text>
+      <text x="165" y="60" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
+      <line x1="130" y1="100" x2="198" y2="100" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
+    </svg>` },
 
   // 26B-40 (scalene triangle)
   { id: "g24", category: "geometry", topic: "Scalene Triangle",
     display: "<b>SCALENE TRIANGLE</b>: One side 0.602, angles 85.7° and 48.5°. Find the unknown side opposite the remaining angle.",
     plain: "Scalene triangle: side=0.602, angles 85.7° and 48.5°, find unknown side",
     answerType: "standard", answer: 0.433, tolerance: 0.001, units: "",
-    explanation: "Third angle = 180-85.7-48.5 = 45.8°. Using law of sines: if 0.602 is opposite 85.7°, then x/sin(45.8°) = 0.602/sin(85.7°). x = 0.602×sin(45.8°)/sin(85.7°) = 0.602×0.7169/0.9982 = 0.4325 ≈ 0.433." },
+    explanation: "Third angle = 180-85.7-48.5 = 45.8°. Using law of sines: if 0.602 is opposite 85.7°, then x/sin(45.8°) = 0.602/sin(85.7°). x = 0.602×sin(45.8°)/sin(85.7°) = 0.602×0.7169/0.9982 = 0.4325 ≈ 0.433.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <polygon points="40,140 220,140 150,30" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="50" y="135" fill="#ed8936" font-size="10">85.7°</text>
+      <text x="195" y="135" fill="#ed8936" font-size="10">48.5°</text>
+      <text x="130" y="155" fill="#ed8936" font-size="10" text-anchor="middle">0.602</text>
+      <text x="195" y="80" fill="#48bb78" font-size="11" transform="rotate(-60,195,80)">x = ?</text>
+    </svg>` },
 
   // 26B-41
   { id: "n72", category: "numerical", topic: "Exponentials",
@@ -1097,7 +1141,17 @@ const CALC_PROBLEMS = [
     display: "<b>CUBE AND SQUARE PYRAMID</b>: Volume(Cube) = Volume(Pyramid). Total Surface Area = 993. Find the unknown edge of the cube.",
     plain: "Cube+pyramid: V equal, TSA=993, find cube edge",
     answerType: "standard", answer: 9.47, tolerance: 0.01, units: "",
-    explanation: "From the answer key: 9.47." },
+    explanation: "From the answer key: 9.47.",
+    svg: `<svg viewBox="0 0 300 170" class="geo-svg">
+      <rect x="20" y="40" width="100" height="100" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="190,140 290,140 240,30" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="240" y1="30" x2="240" y2="140" stroke="#667eea" stroke-width="1" stroke-dasharray="3,3"/>
+      <text x="70" y="25" fill="#8899aa" font-size="10" text-anchor="middle">Cube</text>
+      <text x="240" y="20" fill="#8899aa" font-size="10" text-anchor="middle">Pyramid</text>
+      <text x="130" y="95" fill="#ed8936" font-size="10">V₁ = V₂</text>
+      <text x="240" y="160" fill="#ed8936" font-size="10" text-anchor="middle">TSA = 993</text>
+      <text x="70" y="95" fill="#48bb78" font-size="11" text-anchor="middle">edge = ?</text>
+    </svg>` },
 
   // 26B-50 (cube with cylindrical hole, side=5.52, V=152)
   { id: "g26", category: "geometry", topic: "Combined",
@@ -1179,7 +1233,14 @@ const CALC_PROBLEMS = [
     display: "<b>SHADED AREA</b> between curves y = 1+(x&minus;2)² and y = 5&minus;x²/2. Find the shaded area.",
     plain: "Area between y=1+(x-2)^2 and y=5-x^2/2",
     answerType: "standard", answer: 4.74, tolerance: 0.01, units: "",
-    explanation: "From the answer key: shaded area = 4.74." },
+    explanation: "From the answer key: shaded area = 4.74.",
+    svg: `<svg viewBox="0 0 280 180" class="geo-svg">
+      <path d="M 30 160 Q 80 20 200 40 Q 280 55 250 160" fill="none" stroke="#667eea" stroke-width="2"/>
+      <path d="M 30 160 Q 100 80 250 160" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <text x="60" y="50" fill="#667eea" font-size="9">y=5−x²/2</text>
+      <text x="60" y="145" fill="#ed8936" font-size="9">y=1+(x−2)²</text>
+      <text x="140" y="110" fill="#8899aa" font-size="11" text-anchor="middle" font-style="italic">Area = ?</text>
+    </svg>` },
 
   // 26B-60 (rectangle and identical semicircles, shaded area=2.35, find R)
   { id: "g28", category: "geometry", topic: "Combined",
@@ -1236,6 +1297,355 @@ const CALC_PROBLEMS = [
     plain: "(-0.463/3.85) - (3.51/8.11^2)×Ln[(-0.0611^2+0.00272)/(0.463+sqrt(0.553))]",
     answerType: "standard", answer: 0.159, tolerance: 0.001, units: "",
     explanation: "-0.1202 - 0.05333×Ln[(0.003733+0.00272)/1.2065] = -0.1202-0.05333×Ln(0.005356) = -0.1202-0.05333×(-5.229) = -0.1202+0.2789 = 0.1587 ≈ 0.159." },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Cones
+  // ═══════════════════════════════════════════
+
+  { id: "g29", category: "geometry", topic: "Cone",
+    display: "<b>CONE</b> with radius 8.35 and slant height 14.6. Find the Total Surface Area.",
+    plain: "Cone: r=8.35, slant=14.6, find TSA",
+    answerType: "standard", answer: 602, tolerance: 1, units: "",
+    explanation: "TSA = πr² + πrℓ = π(8.35)² + π(8.35)(14.6) = 219.0 + 382.9 = 601.9 ≈ 602.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <ellipse cx="130" cy="155" rx="80" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="50" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="210" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="155" x2="210" y2="155" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="165" y="150" fill="#ed8936" font-size="11">r = 8.35</text>
+      <line x1="130" y1="25" x2="210" y2="155" stroke="#ed8936" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="180" y="85" fill="#ed8936" font-size="11">ℓ = 14.6</text>
+      <text x="85" y="185" fill="#8899aa" font-size="11">TSA = ?</text>
+    </svg>` },
+
+  { id: "g30", category: "geometry", topic: "Cone",
+    display: "<b>CONE</b> with height 12.3 and volume 845. Find the radius.",
+    plain: "Cone: h=12.3, V=845, find r",
+    answerType: "standard", answer: 8.09, tolerance: 0.01, units: "",
+    explanation: "V = πr²h/3. r² = 3V/(πh) = 3(845)/(π×12.3) = 2535/38.64 = 65.61. r = √65.61 = 8.099 ≈ 8.10.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <ellipse cx="130" cy="155" rx="75" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="55" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="205" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="25" x2="130" y2="155" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="135" y="95" fill="#ed8936" font-size="11">h = 12.3</text>
+      <text x="130" y="175" fill="#48bb78" font-size="11" text-anchor="middle" font-style="italic">r = ?</text>
+      <text x="60" y="120" fill="#8899aa" font-size="11">V = 845</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Hexagon / Regular Polygon
+  // ═══════════════════════════════════════════
+
+  { id: "g31", category: "geometry", topic: "Hexagon",
+    display: "<b>REGULAR HEXAGON</b> with side length 15.4. Find the Area.",
+    plain: "Regular hexagon: side=15.4, find area",
+    answerType: "standard", answer: 616, tolerance: 1, units: "",
+    explanation: "Area of regular hexagon = (3√3/2)s² = (3√3/2)(15.4)² = (2.5981)(237.16) = 616.3 ≈ 616.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="130,20 210,55 210,125 130,160 50,125 50,55" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="20" x2="210" y2="55" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="175" y="30" fill="#ed8936" font-size="11">15.4</text>
+      <text x="115" y="100" fill="#8899aa" font-size="12" font-style="italic">Area = ?</text>
+    </svg>` },
+
+  { id: "g32", category: "geometry", topic: "Hexagon",
+    display: "<b>REGULAR HEXAGON</b> with apothem 21.7. Find the Perimeter.",
+    plain: "Regular hexagon: apothem=21.7, find perimeter",
+    answerType: "standard", answer: 150, tolerance: 1, units: "",
+    explanation: "For regular hexagon, apothem a = s√3/2. So s = 2a/√3 = 2(21.7)/1.7321 = 25.06. Perimeter = 6s = 6(25.06) = 150.4 ≈ 150.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="130,20 210,55 210,125 130,160 50,125 50,55" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="90" x2="210" y2="90" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="90" r="3" fill="#ed8936"/>
+      <text x="160" y="84" fill="#ed8936" font-size="11">a = 21.7</text>
+      <text x="90" y="178" fill="#8899aa" font-size="11">Perimeter = ?</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Rhombus
+  // ═══════════════════════════════════════════
+
+  { id: "g33", category: "geometry", topic: "Rhombus",
+    display: "<b>RHOMBUS</b> with diagonals 18.6 and 24.3. Find the Area.",
+    plain: "Rhombus: d1=18.6, d2=24.3, find area",
+    answerType: "standard", answer: 226, tolerance: 1, units: "",
+    explanation: "Area = d₁d₂/2 = (18.6)(24.3)/2 = 452.0/2 = 226.0 ≈ 226.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="130,20 220,90 130,160 40,90" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="20" x2="130" y2="160" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="40" y1="90" x2="220" y2="90" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="135" y="95" fill="#ed8936" font-size="11">18.6</text>
+      <text x="125" y="45" fill="#ed8936" font-size="11" transform="rotate(90,135,45)">24.3</text>
+      <text x="90" y="175" fill="#8899aa" font-size="11">Area = ?</text>
+    </svg>` },
+
+  { id: "g34", category: "geometry", topic: "Rhombus",
+    display: "<b>RHOMBUS</b> with side 9.73 and one angle 54.2°. Find the Area.",
+    plain: "Rhombus: side=9.73, angle=54.2°, find area",
+    answerType: "standard", answer: 76.8, tolerance: 0.1, units: "",
+    explanation: "Area = s²sin(θ) = (9.73)²sin(54.2°) = 94.67×0.8111 = 76.79 ≈ 76.8.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="85,150 195,150 175,40 65,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="140" y="168" fill="#ed8936" font-size="11" text-anchor="middle">9.73</text>
+      <path d="M 100,150 A 20,20 0 0,0 92,135" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="98" y="132" fill="#ed8936" font-size="10">54.2°</text>
+      <text x="105" y="105" fill="#8899aa" font-size="12" font-style="italic">Area = ?</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Sector / Annulus
+  // ═══════════════════════════════════════════
+
+  { id: "g35", category: "geometry", topic: "Sector",
+    display: "<b>SECTOR</b> (deg) with radius 6.82 and central angle 73.5°. Find the Arc Length.",
+    plain: "Sector: r=6.82, θ=73.5°, find arc length",
+    answerType: "standard", answer: 8.74, tolerance: 0.01, units: "",
+    explanation: "Arc length = rθ (in rad) = 6.82 × 73.5° × π/180 = 6.82 × 1.2828 = 8.749 ≈ 8.75.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <path d="M 60 150 L 60 50 A 100 100 0 0 1 154 118 Z" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="60" y1="150" x2="60" y2="50" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="40" y="100" fill="#ed8936" font-size="11">6.82</text>
+      <path d="M 60,130 A 20,20 0 0,1 76,140" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="72" y="132" fill="#ed8936" font-size="10">73.5°</text>
+      <text x="100" y="100" fill="#48bb78" font-size="11" font-style="italic">arc = ?</text>
+    </svg>` },
+
+  { id: "g36", category: "geometry", topic: "Sector",
+    display: "<b>SECTOR</b> (rad) with radius 11.4 and area 52.8. Find the central angle in radians.",
+    plain: "Sector: r=11.4, A=52.8, find θ (rad)",
+    answerType: "standard", answer: 0.813, tolerance: 0.001, units: "rad",
+    explanation: "A = r²θ/2. θ = 2A/r² = 2(52.8)/(11.4)² = 105.6/129.96 = 0.8126 ≈ 0.813 rad.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <path d="M 50 150 L 50 40 A 110 110 0 0 1 140 130 Z" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="30" y="100" fill="#ed8936" font-size="11">11.4</text>
+      <path d="M 50,130 A 20,20 0 0,1 65,138" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <text x="68" y="130" fill="#48bb78" font-size="11" font-style="italic">θ = ?</text>
+      <text x="80" y="105" fill="#8899aa" font-size="11">A = 52.8</text>
+    </svg>` },
+
+  { id: "g37", category: "geometry", topic: "Annulus",
+    display: "<b>ANNULUS</b> (ring) with outer radius 9.44 and inner radius 5.17. Find the Area.",
+    plain: "Annulus: R=9.44, r=5.17, find area",
+    answerType: "standard", answer: 196, tolerance: 1, units: "",
+    explanation: "A = π(R²-r²) = π(89.11-26.73) = π(62.38) = 195.9 ≈ 196.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <circle cx="130" cy="90" r="38" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="90" x2="200" y2="90" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="130" y1="90" x2="130" y2="52" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="90" r="3" fill="#ed8936"/>
+      <text x="160" y="84" fill="#ed8936" font-size="11">R = 9.44</text>
+      <text x="133" y="68" fill="#ed8936" font-size="11">r = 5.17</text>
+      <text x="95" y="175" fill="#8899aa" font-size="11">Area = ?</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Pyramid
+  // ═══════════════════════════════════════════
+
+  { id: "g38", category: "geometry", topic: "Pyramid",
+    display: "<b>SQUARE PYRAMID</b> with base edge 7.22 and height 10.8. Find the Volume.",
+    plain: "Square pyramid: base=7.22, h=10.8, find volume",
+    answerType: "standard", answer: 188, tolerance: 1, units: "",
+    explanation: "V = (1/3)Bh = (1/3)(7.22)²(10.8) = (1/3)(52.13)(10.8) = (1/3)(563.0) = 187.7 ≈ 188.",
+    svg: `<svg viewBox="0 0 260 200" class="geo-svg">
+      <polygon points="70,160 190,160 210,120 90,120" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="70" y1="160" x2="140" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="190" y1="160" x2="140" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="210" y1="120" x2="140" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="90" y1="120" x2="140" y2="25" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="140" y1="25" x2="140" y2="140" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="145" y="90" fill="#ed8936" font-size="11">h=10.8</text>
+      <text x="130" y="178" fill="#ed8936" font-size="11" text-anchor="middle">7.22</text>
+      <text x="65" y="100" fill="#8899aa" font-size="11">V = ?</text>
+    </svg>` },
+
+  { id: "g39", category: "geometry", topic: "Pyramid",
+    display: "<b>TRIANGULAR PYRAMID</b> (tetrahedron) with all edges 6.50. Find the Total Surface Area.",
+    plain: "Regular tetrahedron: edge=6.50, find TSA",
+    answerType: "standard", answer: 73.1, tolerance: 0.1, units: "",
+    explanation: "TSA = √3 × s² = 1.7321 × (6.50)² = 1.7321 × 42.25 = 73.18 ≈ 73.2.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <polygon points="130,25 50,160 210,160" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="25" x2="170" y2="110" stroke="#667eea" stroke-width="2"/>
+      <line x1="50" y1="160" x2="170" y2="110" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="210" y1="160" x2="170" y2="110" stroke="#667eea" stroke-width="2"/>
+      <text x="130" y="175" fill="#ed8936" font-size="11" text-anchor="middle">6.50</text>
+      <text x="110" y="105" fill="#8899aa" font-size="11">TSA = ?</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Hemisphere
+  // ═══════════════════════════════════════════
+
+  { id: "g40", category: "geometry", topic: "Hemisphere",
+    display: "<b>HEMISPHERE</b> with radius 4.87. Find the Total Surface Area (curved + flat).",
+    plain: "Hemisphere: r=4.87, find TSA",
+    answerType: "standard", answer: 224, tolerance: 1, units: "",
+    explanation: "TSA = 2πr² + πr² = 3πr² = 3π(4.87)² = 3π(23.72) = 223.5 ≈ 224.",
+    svg: `<svg viewBox="0 0 260 160" class="geo-svg">
+      <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="110" x2="220" y2="110" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="110" r="3" fill="#ed8936"/>
+      <text x="165" y="104" fill="#ed8936" font-size="11">r = 4.87</text>
+      <text x="90" y="150" fill="#8899aa" font-size="11">TSA = ?</text>
+    </svg>` },
+
+  { id: "g41", category: "geometry", topic: "Hemisphere",
+    display: "<b>HEMISPHERE</b> with Volume = 3520. Find the radius R.",
+    plain: "Hemisphere: V=(2/3)πR³=3520, find R",
+    answerType: "standard", answer: 11.9, tolerance: 0.1, units: "",
+    explanation: "V = (2/3)πR³. R³ = 3V/(2π) = 3(3520)/(2π) = 10560/6.2832 = 1680.7. R = ∛1680.7 = 11.89 ≈ 11.9.",
+    svg: `<svg viewBox="0 0 260 160" class="geo-svg">
+      <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="110" x2="220" y2="110" stroke="#48bb78" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="110" r="3" fill="#48bb78"/>
+      <text x="165" y="104" fill="#48bb78" font-size="11" font-style="italic">R = ?</text>
+      <text x="100" y="75" fill="#ed8936" font-size="11">V = 3520</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – Ellipse
+  // ═══════════════════════════════════════════
+
+  { id: "g42", category: "geometry", topic: "Ellipse",
+    display: "<b>ELLIPSE</b> with semi-major axis a = 13.2 and semi-minor axis b = 8.75. Find the Area.",
+    plain: "Ellipse: a=13.2, b=8.75, find area",
+    answerType: "standard", answer: 363, tolerance: 1, units: "",
+    explanation: "Area = πab = π(13.2)(8.75) = π(115.5) = 362.8 ≈ 363.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <ellipse cx="130" cy="85" rx="100" ry="60" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="85" x2="230" y2="85" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="130" y1="85" x2="130" y2="25" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="85" r="3" fill="#ed8936"/>
+      <text x="175" y="80" fill="#ed8936" font-size="11">a = 13.2</text>
+      <text x="135" y="55" fill="#ed8936" font-size="11">b = 8.75</text>
+      <text x="95" y="165" fill="#8899aa" font-size="11">Area = ?</text>
+    </svg>` },
+
+  { id: "g43", category: "geometry", topic: "Ellipse",
+    display: "<b>ELLIPSE</b> with semi-major axis a = 20.5 and semi-minor axis b = 11.3. Approximate the Perimeter.",
+    plain: "Ellipse: a=20.5, b=11.3, find approximate perimeter",
+    answerType: "standard", answer: 102, tolerance: 1, units: "",
+    explanation: "Ramanujan approx: P ≈ π[3(a+b) - √((3a+b)(a+3b))]. 3(31.8)=95.4. (61.5+11.3)(20.5+33.9)=(72.8)(54.4)=3960.3. √3960.3=62.93. P≈π(95.4-62.93)=π(32.47)=102.0.",
+    svg: `<svg viewBox="0 0 260 150" class="geo-svg">
+      <ellipse cx="130" cy="75" rx="105" ry="55" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="75" x2="235" y2="75" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="130" y1="75" x2="130" y2="20" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="175" y="68" fill="#ed8936" font-size="11">a = 20.5</text>
+      <text x="135" y="48" fill="#ed8936" font-size="11">b = 11.3</text>
+      <text x="85" y="145" fill="#8899aa" font-size="11">Perimeter ≈ ?</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – More Trapezoids / Cylinders / Spheres
+  // ═══════════════════════════════════════════
+
+  { id: "g44", category: "geometry", topic: "Trapezoid",
+    display: "<b>ISOSCELES TRAPEZOID</b> with parallel sides 22.4 (top) and 38.6 (bottom), and leg 14.1. Find the Area.",
+    plain: "Isosceles trapezoid: a=22.4, b=38.6, leg=14.1, find area",
+    answerType: "standard", answer: 352, tolerance: 1, units: "",
+    explanation: "Half-base diff = (38.6−22.4)/2 = 8.1. Height = √(14.1²−8.1²) = √(198.81−65.61) = √133.2 = 11.54. A = (a+b)/2 × h = (22.4+38.6)/2 × 11.54 = 30.5 × 11.54 ≈ 352.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <polygon points="75,40 185,40 230,130 30,130" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="130" y="30" fill="#ed8936" font-size="11" text-anchor="middle">22.4</text>
+      <text x="130" y="150" fill="#ed8936" font-size="11" text-anchor="middle">38.6</text>
+      <text x="38" y="82" fill="#ed8936" font-size="11" transform="rotate(-68,42,82)">14.1</text>
+      <text x="110" y="100" fill="#8899aa" font-size="12" font-style="italic">Area = ?</text>
+    </svg>` },
+
+  { id: "g45", category: "geometry", topic: "Cylinder",
+    display: "<b>CYLINDER</b> with diameter 8.44 and Total Surface Area = 420. Find the height.",
+    plain: "Cylinder: d=8.44, TSA=420, find h",
+    answerType: "standard", answer: 11.6, tolerance: 0.1, units: "",
+    explanation: "TSA = 2πr² + 2πrh. r=4.22. 2π(4.22)²=111.9. 420-111.9=308.1=2π(4.22)h. h=308.1/26.52=11.62 ≈ 11.6.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <ellipse cx="130" cy="35" rx="60" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="155" rx="60" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="70" y1="35" x2="70" y2="155" stroke="#667eea" stroke-width="2"/>
+      <line x1="190" y1="35" x2="190" y2="155" stroke="#667eea" stroke-width="2"/>
+      <line x1="70" y1="155" x2="190" y2="155" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="120" y="175" fill="#ed8936" font-size="11" text-anchor="middle">d = 8.44</text>
+      <text x="198" y="100" fill="#48bb78" font-size="11" font-style="italic">h = ?</text>
+      <text x="85" y="100" fill="#8899aa" font-size="11">TSA = 420</text>
+    </svg>` },
+
+  { id: "g46", category: "geometry", topic: "Sphere",
+    display: "<b>SPHERE</b> with Volume = 2140. Find the diameter.",
+    plain: "Sphere: V=(4/3)πR³=2140, find D",
+    answerType: "standard", answer: 16.0, tolerance: 0.1, units: "",
+    explanation: "R³ = 3V/(4π) = 6420/(4π) = 510.9. R = ∛510.9 = 7.998. D = 2R = 16.0.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="90" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="60" y1="90" x2="200" y2="90" stroke="#48bb78" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="120" y="84" fill="#48bb78" font-size="12" font-style="italic">D = ?</text>
+      <text x="85" y="175" fill="#ed8936" font-size="11">V = 2140</text>
+    </svg>` },
+
+  // ═══════════════════════════════════════════
+  //  GENERATED GEOMETRY – More Right Triangles / Misc
+  // ═══════════════════════════════════════════
+
+  { id: "g47", category: "geometry", topic: "Right Triangle",
+    display: "<b>RIGHT TRIANGLE</b> with legs 127 and 204. Find the hypotenuse.",
+    plain: "Right triangle: legs 127 and 204, find hyp",
+    answerType: "standard", answer: 240, tolerance: 1, units: "",
+    explanation: "hyp = √(127²+204²) = √(16129+41616) = √57745 = 240.3 ≈ 240.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="212" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="130" y="168" fill="#ed8936" font-size="12" text-anchor="middle">204</text>
+      <text x="232" y="100" fill="#ed8936" font-size="12">127</text>
+      <text x="110" y="88" fill="#48bb78" font-size="12" font-style="italic" transform="rotate(-30,110,88)">hyp = ?</text>
+    </svg>` },
+
+  { id: "g48", category: "geometry", topic: "Right Triangle",
+    display: "<b>RIGHT TRIANGLE</b> (deg) with hypotenuse 0.843 and one leg 0.619. Find the angle opposite that leg.",
+    plain: "Right triangle: hyp=0.843, leg=0.619, find angle opposite leg (deg)",
+    answerType: "standard", answer: 47.3, tolerance: 0.1, units: "deg",
+    explanation: "sin(θ) = 0.619/0.843 = 0.7343. θ = arcsin(0.7343) = 47.27° ≈ 47.3°.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 40,50" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="22" y="105" fill="#ed8936" font-size="12">0.619</text>
+      <text x="140" y="92" fill="#ed8936" font-size="12" transform="rotate(-25,140,92)">0.843</text>
+      <path d="M 205,150 A 18,18 0 0,0 200,134" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <text x="180" y="130" fill="#48bb78" font-size="11" font-style="italic">θ = ?</text>
+    </svg>` },
+
+  { id: "g49", category: "geometry", topic: "Parallelogram",
+    display: "<b>PARALLELOGRAM</b> with sides 44.5 and 31.2, included angle 112°. Find the Area.",
+    plain: "Parallelogram: sides 44.5 and 31.2, angle 112°, find area",
+    answerType: "standard", answer: 1290, tolerance: 10, units: "",
+    explanation: "A = ab×sin(θ) = (44.5)(31.2)sin(112°) = 1388.4×0.9272 = 1287 ≈ 1290.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <polygon points="60,140 220,140 190,40 30,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="140" y="158" fill="#ed8936" font-size="11" text-anchor="middle">44.5</text>
+      <text x="25" y="88" fill="#ed8936" font-size="11" transform="rotate(-68,30,88)">31.2</text>
+      <path d="M 75,140 A 18,18 0 0,0 62,125" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="72" y="122" fill="#ed8936" font-size="10">112°</text>
+      <text x="120" y="100" fill="#8899aa" font-size="12" font-style="italic">Area = ?</text>
+    </svg>` },
+
+  { id: "g50", category: "geometry", topic: "Cylinder",
+    display: "<b>CYLINDER</b> with radius 3.68 and height 9.21. Find the Volume.",
+    plain: "Cylinder: r=3.68, h=9.21, find V",
+    answerType: "standard", answer: 392, tolerance: 1, units: "",
+    explanation: "V = πr²h = π(3.68)²(9.21) = π(13.54)(9.21) = π(124.7) = 391.7 ≈ 392.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <ellipse cx="130" cy="35" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="150" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="75" y1="35" x2="75" y2="150" stroke="#667eea" stroke-width="2"/>
+      <line x1="185" y1="35" x2="185" y2="150" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="35" x2="185" y2="35" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="148" y="28" fill="#ed8936" font-size="11">r = 3.68</text>
+      <text x="192" y="98" fill="#ed8936" font-size="11">h = 9.21</text>
+      <text x="95" y="100" fill="#8899aa" font-size="12" font-style="italic">V = ?</text>
+    </svg>` },
 ];
 
 // ── CATEGORY / TOPIC METADATA ──
