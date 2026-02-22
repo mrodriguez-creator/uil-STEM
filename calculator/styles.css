@@ -80,6 +80,11 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .math-expr .sqrt::before { content: "√"; position: absolute; left: 0; top: -2px; font-size: 1.1em; }
 .math-expr .sqrt-inner { border-top: 2px solid #a0aec0; padding: 0 4px; }
 
+/* ── GEOMETRY SVG DIAGRAMS ── */
+.geo-diagram { display: flex; justify-content: center; margin-bottom: 18px; }
+.geo-svg { width: 100%; max-width: 320px; height: auto; background: #151b28; border: 1px solid #2d3748; border-radius: 10px; padding: 10px; }
+.geo-svg text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+
 /* ── ANSWER INPUT ── */
 .answer-section { margin-bottom: 16px; }
 .answer-label { color: #a0aec0; font-size: 0.82rem; font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }

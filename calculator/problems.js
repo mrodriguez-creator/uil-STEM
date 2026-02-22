@@ -403,43 +403,101 @@ const CALC_PROBLEMS = [
     display: "<b>SEMICIRCLE</b> with R = 491. Find the Area.",
     plain: "Semicircle: R=491, find area",
     answerType: "standard", answer: 378000, tolerance: 1000, units: "",
-    explanation: "Area of semicircle = πR²/2 = π(491)²/2 = π(241081)/2 = 378,703 ≈ 379,000 or 3.79×10⁵." },
+    explanation: "Area of semicircle = πR²/2 = π(491)²/2 = π(241081)/2 = 378,703 ≈ 379,000 or 3.79×10⁵.",
+    svg: `<svg viewBox="0 0 260 160" class="geo-svg">
+      <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="30" y1="130" x2="230" y2="130" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="130" x2="130" y2="30" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="130" r="3" fill="#ed8936"/>
+      <text x="135" y="85" fill="#ed8936" font-size="13" font-style="italic">R = 491</text>
+      <text x="112" y="155" fill="#8899aa" font-size="11">Area = ?</text>
+    </svg>` },
 
   { id: "g2", category: "geometry", topic: "Trapezoid",
     display: "<b>RIGHT TRAPEZOID</b> with parallel sides 35.3 (top) and 64.7 (bottom), height 36.2. Find the Perimeter.",
     plain: "Right trapezoid: a=35.3, b=64.7, h=36.2, find perimeter",
     answerType: "standard", answer: 174, tolerance: 1, units: "",
-    explanation: "The right side is the height: 36.2. Slant side = √(36.2² + (64.7-35.3)²) = √(1310.44 + 864.36) = √2174.8 = 46.63. Perimeter = 35.3 + 64.7 + 36.2 + 46.63 = 182.83 ≈ 183. Check with actual geometry." },
+    explanation: "The right side is the height: 36.2. Slant side = √(36.2² + (64.7-35.3)²) = √(1310.44 + 864.36) = √2174.8 = 46.63. Perimeter = 35.3 + 64.7 + 36.2 + 46.63 = 182.83 ≈ 183. Check with actual geometry.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,140 200,140 200,40 100,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="194" y="40" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="105" y="28" fill="#ed8936" font-size="12" text-anchor="middle">35.3</text>
+      <text x="120" y="158" fill="#ed8936" font-size="12" text-anchor="middle">64.7</text>
+      <text x="212" y="95" fill="#ed8936" font-size="12">36.2</text>
+      <text x="55" y="85" fill="#8899aa" font-size="11" transform="rotate(-59,65,85)">slant</text>
+      <text x="90" y="175" fill="#8899aa" font-size="11">Perimeter = ?</text>
+    </svg>` },
 
   { id: "g3", category: "geometry", topic: "Right Triangle",
     display: "<b>RIGHT TRIANGLE</b> with hypotenuse 965 and one leg 844. Find the angle (in rad) at the vertex opposite the unknown leg.",
     plain: "Right triangle: hyp=965, leg=844, find angle opposite other leg (rad)",
     answerType: "standard", answer: 0.506, tolerance: 0.001, units: "rad",
-    explanation: "cos(θ) = 844/965 = 0.87461. θ = arccos(0.87461) = 0.5058 rad ≈ 0.506 rad." },
+    explanation: "cos(θ) = 844/965 = 0.87461. θ = arccos(0.87461) = 0.5058 rad ≈ 0.506 rad.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="130" y="168" fill="#ed8936" font-size="12" text-anchor="middle">844</text>
+      <text x="142" y="88" fill="#ed8936" font-size="12" transform="rotate(-32,142,88)">965</text>
+      <path d="M 205,150 A 20,20 0 0,0 210,135" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <text x="193" y="132" fill="#48bb78" font-size="12">θ = ?</text>
+      <text x="80" y="175" fill="#8899aa" font-size="11">rad</text>
+    </svg>` },
 
   { id: "g4", category: "geometry", topic: "Right Triangle",
     display: "<b>RIGHT TRIANGLE</b> with legs 89.3 and 66.1. Find the Area.",
     plain: "Right triangle: legs 89.3 and 66.1, find area",
     answerType: "standard", answer: 2950, tolerance: 10, units: "",
-    explanation: "Area = ½(89.3)(66.1) = ½(5903.13) = 2951.6 ≈ 2950 or 2.95×10³." },
+    explanation: "Area = ½(89.3)(66.1) = ½(5903.13) = 2951.6 ≈ 2950 or 2.95×10³.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="130" y="168" fill="#ed8936" font-size="12" text-anchor="middle">89.3</text>
+      <text x="22" y="100" fill="#ed8936" font-size="12">66.1</text>
+      <text x="105" y="105" fill="#8899aa" font-size="12" font-style="italic">Area = ?</text>
+    </svg>` },
 
   { id: "g5", category: "geometry", topic: "Semicircle",
     display: "<b>SEMICIRCLE</b> with Perimeter = 82.3. Find D (the diameter).",
     plain: "Semicircle: perimeter=82.3, find diameter",
     answerType: "standard", answer: 32.0, tolerance: 0.1, units: "",
-    explanation: "Perimeter of semicircle = πr + 2r = r(π+2). D = 2r. P = (D/2)(π+2) = D(π+2)/2. D = 2P/(π+2) = 2(82.3)/(5.14159) = 164.6/5.1416 = 32.01 ≈ 32.0." },
+    explanation: "Perimeter of semicircle = πr + 2r = r(π+2). D = 2r. P = (D/2)(π+2) = D(π+2)/2. D = 2P/(π+2) = 2(82.3)/(5.14159) = 164.6/5.1416 = 32.01 ≈ 32.0.",
+    svg: `<svg viewBox="0 0 260 160" class="geo-svg">
+      <path d="M 30 120 A 100 100 0 0 1 230 120" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="30" y1="120" x2="230" y2="120" stroke="#667eea" stroke-width="2"/>
+      <line x1="30" y1="120" x2="230" y2="120" stroke="#ed8936" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="130" y="138" fill="#48bb78" font-size="13" text-anchor="middle" font-style="italic">D = ?</text>
+      <text x="130" y="60" fill="#ed8936" font-size="12" text-anchor="middle">Perimeter = 82.3</text>
+    </svg>` },
 
   { id: "g6", category: "geometry", topic: "Parallelogram",
     display: "<b>PARALLELOGRAM</b> with side 7480, Area = 2.05×10⁷. Find the unknown side (height perpendicular to given side).",
     plain: "Parallelogram: side=7480, A=2.05e7, find other dimension",
     answerType: "standard", answer: 2740, tolerance: 10, units: "",
-    explanation: "Area = base × height. Height = 2.05×10⁷ / 7480 = 2740.6 ≈ 2740." },
+    explanation: "Area = base × height. Height = 2.05×10⁷ / 7480 = 2740.6 ≈ 2740.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <polygon points="60,140 230,140 200,40 30,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="60" y1="40" x2="60" y2="140" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <rect x="56" y="132" width="6" height="6" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="145" y="158" fill="#ed8936" font-size="12" text-anchor="middle">7480</text>
+      <text x="68" y="95" fill="#48bb78" font-size="12" font-style="italic">h = ?</text>
+      <text x="130" y="95" fill="#8899aa" font-size="11">A = 2.05×10⁷</text>
+    </svg>` },
 
   { id: "g7", category: "geometry", topic: "Scalene Triangle",
     display: "<b>SCALENE TRIANGLES</b> with two sides 1250 and 1330, included angle 63.1°, and opposite angle 38.4°. Find the unknown side.",
     plain: "Triangle: sides 1250, 1330, angles 63.1°, 38.4°, find unknown side",
     answerType: "standard", answer: 876, tolerance: 1, units: "",
-    explanation: "Third angle = 180-63.1-38.4 = 78.5°. Using law of sines: 1250/sin(78.5°) = x/sin(38.4°). Wait, need to match sides to angles correctly. Check with given geometry." },
+    explanation: "Third angle = 180-63.1-38.4 = 78.5°. Using law of sines: 1250/sin(78.5°) = x/sin(38.4°). Wait, need to match sides to angles correctly. Check with given geometry.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="30,155 230,155 150,30" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="130" y="173" fill="#ed8936" font-size="12" text-anchor="middle">1330</text>
+      <text x="198" y="88" fill="#ed8936" font-size="12" transform="rotate(-58,198,88)">1250</text>
+      <text x="70" y="88" fill="#48bb78" font-size="12" font-style="italic" transform="rotate(52,70,88)">? = x</text>
+      <path d="M 50,155 A 20,20 0 0,0 45,140" fill="none" stroke="#8899aa" stroke-width="1.2"/>
+      <text x="52" y="137" fill="#8899aa" font-size="10">63.1°</text>
+      <path d="M 215,155 A 20,20 0 0,1 210,138" fill="none" stroke="#8899aa" stroke-width="1.2"/>
+      <text x="190" y="138" fill="#8899aa" font-size="10">38.4°</text>
+    </svg>` },
 
   // ═══════════════════════════════════════════
   //  GEOMETRY – 3D Solids
@@ -449,68 +507,196 @@ const CALC_PROBLEMS = [
     display: "<b>FRUSTUM</b> (truncated cone) with top radius 3.48, bottom radius 9.15, Volume = 198. Find the height.",
     plain: "Frustum: r1=3.48/2=1.74, r2=9.15/2=4.575, V=198, find h",
     answerType: "standard", answer: 2.64, tolerance: 0.01, units: "",
-    explanation: "V = πh(r₁² + r₁r₂ + r₂²)/3. Using diameters as radii: r₁=3.48/2=1.74, r₂=9.15/2=4.575. V = πh(3.0276+7.9605+20.930)/3 = πh(31.918)/3 = 33.41h. 198 = 33.41h → h = 5.93. Check if 3.48 and 9.15 are radii or diameters." },
+    explanation: "V = πh(r₁² + r₁r₂ + r₂²)/3. Using diameters as radii: r₁=3.48/2=1.74, r₂=9.15/2=4.575. V = πh(3.0276+7.9605+20.930)/3 = πh(31.918)/3 = 33.41h. 198 = 33.41h → h = 5.93. Check if 3.48 and 9.15 are radii or diameters.",
+    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
+      <ellipse cx="130" cy="40" rx="40" ry="12" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="155" rx="90" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="90" y1="40" x2="40" y2="155" stroke="#667eea" stroke-width="2"/>
+      <line x1="170" y1="40" x2="220" y2="155" stroke="#667eea" stroke-width="2"/>
+      <line x1="130" y1="40" x2="170" y2="40" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="145" y="35" fill="#ed8936" font-size="11">r₁ = 3.48</text>
+      <line x1="130" y1="155" x2="220" y2="155" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="155" y="150" fill="#ed8936" font-size="11">r₂ = 9.15</text>
+      <line x1="235" y1="40" x2="235" y2="155" stroke="#48bb78" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="240" y="100" fill="#48bb78" font-size="12" font-style="italic">h = ?</text>
+      <text x="78" y="100" fill="#8899aa" font-size="11">V = 198</text>
+    </svg>` },
 
   { id: "g9", category: "geometry", topic: "Prism",
     display: "<b>ISOSCELES TRIANGLE PRISM</b> with triangle base 0.565, equal sides 0.751, height 0.191. Find the Total Surface Area.",
     plain: "Isosceles triangle prism: base=0.565, sides=0.751, length=0.191, find TSA",
     answerType: "standard", answer: 0.668, tolerance: 0.001, units: "",
-    explanation: "Triangle area: base=0.565, sides=0.751. Height of triangle = √(0.751²-(0.2825)²) = √(0.564-0.0798) = √0.4843 = 0.6959. Area = ½(0.565)(0.6959)=0.1966. TSA = 2(0.1966) + 0.191(0.565+0.751+0.751) = 0.3932 + 0.191(2.067) = 0.3932+0.3948 = 0.788. Check." },
+    explanation: "Triangle area: base=0.565, sides=0.751. Height of triangle = √(0.751²-(0.2825)²) = √(0.564-0.0798) = √0.4843 = 0.6959. Area = ½(0.565)(0.6959)=0.1966. TSA = 2(0.1966) + 0.191(0.565+0.751+0.751) = 0.3932 + 0.191(2.067) = 0.3932+0.3948 = 0.788. Check.",
+    svg: `<svg viewBox="0 0 280 190" class="geo-svg">
+      <polygon points="50,150 170,150 110,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="110,40 230,40 170,150 50,150" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="170" y1="150" x2="230" y2="40" stroke="#667eea" stroke-width="2"/>
+      <polygon points="110,40 230,40 170,150" fill="none" stroke="#667eea" stroke-width="2"/>
+      <text x="110" y="168" fill="#ed8936" font-size="11" text-anchor="middle">0.565</text>
+      <text x="62" y="90" fill="#ed8936" font-size="11" transform="rotate(-62,62,90)">0.751</text>
+      <text x="155" y="90" fill="#ed8936" font-size="11" transform="rotate(62,155,90)">0.751</text>
+      <text x="210" y="100" fill="#ed8936" font-size="11">h = 0.191</text>
+      <text x="90" y="185" fill="#8899aa" font-size="11">TSA = ?</text>
+    </svg>` },
 
   { id: "g10", category: "geometry", topic: "Cuboid",
     display: "<b>CUBOID</b> with BD = 21.5, AB = 20.8, BC = 10.6. Find the Volume.",
     plain: "Cuboid: space diagonal components, find volume",
     answerType: "standard", answer: 2140, tolerance: 10, units: "",
-    explanation: "A cuboid with given edge lengths. Volume = length × width × height. If AB, BC are edges and BD is face diagonal: BD² = AB² + BC²? 21.5² = 462.25, 20.8² + 10.6² = 432.64 + 112.36 = 545. Not equal, so BD is space diagonal. Need more info from diagram." },
+    explanation: "A cuboid with given edge lengths. Volume = length × width × height. If AB, BC are edges and BD is face diagonal: BD² = AB² + BC²? 21.5² = 462.25, 20.8² + 10.6² = 432.64 + 112.36 = 545. Not equal, so BD is space diagonal. Need more info from diagram.",
+    svg: `<svg viewBox="0 0 280 200" class="geo-svg">
+      <polygon points="60,160 190,160 190,70 60,70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="60,70 110,30 240,30 190,70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="190" y1="160" x2="240" y2="120" stroke="#667eea" stroke-width="2"/>
+      <line x1="240" y1="120" x2="240" y2="30" stroke="#667eea" stroke-width="2"/>
+      <line x1="60" y1="160" x2="110" y2="120" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="110" y1="120" x2="240" y2="120" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="110" y1="120" x2="110" y2="30" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <circle cx="60" cy="160" r="3" fill="#ed8936"/>
+      <circle cx="190" cy="160" r="3" fill="#ed8936"/>
+      <circle cx="190" cy="70" r="3" fill="#ed8936"/>
+      <circle cx="240" cy="30" r="3" fill="#ed8936"/>
+      <text x="48" y="173" fill="#ed8936" font-size="11" font-weight="bold">A</text>
+      <text x="193" y="173" fill="#ed8936" font-size="11" font-weight="bold">B</text>
+      <text x="193" y="65" fill="#ed8936" font-size="11" font-weight="bold">C</text>
+      <text x="244" y="28" fill="#ed8936" font-size="11" font-weight="bold">D</text>
+      <text x="110" y="178" fill="#ed8936" font-size="11" text-anchor="middle">AB = 20.8</text>
+      <text x="200" y="120" fill="#ed8936" font-size="11">BC = 10.6</text>
+      <line x1="60" y1="160" x2="240" y2="30" stroke="#48bb78" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <text x="130" y="85" fill="#48bb78" font-size="11">BD = 21.5</text>
+      <text x="100" y="195" fill="#8899aa" font-size="11">Volume = ?</text>
+    </svg>` },
 
   { id: "g11", category: "geometry", topic: "Sphere",
     display: "<b>SPHERE</b> with Total Surface Area = 0.0696. Find R.",
     plain: "Sphere: SA=4πR²=0.0696, find R",
     answerType: "standard", answer: 0.0744, tolerance: 0.0001, units: "",
-    explanation: "4πR² = 0.0696. R² = 0.0696/(4π) = 0.005541. R = √0.005541 = 0.07444 ≈ 0.0744." },
+    explanation: "4πR² = 0.0696. R² = 0.0696/(4π) = 0.005541. R = √0.005541 = 0.07444 ≈ 0.0744.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="130" cy="90" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="130" y1="90" x2="200" y2="90" stroke="#48bb78" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="130" cy="90" r="3" fill="#48bb78"/>
+      <text x="155" y="84" fill="#48bb78" font-size="12" font-style="italic">R = ?</text>
+      <text x="80" y="175" fill="#ed8936" font-size="11">SA = 0.0696</text>
+    </svg>` },
 
   { id: "g12", category: "geometry", topic: "Cuboid",
     display: "<b>CUBOID</b> with length 7.34, height 4.24, Volume = 84.8. Find the unknown width.",
     plain: "Cuboid: l=7.34, h=4.24, V=84.8, find w",
     answerType: "standard", answer: 2.72, tolerance: 0.01, units: "",
-    explanation: "V = lwh. w = V/(lh) = 84.8/(7.34 × 4.24) = 84.8/31.12 = 2.725 ≈ 2.73." },
+    explanation: "V = lwh. w = V/(lh) = 84.8/(7.34 × 4.24) = 84.8/31.12 = 2.725 ≈ 2.73.",
+    svg: `<svg viewBox="0 0 280 190" class="geo-svg">
+      <polygon points="50,150 190,150 190,60 50,60" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="50,60 100,25 240,25 190,60" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="190" y1="150" x2="240" y2="115" stroke="#667eea" stroke-width="2"/>
+      <line x1="240" y1="115" x2="240" y2="25" stroke="#667eea" stroke-width="2"/>
+      <line x1="50" y1="150" x2="100" y2="115" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="100" y1="115" x2="240" y2="115" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <line x1="100" y1="115" x2="100" y2="25" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+      <text x="120" y="168" fill="#ed8936" font-size="11" text-anchor="middle">7.34</text>
+      <text x="36" y="110" fill="#ed8936" font-size="11">4.24</text>
+      <text x="62" y="46" fill="#48bb78" font-size="11" font-style="italic">w = ?</text>
+      <text x="140" y="100" fill="#8899aa" font-size="11">V = 84.8</text>
+    </svg>` },
 
   { id: "g13", category: "geometry", topic: "Cylinder",
     display: "<b>EQUILATERAL TRIANGLE PRISM AND CYLINDER</b>: Prism inscribed in cylinder with height 13.7 and cylinder diameter 14.1. Find Volume(Cylinder) &minus; Volume(Prism).",
     plain: "Cylinder r=7.05, h=13.7 minus inscribed equilateral triangle prism",
     answerType: "standard", answer: 1490, tolerance: 10, units: "",
-    explanation: "Cylinder V = π(7.05)²(13.7) = π(49.70)(13.7) = 2139. Equilateral triangle inscribed in circle r=7.05: side = r√3 = 12.21. Area = (√3/4)(12.21)² = 64.55. Prism V = 64.55 × 13.7 = 884.4. Difference = 2139-884 = 1255. Check." },
+    explanation: "Cylinder V = π(7.05)²(13.7) = π(49.70)(13.7) = 2139. Equilateral triangle inscribed in circle r=7.05: side = r√3 = 12.21. Area = (√3/4)(12.21)² = 64.55. Prism V = 64.55 × 13.7 = 884.4. Difference = 2139-884 = 1255. Check.",
+    svg: `<svg viewBox="0 0 280 200" class="geo-svg">
+      <ellipse cx="140" cy="40" rx="65" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
+      <ellipse cx="140" cy="160" rx="65" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="75" y1="40" x2="75" y2="160" stroke="#667eea" stroke-width="2"/>
+      <line x1="205" y1="40" x2="205" y2="160" stroke="#667eea" stroke-width="2"/>
+      <polygon points="140,22 83,157 197,157" fill="none" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <line x1="140" y1="22" x2="83" y2="157" stroke="#ed8936" stroke-width="1.5"/>
+      <line x1="140" y1="22" x2="197" y2="157" stroke="#ed8936" stroke-width="1.5"/>
+      <line x1="83" y1="157" x2="197" y2="157" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="218" y="100" fill="#ed8936" font-size="11">h = 13.7</text>
+      <text x="130" y="185" fill="#ed8936" font-size="11" text-anchor="middle">D = 14.1</text>
+      <text x="110" y="105" fill="#8899aa" font-size="11">V<tspan font-size="9" dy="3">cyl</tspan><tspan dy="-3"> − V</tspan><tspan font-size="9" dy="3">prism</tspan><tspan dy="-3"> = ?</tspan></text>
+    </svg>` },
 
   { id: "g14", category: "geometry", topic: "Circle",
     display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: Triangle with legs forming a right angle, one leg = 540, hypotenuse = 986 (diameter of circle). Find the radius r of the inscribed circle.",
     plain: "Right triangle inscribed in circle: leg=540, hyp=986, find inscribed circle r",
     answerType: "standard", answer: 154, tolerance: 1, units: "",
-    explanation: "Other leg = √(986²-540²) = √(972196-291600) = √680596 = 825.0. Inscribed circle of right triangle: r = (a+b-c)/2 = (540+825-986)/2 = 379/2 = 189.5. Wait — that's the incircle. The problem says r from the diagram." },
+    explanation: "Other leg = √(986²-540²) = √(972196-291600) = √680596 = 825.0. Inscribed circle of right triangle: r = (a+b-c)/2 = (540+825-986)/2 = 379/2 = 189.5. Wait — that's the incircle. The problem says r from the diagram.",
+    svg: `<svg viewBox="0 0 280 200" class="geo-svg">
+      <circle cx="140" cy="100" r="80" fill="none" stroke="#667eea" stroke-width="2"/>
+      <line x1="60" y1="100" x2="220" y2="100" stroke="#667eea" stroke-width="1.5" stroke-dasharray="4,3"/>
+      <polygon points="60,100 220,100 165,28" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="161" y="28" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(20,165,28)"/>
+      <text x="140" y="118" fill="#ed8936" font-size="11" text-anchor="middle">986 (diameter)</text>
+      <text x="100" y="58" fill="#ed8936" font-size="11" transform="rotate(-55,100,58)">540</text>
+      <circle cx="148" cy="78" r="18" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <line x1="148" y1="78" x2="166" y2="78" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="148" y="72" fill="#48bb78" font-size="10" font-style="italic">r=?</text>
+    </svg>` },
 
   { id: "g15", category: "geometry", topic: "Right Triangle",
     display: "<b>RIGHT TRIANGLE</b> with hypotenuse 1.17, one angle 0.656 rad. Find the unknown leg.",
     plain: "Right triangle: hyp=1.17, angle=0.656 rad, find opposite leg",
     answerType: "standard", answer: 0.713, tolerance: 0.001, units: "",
-    explanation: "Opposite leg = hyp × sin(0.656) = 1.17 × 0.6088 = 0.7123 ≈ 0.712." },
+    explanation: "Opposite leg = hyp × sin(0.656) = 1.17 × 0.6088 = 0.7123 ≈ 0.712.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="212" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="140" y="88" fill="#ed8936" font-size="12" transform="rotate(-31,140,88)">1.17</text>
+      <path d="M 60,150 A 20,20 0 0,0 55,135" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="63" y="133" fill="#ed8936" font-size="11">0.656 rad</text>
+      <text x="232" y="100" fill="#48bb78" font-size="12" font-style="italic">? = x</text>
+      <text x="100" y="175" fill="#8899aa" font-size="11">Find the unknown leg</text>
+    </svg>` },
 
   { id: "g16", category: "geometry", topic: "Right Triangle",
     display: "<b>RIGHT TRIANGLE</b> with one leg 0.0223 and opposite angle 34.1°. Find the hypotenuse.",
     plain: "Right triangle: leg=0.0223, opposite angle=34.1°, find hyp",
     answerType: "standard", answer: 0.0398, tolerance: 0.0001, units: "",
-    explanation: "sin(34.1°) = 0.0223/hyp. hyp = 0.0223/sin(34.1°) = 0.0223/0.5606 = 0.03978 ≈ 0.0398." },
+    explanation: "sin(34.1°) = 0.0223/hyp. hyp = 0.0223/sin(34.1°) = 0.0223/0.5606 = 0.03978 ≈ 0.0398.",
+    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+      <polygon points="40,150 220,150 40,60" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
+      <text x="22" y="110" fill="#ed8936" font-size="12">0.0223</text>
+      <path d="M 200,150 A 22,22 0 0,0 195,132" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="170" y="132" fill="#ed8936" font-size="11">34.1°</text>
+      <text x="140" y="95" fill="#48bb78" font-size="12" font-style="italic" transform="rotate(-24,140,95)">hyp = ?</text>
+    </svg>` },
 
   // Additional geometry
   { id: "g17", category: "geometry", topic: "Circle",
     display: "<b>SQUARE AND QUARTER CIRCLE</b>: Square with side 7.52, quarter circle with radius equal to diagonal from corner A to corner B (where AB is found from side and inner height 4.66). Find AB.",
     plain: "Square+quarter circle geometry problem",
     answerType: "standard", answer: 8.85, tolerance: 0.01, units: "",
-    explanation: "From the diagram, AB = √(7.52² + 4.66²) = √(56.55+21.72) = √78.27 = 8.847 ≈ 8.85." },
+    explanation: "From the diagram, AB = √(7.52² + 4.66²) = √(56.55+21.72) = √78.27 = 8.847 ≈ 8.85.",
+    svg: `<svg viewBox="0 0 280 200" class="geo-svg">
+      <rect x="40" y="40" width="120" height="120" fill="none" stroke="#667eea" stroke-width="2"/>
+      <path d="M 40 160 A 140 140 0 0 1 160 40" fill="none" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
+      <circle cx="40" cy="160" r="4" fill="#ed8936"/>
+      <circle cx="160" cy="95" r="4" fill="#48bb78"/>
+      <line x1="40" y1="160" x2="160" y2="95" stroke="#48bb78" stroke-width="2"/>
+      <text x="28" y="175" fill="#ed8936" font-size="11" font-weight="bold">A</text>
+      <text x="166" y="99" fill="#48bb78" font-size="11" font-weight="bold">B</text>
+      <text x="82" y="175" fill="#ed8936" font-size="11" text-anchor="middle">7.52</text>
+      <text x="168" y="135" fill="#ed8936" font-size="11">4.66</text>
+      <text x="82" y="120" fill="#48bb78" font-size="12" font-style="italic" transform="rotate(-25,82,120)">AB = ?</text>
+    </svg>` },
 
   { id: "g18", category: "geometry", topic: "Combined",
     display: "<b>CIRCLE AND EQUILATERAL TRIANGLE</b>: Circle with diameter 410, equilateral triangle circumscribes the circle. Find the side length of the triangle.",
     plain: "Equilateral triangle circumscribing circle d=410, find side",
     answerType: "standard", answer: 710, tolerance: 1, units: "",
-    explanation: "For equilateral triangle circumscribing a circle of radius r: side = 2r√3. r = 205. side = 2(205)(√3) = 710.0 ≈ 710." },
+    explanation: "For equilateral triangle circumscribing a circle of radius r: side = 2r√3. r = 205. side = 2(205)(√3) = 710.0 ≈ 710.",
+    svg: `<svg viewBox="0 0 280 210" class="geo-svg">
+      <circle cx="140" cy="110" r="55" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="140,18 45,173 235,173" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <line x1="85" y1="110" x2="195" y2="110" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="140" y="106" fill="#667eea" font-size="11" text-anchor="middle">D = 410</text>
+      <text x="245" y="175" fill="#48bb78" font-size="12" font-style="italic">s = ?</text>
+      <text x="140" y="200" fill="#8899aa" font-size="11" text-anchor="middle">Find the side length</text>
+    </svg>` },
 ];
 
 // ── CATEGORY / TOPIC METADATA ──

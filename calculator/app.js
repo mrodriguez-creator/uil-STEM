@@ -543,6 +543,7 @@ function renderTest() {
     </div>
     <div class="test-body">
       <div class="question-box">
+        ${p.svg ? `<div class="geo-diagram">${p.svg}</div>` : ''}
         <div class="question-text math-expr">${p.display}</div>
         <div class="question-tag">${p.category} · ${p.topic}</div>
       </div>
