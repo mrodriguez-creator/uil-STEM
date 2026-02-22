@@ -23,10 +23,10 @@ const GEOMETRY_BASIC_PROBLEMS = [
 
   // ── CIRCLE (10) ──
   { id: "g14", category: "geometry", topic: "Circle",
-    display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: Triangle with legs forming a right angle, one leg = 540, hypotenuse = 986 (diameter of circle). Find the radius r of the inscribed circle.",
-    plain: "Right triangle inscribed in circle: leg=540, hyp=986, find inscribed circle r",
-    answerType: "standard", answer: 154, tolerance: 1, units: "",
-    explanation: "Other leg = √(986²-540²) = √(972196-291600) = √680596 = 825.0. Inscribed circle of right triangle: r = (a+b-c)/2 = (540+825-986)/2 = 379/2 = 189.5. Wait — that's the incircle. The problem says r from the diagram.",
+    display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: Triangle with legs forming a right angle, one leg = 540, hypotenuse = 986 (diameter of circle). Find the radius r of the incircle.",
+    plain: "Right triangle inscribed in circle: leg=540, hyp=986, find incircle r",
+    answerType: "standard", answer: 190, tolerance: 1, units: "",
+    explanation: "Other leg = √(986²−540²) = √680596 = 825.0. Incircle of right triangle: r = (a+b−c)/2 = (540+825−986)/2 = 379/2 = 189.5 ≈ 190.",
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <circle cx="140" cy="100" r="80" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="60" y1="100" x2="220" y2="100" stroke="#667eea" stroke-width="1.5" stroke-dasharray="4,3"/>
@@ -34,9 +34,9 @@ const GEOMETRY_BASIC_PROBLEMS = [
       <rect x="104" y="27" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(57,108,27)"/>
       <text x="140" y="118" fill="#ed8936" font-size="11" text-anchor="middle">986 (diameter)</text>
       <text x="72" y="58" fill="#ed8936" font-size="11" transform="rotate(-57,72,58)">540</text>
-      <circle cx="120" cy="68" r="18" fill="none" stroke="#48bb78" stroke-width="1.5"/>
-      <line x1="120" y1="68" x2="138" y2="68" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="120" y="62" fill="#48bb78" font-size="10" font-style="italic">r=?</text>
+      <circle cx="117" cy="69" r="31" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <line x1="117" y1="69" x2="148" y2="69" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="150" y="73" fill="#48bb78" font-size="10" font-style="italic">r = ?</text>
     </svg>`
   },
   { id: "g17", category: "geometry", topic: "Circle",
@@ -58,17 +58,17 @@ const GEOMETRY_BASIC_PROBLEMS = [
     </svg>`
   },
   { id: "g19", category: "geometry", topic: "Circle",
-    display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: hypotenuse = 986 (diameter of circle), one leg = 540. Find r (the distance from the center of the hypotenuse to the triangle).",
-    plain: "Right triangle in circle: hyp=986, leg=540, find r",
-    answerType: "standard", answer: 201, tolerance: 1, units: "",
-    explanation: "Other leg = √(986²-540²) = √680596 = 825.0. The incircle radius of right triangle: r = (a+b-c)/2 = (540+825-986)/2 = 379/2 = 189.5. Key says 201 — check diagram for exact definition of r.",
+    display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: hypotenuse = 986 (diameter of circle), one leg = 540. Find the other leg.",
+    plain: "Right triangle in circle: hyp=986, leg=540, find other leg",
+    answerType: "standard", answer: 825, tolerance: 1, units: "",
+    explanation: "By Pythagoras: other leg = √(986²−540²) = √(972196−291600) = √680596 = 825.0.",
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <circle cx="140" cy="100" r="80" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="60,100 220,100 108,27" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="104" y="27" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(57,108,27)"/>
       <text x="72" y="58" fill="#ed8936" font-size="11" transform="rotate(-57,72,58)">540</text>
       <text x="140" y="118" fill="#ed8936" font-size="11" text-anchor="middle">986</text>
-      <text x="175" y="55" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
+      <text x="170" y="60" fill="#48bb78" font-size="11" font-style="italic" transform="rotate(55,170,60)">? = x</text>
     </svg>`
   },
   { id: "g23", category: "geometry", topic: "Circle",
