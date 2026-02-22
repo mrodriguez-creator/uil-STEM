@@ -121,8 +121,8 @@ const GEOMETRY_3D_PROBLEMS = [
     </svg>`
   },
 
-  // ── CYLINDER (5) ──
-  { id: "g13", category: "geometry", topic: "Cylinder",
+  // ── COMBINED (1) ──
+  { id: "g13", category: "geometry", topic: "Combined",
     display: "<b>EQUILATERAL TRIANGLE PRISM AND CYLINDER</b>: Prism inscribed in cylinder with height 13.7 and cylinder diameter 14.1. Find Volume(Cylinder) &minus; Volume(Prism).",
     plain: "Cylinder r=7.05, h=13.7 minus inscribed equilateral triangle prism",
     answerType: "standard", answer: 1490, tolerance: 10, units: "",
@@ -142,6 +142,7 @@ const GEOMETRY_3D_PROBLEMS = [
       <text x="110" y="105" fill="#8899aa" font-size="11">V<tspan font-size="9" dy="3">cyl</tspan><tspan dy="-3"> − V</tspan><tspan font-size="9" dy="3">prism</tspan><tspan dy="-3"> = ?</tspan></text>
     </svg>`
   },
+  // ── CYLINDER (4) ──
   { id: "g45", category: "geometry", topic: "Cylinder",
     display: "<b>CYLINDER</b> with diameter 8.44 and Total Surface Area = 420. Find the height.",
     plain: "Cylinder: d=8.44, TSA=420, find h",

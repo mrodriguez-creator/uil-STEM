@@ -3,8 +3,8 @@
 //
 const GEOMETRY_ADVANCED_PROBLEMS = [
 
-  // ── CIRCUMSCRIBED (1) ──
-  { id: "g97", category: "geometry", topic: "Circumscribed",
+  // ── INSCRIBED (1) ──
+  { id: "g97", category: "geometry", topic: "Inscribed",
     display: "<b>EQUILATERAL TRIANGLE AND CIRCLE</b>: An equilateral triangle is inscribed in a circle with Radius = 8.78. Find the side of the triangle.",
     plain: "Circle R=8.78 with inscribed equilateral triangle, find side",
     answerType: "standard", answer: 15.2, tolerance: 0.1, units: "",
@@ -19,8 +19,8 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     </svg>`
   },
 
-  // ── COMBINED (8) ──
-  { id: "g18", category: "geometry", topic: "Combined",
+  // ── CIRCUMSCRIBED (1) ──
+  { id: "g18", category: "geometry", topic: "Circumscribed",
     display: "<b>CIRCLE AND EQUILATERAL TRIANGLE</b>: Circle with diameter 410, equilateral triangle circumscribes the circle. Find the side length of the triangle.",
     plain: "Equilateral triangle circumscribing circle d=410, find side",
     answerType: "standard", answer: 710, tolerance: 1, units: "",
@@ -35,6 +35,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
       <text x="140" y="200" fill="#8899aa" font-size="11" text-anchor="middle">Find the side length</text>
     </svg>`
   },
+  // ── COMBINED (7) ──
   { id: "g20", category: "geometry", topic: "Combined",
     display: "<b>ISOSCELES TRIANGLE, SEGMENT, AND RECTANGLE</b>: An isosceles triangle with equal sides 0.951 inscribed in a circle of radius R = 0.931. Find the shaded area.",
     plain: "Isosceles triangle in circle R=0.931, sides=0.951, find shaded area",
@@ -149,7 +150,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     </svg>`
   },
 
-  // ── INSCRIBED (1) ──
+  // ── INSCRIBED (continued) ──
   { id: "g96", category: "geometry", topic: "Inscribed",
     display: "<b>CIRCLE AND EQUILATERAL TRIANGLE</b>: A circle is inscribed in an equilateral triangle with side = 8000. Find the radius of the inscribed circle.",
     plain: "Equilateral triangle s=8000 with inscribed circle, find r",
