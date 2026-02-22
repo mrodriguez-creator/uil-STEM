@@ -38,14 +38,14 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Isosceles triangle in circle R=0.931, sides=0.951, find shaded area",
     answerType: "standard", answer: 0.0402, tolerance: 0.0001, units: "",
     explanation: "From the diagram and answer key: shaded area = 0.0402.",
-    svg: `<svg viewBox="0 0 260 180" class="geo-svg">
+    svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <circle cx="130" cy="95" r="60" fill="none" stroke="#667eea" stroke-width="2"/>
-      <polygon points="70,120 130,40 190,120" fill="none" stroke="#ed8936" stroke-width="2"/>
-      <text x="90" y="90" fill="#ed8936" font-size="10" transform="rotate(-55,90,90)">0.951</text>
-      <text x="165" y="85" fill="#ed8936" font-size="10" transform="rotate(55,165,85)">0.951</text>
-      <text x="185" y="65" fill="#ed8936" font-size="10">R=0.931</text>
-      <line x1="130" y1="95" x2="185" y2="75" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
-      <text x="100" y="170" fill="#8899aa" font-size="11" font-style="italic">Shaded = ?</text>
+      <polygon points="130,35 77,66 183,66" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <text x="96" y="56" fill="#ed8936" font-size="10" transform="rotate(-60,96,56)">0.951</text>
+      <text x="162" y="53" fill="#ed8936" font-size="10" transform="rotate(60,162,53)">0.951</text>
+      <text x="195" y="93" fill="#ed8936" font-size="10">R=0.931</text>
+      <line x1="130" y1="95" x2="190" y2="95" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="100" y="150" fill="#8899aa" font-size="11" font-style="italic">Shaded = ?</text>
     </svg>`
   },
   { id: "g21", category: "geometry", topic: "Combined",

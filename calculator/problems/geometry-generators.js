@@ -1212,12 +1212,12 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Equilateral triangle s=${s} with inscribed circle, find r`,
       answerType: "standard", answer: sigFig(r, 3), tolerance: Math.max(sigFig(r, 3) * 0.005, 0.001), units: "",
       explanation: `r = s/(2√3) = ${s}/${sigFig(2*Math.sqrt(3), 4)} = ${sigFig(r, 4)}.`,
-      svg: `<svg viewBox="0 0 240 200" class="geo-svg">
-      <polygon points="120,15 15,185 225,185" fill="none" stroke="#667eea" stroke-width="2"/>
-      <circle cx="120" cy="115" r="55" fill="none" stroke="#ed8936" stroke-width="1.5"/>
-      <text x="120" y="200" fill="#ed8936" font-size="11" text-anchor="middle">s = ${s}</text>
-      <line x1="120" y1="115" x2="175" y2="115" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
-      <text x="140" y="108" fill="#48bb78" font-size="10" font-style="italic">r = ?</text>
+      svg: `<svg viewBox="0 0 240 190" class="geo-svg">
+      <polygon points="120,6 30,162 210,162" fill="none" stroke="#667eea" stroke-width="2"/>
+      <circle cx="120" cy="110" r="52" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <text x="120" y="178" fill="#ed8936" font-size="11" text-anchor="middle">s = ${s}</text>
+      <line x1="120" y1="110" x2="172" y2="110" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="135" y="103" fill="#48bb78" font-size="10" font-style="italic">r = ?</text>
     </svg>`
     };
   },
@@ -1232,12 +1232,12 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Circle R=${R} with inscribed equilateral triangle, find side`,
       answerType: "standard", answer: sigFig(s, 3), tolerance: Math.max(sigFig(s, 3) * 0.005, 0.001), units: "",
       explanation: `s = R√3 = ${R} × 1.7321 = ${sigFig(s, 4)}.`,
-      svg: `<svg viewBox="0 0 220 200" class="geo-svg">
+      svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="100" r="75" fill="none" stroke="#667eea" stroke-width="2"/>
-      <polygon points="110,25 40,162 180,162" fill="none" stroke="#ed8936" stroke-width="1.5"/>
+      <polygon points="110,25 45,138 175,138" fill="none" stroke="#ed8936" stroke-width="1.5"/>
       <line x1="110" y1="100" x2="185" y2="100" stroke="#ed8936" stroke-width="1" stroke-dasharray="4,3"/>
       <text x="140" y="93" fill="#ed8936" font-size="10">R = ${R}</text>
-      <text x="100" y="178" fill="#48bb78" font-size="11" font-style="italic" text-anchor="middle">s = ?</text>
+      <text x="110" y="155" fill="#48bb78" font-size="11" font-style="italic" text-anchor="middle">s = ?</text>
     </svg>`
     };
   },

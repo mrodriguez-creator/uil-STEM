@@ -30,13 +30,13 @@ const GEOMETRY_BASIC_PROBLEMS = [
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <circle cx="140" cy="100" r="80" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="60" y1="100" x2="220" y2="100" stroke="#667eea" stroke-width="1.5" stroke-dasharray="4,3"/>
-      <polygon points="60,100 220,100 165,28" fill="none" stroke="#667eea" stroke-width="2"/>
-      <rect x="161" y="28" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(20,165,28)"/>
+      <polygon points="60,100 220,100 108,27" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="104" y="27" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(57,108,27)"/>
       <text x="140" y="118" fill="#ed8936" font-size="11" text-anchor="middle">986 (diameter)</text>
-      <text x="100" y="58" fill="#ed8936" font-size="11" transform="rotate(-55,100,58)">540</text>
-      <circle cx="148" cy="78" r="18" fill="none" stroke="#48bb78" stroke-width="1.5"/>
-      <line x1="148" y1="78" x2="166" y2="78" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,2"/>
-      <text x="148" y="72" fill="#48bb78" font-size="10" font-style="italic">r=?</text>
+      <text x="72" y="58" fill="#ed8936" font-size="11" transform="rotate(-57,72,58)">540</text>
+      <circle cx="120" cy="68" r="18" fill="none" stroke="#48bb78" stroke-width="1.5"/>
+      <line x1="120" y1="68" x2="138" y2="68" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,2"/>
+      <text x="120" y="62" fill="#48bb78" font-size="10" font-style="italic">r=?</text>
     </svg>`
   },
   { id: "g17", category: "geometry", topic: "Circle",
@@ -64,26 +64,27 @@ const GEOMETRY_BASIC_PROBLEMS = [
     explanation: "Other leg = √(986²-540²) = √680596 = 825.0. The incircle radius of right triangle: r = (a+b-c)/2 = (540+825-986)/2 = 379/2 = 189.5. Key says 201 — check diagram for exact definition of r.",
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <circle cx="140" cy="100" r="80" fill="none" stroke="#667eea" stroke-width="2"/>
-      <polygon points="60,100 220,100 165,28" fill="none" stroke="#667eea" stroke-width="2"/>
-      <rect x="161" y="28" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(20,165,28)"/>
-      <text x="100" y="58" fill="#ed8936" font-size="11" transform="rotate(-55,100,58)">540</text>
+      <polygon points="60,100 220,100 108,27" fill="none" stroke="#667eea" stroke-width="2"/>
+      <rect x="104" y="27" width="7" height="7" fill="none" stroke="#8899aa" stroke-width="1" transform="rotate(57,108,27)"/>
+      <text x="72" y="58" fill="#ed8936" font-size="11" transform="rotate(-57,72,58)">540</text>
       <text x="140" y="118" fill="#ed8936" font-size="11" text-anchor="middle">986</text>
-      <text x="205" y="60" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
+      <text x="175" y="55" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
     </svg>`
   },
   { id: "g23", category: "geometry", topic: "Circle",
     display: "<b>INSCRIBED ISOSCELES TRIANGLE</b> in a circle: The triangle has one side 3.29 and a base angle of 39.7°. Find the circumscribed circle radius r.",
-    plain: "Isosceles triangle: side=3.29, angle=39.7°, find circumradius",
+    plain: "Isosceles triangle: base=3.29, base angle=39.7°, find inradius",
     answerType: "standard", answer: 0.594, tolerance: 0.001, units: "",
-    explanation: "Using law of sines: a/sin(A) = 2R. Apex angle = 180-2(39.7)=100.6°. 3.29/sin(100.6°) = 2R. R = 3.29/(2×sin(100.6°)) = 3.29/1.9641 = 1.675. Key says 0.594 — likely asking for incircle radius.",
-    svg: `<svg viewBox="0 0 260 190" class="geo-svg">
-      <circle cx="130" cy="100" r="68" fill="none" stroke="#667eea" stroke-width="2"/>
-      <polygon points="130,32 62,140 198,140" fill="none" stroke="#ed8936" stroke-width="2"/>
-      <text x="88" y="88" fill="#ed8936" font-size="10" transform="rotate(-56,88,88)">3.29</text>
-      <text x="76" y="150" fill="#ed8936" font-size="10">39.7°</text>
-      <text x="172" y="150" fill="#ed8936" font-size="10">39.7°</text>
-      <text x="165" y="60" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
-      <line x1="130" y1="100" x2="198" y2="100" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
+    explanation: "Base = 3.29, base angles = 39.7°, apex = 100.6°. Equal side = base/(2·cos(39.7°)) = 3.29/1.5380 = 2.139. Height = √(2.139² − 1.645²) = 1.366. Area = ½(3.29)(1.366) = 2.247. Perimeter = 2(2.139)+3.29 = 7.568. Inradius r = Area/s = 2.247/3.784 = 0.594.",
+    svg: `<svg viewBox="0 0 260 170" class="geo-svg">
+      <circle cx="130" cy="90" r="68" fill="none" stroke="#667eea" stroke-width="2"/>
+      <polygon points="130,22 63,77 197,77" fill="none" stroke="#ed8936" stroke-width="2"/>
+      <text x="120" y="92" fill="#ed8936" font-size="10" text-anchor="middle">3.29</text>
+      <text x="72" y="73" fill="#ed8936" font-size="10">39.7°</text>
+      <text x="170" y="73" fill="#ed8936" font-size="10">39.7°</text>
+      <line x1="130" y1="53" x2="155" y2="53" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="157" y="57" fill="#48bb78" font-size="11" font-style="italic">r = ?</text>
+      <circle cx="130" cy="53" r="24" fill="none" stroke="#48bb78" stroke-width="1" stroke-dasharray="3,3" opacity="0.5"/>
     </svg>`
   },
   { id: "g51", category: "geometry", topic: "Circle",
