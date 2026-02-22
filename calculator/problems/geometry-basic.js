@@ -22,8 +22,8 @@ const GEOMETRY_BASIC_PROBLEMS = [
     </svg>`
   },
 
-  // ── CIRCLE (10) ──
-  { id: "g14", category: "geometry", topic: "Circle",
+  // ── CIRCLE (6) ──
+  { id: "g14", category: "geometry", topic: "Inscribed",
     display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: Triangle with legs forming a right angle, one leg = 540, hypotenuse = 986 (diameter of circle). Find the radius r of the incircle.",
     plain: "Right triangle inscribed in circle: leg=540, hyp=986, find incircle r",
     answerType: "standard", answer: 190, tolerance: 1, units: "",
@@ -41,7 +41,7 @@ const GEOMETRY_BASIC_PROBLEMS = [
       <text x="150" y="73" fill="#48bb78" font-size="10" font-style="italic">r = ?</text>
     </svg>`
   },
-  { id: "g17", category: "geometry", topic: "Circle",
+  { id: "g17", category: "geometry", topic: "Combined",
     display: "<b>SQUARE AND QUARTER CIRCLE</b>: Square with side 7.52, quarter circle with radius equal to diagonal from corner A to corner B (where AB is found from side and inner height 4.66). Find AB.",
     plain: "Square+quarter circle geometry problem",
     answerType: "standard", answer: 8.85, tolerance: 0.01, units: "",
@@ -60,7 +60,7 @@ const GEOMETRY_BASIC_PROBLEMS = [
       <text x="82" y="120" fill="#48bb78" font-size="12" font-style="italic" transform="rotate(-25,82,120)">AB = ?</text>
     </svg>`
   },
-  { id: "g19", category: "geometry", topic: "Circle",
+  { id: "g19", category: "geometry", topic: "Inscribed",
     display: "<b>INSCRIBED RIGHT TRIANGLE</b> in a circle: hypotenuse = 986 (diameter of circle), one leg = 540. Find the other leg.",
     plain: "Right triangle in circle: hyp=986, leg=540, find other leg",
     answerType: "standard", answer: 825, tolerance: 1, units: "",
@@ -75,7 +75,7 @@ const GEOMETRY_BASIC_PROBLEMS = [
       <text x="170" y="60" fill="#48bb78" font-size="11" font-style="italic" transform="rotate(55,170,60)">? = x</text>
     </svg>`
   },
-  { id: "g23", category: "geometry", topic: "Circle",
+  { id: "g23", category: "geometry", topic: "Inscribed",
     display: "<b>INSCRIBED ISOSCELES TRIANGLE</b> in a circle: The triangle has one side 3.29 and a base angle of 39.7°. Find the circumscribed circle radius r.",
     plain: "Isosceles triangle: base=3.29, base angle=39.7°, find inradius",
     answerType: "standard", answer: 0.594, tolerance: 0.001, units: "",
