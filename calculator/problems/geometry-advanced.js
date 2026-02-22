@@ -9,6 +9,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Circle R=8.78 with inscribed equilateral triangle, find side",
     answerType: "standard", answer: 15.2, tolerance: 0.1, units: "",
     explanation: "For equilateral triangle inscribed in circle: s = R√3 = 8.78 × 1.7321 = 15.21 ≈ 15.2.",
+    hint: "s = R&radic;3",
     svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <circle cx="110" cy="100" r="75" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="110,25 40,162 180,162" fill="none" stroke="#ed8936" stroke-width="1.5"/>
@@ -24,6 +25,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Equilateral triangle circumscribing circle d=410, find side",
     answerType: "standard", answer: 710, tolerance: 1, units: "",
     explanation: "For equilateral triangle circumscribing a circle of radius r: side = 2r√3. r = 205. side = 2(205)(√3) = 710.0 ≈ 710.",
+    hint: "s = 2r&radic;3, r = D/2",
     svg: `<svg viewBox="0 0 280 210" class="geo-svg">
       <circle cx="140" cy="110" r="55" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="140,18 45,173 235,173" fill="none" stroke="#ed8936" stroke-width="2"/>
@@ -38,6 +40,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Isosceles triangle in circle R=0.931, sides=0.951, find shaded area",
     answerType: "standard", answer: 0.0402, tolerance: 0.0001, units: "",
     explanation: "From the diagram and answer key: shaded area = 0.0402.",
+    hint: "A<sub>shaded</sub> = A<sub>segment</sub> &minus; A<sub>triangle</sub>",
     svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <circle cx="130" cy="95" r="60" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="130,35 77,66 183,66" fill="none" stroke="#ed8936" stroke-width="2"/>
@@ -53,6 +56,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Square and rectangle: AB=33.8, rect height=15.9, area equal, find width",
     answerType: "standard", answer: 56, tolerance: 0.1, units: "",
     explanation: "From the answer key: 56.0.",
+    hint: "s<sup>2</sup> = w &times; h, use AB to relate dimensions",
     svg: `<svg viewBox="0 0 300 140" class="geo-svg">
       <rect x="20" y="20" width="90" height="90" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="140" y="30" width="140" height="70" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -70,6 +74,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Equilateral triangle with sector cutouts, shaded area=6800, find unknown",
     answerType: "standard", answer: 411, tolerance: 1, units: "",
     explanation: "From the answer key: 411 = 4.11×10².",
+    hint: "A<sub>shaded</sub> = (&radic;3/4)s<sup>2</sup> &minus; 3 &times; (60/360)&pi;r<sup>2</sup>",
     svg: `<svg viewBox="0 0 260 200" class="geo-svg">
       <polygon points="130,20 30,190 230,190" fill="none" stroke="#667eea" stroke-width="2"/>
       <path d="M 30 190 A 40 40 0 0 0 60 165" fill="none" stroke="#ed8936" stroke-width="1.5"/>
@@ -84,6 +89,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Cube+pyramid: V equal, TSA=993, find cube edge",
     answerType: "standard", answer: 9.47, tolerance: 0.01, units: "",
     explanation: "From the answer key: 9.47.",
+    hint: "V<sub>cube</sub> = s<sup>3</sup>, V<sub>pyramid</sub> = (1/3)Bh, TSA = combined surfaces",
     svg: `<svg viewBox="0 0 300 170" class="geo-svg">
       <rect x="20" y="40" width="100" height="100" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="190,140 290,140 240,30" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -100,6 +106,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Cube side=5.52, V_remaining=152, find hole diameter D",
     answerType: "standard", answer: 1.93, tolerance: 0.01, units: "",
     explanation: "Cube V = 5.52³ = 168.0. Cylinder V = π(D/2)²(5.52) = 168.0-152 = 16.0. πD²/4×5.52=16.0. D²=16.0/(π×1.38)=3.691. D=1.921 ≈ 1.93.",
+    hint: "V<sub>cyl</sub> = s<sup>3</sup> &minus; V<sub>rem</sub>, then &pi;(D/2)<sup>2</sup> &times; s = V<sub>cyl</sub>",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,140 170,140 170,40 30,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="30,40 70,10 210,10 170,40" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -118,6 +125,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Area between y=1+(x-2)^2 and y=5-x^2/2",
     answerType: "standard", answer: 4.74, tolerance: 0.01, units: "",
     explanation: "From the answer key: shaded area = 4.74.",
+    hint: "A = &int;(y<sub>top</sub> &minus; y<sub>bot</sub>) dx between intersection points",
     svg: `<svg viewBox="0 0 280 180" class="geo-svg">
       <path d="M 30 160 Q 80 20 200 40 Q 280 55 250 160" fill="none" stroke="#667eea" stroke-width="2"/>
       <path d="M 30 160 Q 100 80 250 160" fill="none" stroke="#ed8936" stroke-width="2"/>
@@ -131,6 +139,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Rectangle with semicircles, shaded area=2.35, find R",
     answerType: "standard", answer: 2.23, tolerance: 0.01, units: "",
     explanation: "From the answer key: R = 2.23.",
+    hint: "A<sub>shaded</sub> = A<sub>rect</sub> &minus; 2 &times; (&pi;R<sup>2</sup>/2)",
     svg: `<svg viewBox="0 0 280 150" class="geo-svg">
       <rect x="30" y="30" width="220" height="80" fill="none" stroke="#667eea" stroke-width="2"/>
       <path d="M 80 30 A 50 50 0 0 1 80 110" fill="none" stroke="#ed8936" stroke-width="1.5"/>
@@ -146,6 +155,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Equilateral triangle s=8000 with inscribed circle, find r",
     answerType: "standard", answer: 2310, tolerance: 10, units: "",
     explanation: "For equilateral triangle: r (inradius) = s/(2√3) = 8000/(2×1.7321) = 8000/3.4641 = 2309 ≈ 2310.",
+    hint: "r = s / (2&radic;3)",
     svg: `<svg viewBox="0 0 240 200" class="geo-svg">
       <polygon points="120,15 15,185 225,185" fill="none" stroke="#667eea" stroke-width="2"/>
       <circle cx="120" cy="115" r="55" fill="none" stroke="#ed8936" stroke-width="1.5"/>
@@ -161,6 +171,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: hyp=965, leg=844, find angle opposite leg 844 (rad)",
     answerType: "standard", answer: 1.06, tolerance: 0.01, units: "rad",
     explanation: "sin(θ) = 844/965 = 0.87461. θ = arcsin(0.87461) = 1.065 rad ≈ 1.06 rad.",
+    hint: "&theta; = arcsin(opp / hyp)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -176,6 +187,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: legs 89.3 and 66.1, find area",
     answerType: "standard", answer: 2950, tolerance: 10, units: "",
     explanation: "Area = ½(89.3)(66.1) = ½(5903.13) = 2951.6 ≈ 2950 or 2.95×10³.",
+    hint: "A = &frac12; &times; leg<sub>1</sub> &times; leg<sub>2</sub>",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -189,6 +201,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: hyp=1.17, angle=0.656 rad, find opposite leg",
     answerType: "standard", answer: 0.713, tolerance: 0.001, units: "",
     explanation: "Opposite leg = hyp × sin(0.656) = 1.17 × 0.6088 = 0.7123 ≈ 0.712.",
+    hint: "opp = hyp &times; sin(&theta;)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -204,6 +217,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: leg=0.0223, opposite angle=34.1°, find hyp",
     answerType: "standard", answer: 0.0398, tolerance: 0.0001, units: "",
     explanation: "sin(34.1°) = 0.0223/hyp. hyp = 0.0223/sin(34.1°) = 0.0223/0.5606 = 0.03978 ≈ 0.0398.",
+    hint: "hyp = opp / sin(&theta;)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,60" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -218,6 +232,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: legs 127 and 204, find hyp",
     answerType: "standard", answer: 240, tolerance: 1, units: "",
     explanation: "hyp = √(127²+204²) = √(16129+41616) = √57745 = 240.3 ≈ 240.",
+    hint: "c = &radic;(a<sup>2</sup> + b<sup>2</sup>)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -231,6 +246,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: hyp=0.843, leg=0.619, find angle opposite leg (deg)",
     answerType: "standard", answer: 47.3, tolerance: 0.1, units: "deg",
     explanation: "sin(θ) = 0.619/0.843 = 0.7343. θ = arcsin(0.7343) = 47.27° ≈ 47.3°.",
+    hint: "&theta; = arcsin(opp / hyp)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -245,6 +261,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: a=0.235, b=0.390, find c",
     answerType: "standard", answer: 0.455, tolerance: 0.001, units: "",
     explanation: "c = √(a²+b²) = √(0.05522+0.1521) = √0.20732 = 0.4553 ≈ 0.455.",
+    hint: "c = &radic;(a<sup>2</sup> + b<sup>2</sup>)",
     svg: `<svg viewBox="0 0 240 180" class="geo-svg">
       <polygon points="40,150 200,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -258,6 +275,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: c=21400, a=9240, find b",
     answerType: "standard", answer: 19300, tolerance: 100, units: "",
     explanation: "b = √(c²−a²) = √(21400²−9240²) = √(457,960,000−85,377,600) = √372,582,400 = 19,303 ≈ 19,300.",
+    hint: "b = &radic;(c<sup>2</sup> &minus; a<sup>2</sup>)",
     svg: `<svg viewBox="0 0 250 180" class="geo-svg">
       <polygon points="30,160 220,160 220,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -271,6 +289,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: a=9.85, b=9.57, find area",
     answerType: "standard", answer: 47.1, tolerance: 0.1, units: "",
     explanation: "A = (1/2)ab = (1/2)(9.85)(9.57) = (1/2)(94.27) = 47.13 ≈ 47.1.",
+    hint: "A = &frac12; &times; a &times; b",
     svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <polygon points="30,160 200,160 30,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="30" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -284,6 +303,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: θ=0.429 rad, adj=810, find opp",
     answerType: "standard", answer: 378, tolerance: 1, units: "",
     explanation: "opp = adj × tan(θ) = 810 × tan(0.429) = 810 × 0.4663 = 377.7 ≈ 378.",
+    hint: "opp = adj &times; tan(&theta;)",
     svg: `<svg viewBox="0 0 240 180" class="geo-svg">
       <polygon points="30,160 220,160 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -298,6 +318,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Right triangle: hyp nearby, sides 2370 and 2630, find angle in deg",
     answerType: "standard", answer: 64.3, tolerance: 0.1, units: "deg",
     explanation: "Wait: if hyp=2630, leg=2370, then sin(θ)=2370/2630=0.9011. θ=arcsin(0.9011)=64.27°≈64.3°.",
+    hint: "&theta; = arcsin(opp / hyp)",
     svg: `<svg viewBox="0 0 240 180" class="geo-svg">
       <polygon points="30,160 220,160 220,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -314,6 +335,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Triangle: sides 1250, 1330, angles 63.1°, 38.4°, find unknown side",
     answerType: "standard", answer: 876, tolerance: 1, units: "",
     explanation: "Third angle = 180-63.1-38.4 = 78.5°. Using law of sines: 1250/sin(78.5°) = x/sin(38.4°). Wait, need to match sides to angles correctly. Check with given geometry.",
+    hint: "a/sin(A) = b/sin(B) = c/sin(C)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,155 230,155 150,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="130" y="173" fill="#ed8936" font-size="12" text-anchor="middle">1330</text>
@@ -330,6 +352,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Scalene triangle: side=0.602, angles 85.7° and 48.5°, find unknown side",
     answerType: "standard", answer: 0.433, tolerance: 0.001, units: "",
     explanation: "Third angle = 180-85.7-48.5 = 45.8°. Using law of sines: if 0.602 is opposite 85.7°, then x/sin(45.8°) = 0.602/sin(85.7°). x = 0.602×sin(45.8°)/sin(85.7°) = 0.602×0.7169/0.9982 = 0.4325 ≈ 0.433.",
+    hint: "a/sin(A) = b/sin(B), third angle = 180&deg; &minus; A &minus; B",
     svg: `<svg viewBox="0 0 260 170" class="geo-svg">
       <polygon points="40,140 220,140 150,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="50" y="135" fill="#ed8936" font-size="10">85.7°</text>
@@ -343,6 +366,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Scalene triangle: a=6760, b=5000, C=45.3°, find c",
     answerType: "standard", answer: 4830, tolerance: 10, units: "",
     explanation: "Law of cosines: c² = a²+b²−2ab·cos(C) = 6760²+5000²−2(6760)(5000)cos(45.3°) = 45,697,600+25,000,000−67,600,000(0.7030) = 70,697,600−47,522,800 = 23,174,800. c = √23,174,800 = 4814 ≈ 4830.",
+    hint: "c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab&middot;cos(C)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,150 240,150 170,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="125" y="168" fill="#ed8936" font-size="10">6760</text>
@@ -357,6 +381,7 @@ const GEOMETRY_ADVANCED_PROBLEMS = [
     plain: "Scalene triangle: a=693, b=586, angle A=20.7°, find c using law of sines",
     answerType: "standard", answer: 161, tolerance: 1, units: "",
     explanation: "By law of sines: sin(B)/b = sin(A)/a. sin(B) = b×sin(A)/a = 586×sin(20.7°)/693 = 586×0.3535/693 = 0.2990. B = 17.39°. C = 180−20.7−17.39 = 141.91°. c/sin(C) = a/sin(A). c = 693×sin(141.91°)/sin(20.7°) = 693×0.6178/0.3535 = 1210. Hmm, but key says 161. Let me re-read: side opposite 20.7° is unknown. Actually the problem says angle opposite to 693 is 20.7°. So a=693, A=20.7°. We also have b=586 but need to find c. With law of cosines: need more info. The key answer is 161, suggesting a different configuration. Let me trust the manual pattern answer.",
+    hint: "a/sin(A) = b/sin(B) = c/sin(C)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,150 240,150 100,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="55" y="80" fill="#ed8936" font-size="10" transform="rotate(-60,55,80)">693</text>

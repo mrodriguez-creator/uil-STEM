@@ -21,6 +21,7 @@ const state = {
   timed: false,
   timerInterval: null,
   showModal: false,
+  hintVisible: false,
 };
 
 // ── PERSISTENCE ──
@@ -239,7 +240,7 @@ function startSkills(category, topic) {
   setState({
     screen: 'test', mode: 'skills', category, topic,
     problems, idx: 0, userAnswer: '', answered: false,
-    gradeResult: null, totalPoints: 0, results: [], timed: false, timeLeft: 0
+    gradeResult: null, totalPoints: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
   focusInput();
 }
@@ -249,7 +250,7 @@ function startDrill(category) {
   setState({
     screen: 'test', mode: 'drill', category, topic: null,
     problems, idx: 0, userAnswer: '', answered: false,
-    gradeResult: null, totalPoints: 0, results: [], timed: false, timeLeft: 0
+    gradeResult: null, totalPoints: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
   focusInput();
 }
@@ -265,7 +266,7 @@ function startPractice(category, seconds) {
   setState({
     screen: 'test', mode: 'practice', category, topic: null,
     problems, idx: 0, userAnswer: '', answered: false,
-    gradeResult: null, totalPoints: 0, results: [], showModal: false
+    gradeResult: null, totalPoints: 0, results: [], showModal: false, hintVisible: false
   });
   startTimer(seconds);
   focusInput();
@@ -300,7 +301,8 @@ function nextQuestion() {
     idx: state.idx + 1,
     userAnswer: '',
     answered: false,
-    gradeResult: null
+    gradeResult: null,
+    hintVisible: false
   });
   focusInput();
 }
@@ -316,7 +318,8 @@ function skipQuestion() {
     idx: state.idx + 1,
     userAnswer: '',
     answered: false,
-    gradeResult: null
+    gradeResult: null,
+    hintVisible: false
   });
   focusInput();
 }
@@ -340,6 +343,11 @@ function handleAnswerKeydown(e) {
       submitAnswer();
     }
   }
+}
+
+function toggleHint() {
+  state.hintVisible = !state.hintVisible;
+  render();
 }
 
 // ── RENDER ──
@@ -547,6 +555,19 @@ function renderTest() {
         <div class="question-text math-expr">${p.display}</div>
         <div class="question-tag">${p.category} · ${p.topic}</div>
       </div>
+
+      ${p.hint ? `
+      <div class="hint-section">
+        <button class="hint-toggle" onclick="toggleHint()">
+          <span class="hint-icon">${state.hintVisible ? '▼' : '▶'}</span>
+          ${state.hintVisible ? 'Hide Hint' : 'Show Hint'}
+        </button>
+        ${state.hintVisible ? `
+        <div class="hint-content">
+          <div class="hint-label">${p.category === 'stated' ? '🔢 Calculator Steps' : '📐 Formula'}</div>
+          <div class="hint-text">${p.hint}</div>
+        </div>` : ''}
+      </div>` : ''}
 
       <div class="answer-section">
         <div class="answer-label">

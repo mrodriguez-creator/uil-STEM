@@ -218,6 +218,33 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .scoring-row .sc-neg { color: #f56565; font-weight: 700; }
 .scoring-row .sc-part { color: #ed8936; font-weight: 700; }
 
+/* ── HINT SYSTEM ── */
+.hint-section { margin-bottom: 16px; }
+
+.hint-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #1a1f2e; border: 1px solid #4a5568; border-radius: 8px;
+  color: #ed8936; font-size: 0.82rem; font-weight: 600;
+  padding: 8px 16px; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.hint-toggle:hover { border-color: #ed8936; background: #222838; }
+.hint-icon { font-size: 0.7rem; color: #ed8936; }
+
+.hint-content {
+  margin-top: 8px; background: #151b28;
+  border: 2px solid #ed8936; border-left: 4px solid #ed8936;
+  border-radius: 10px; padding: 14px 18px;
+}
+.hint-label {
+  color: #ed8936; font-weight: 700; font-size: 0.78rem;
+  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;
+}
+.hint-text {
+  color: #e2e8f0; font-size: 1.05rem;
+  font-family: "Cambria Math", "Times New Roman", serif; line-height: 1.6;
+}
+
 /* ── RESPONSIVE ── */
 @media(max-width: 600px) {
   .header h1 { font-size: 1.4rem; }

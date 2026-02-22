@@ -9,6 +9,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cone: r=8.35, slant=14.6, find TSA",
     answerType: "standard", answer: 602, tolerance: 1, units: "",
     explanation: "TSA = πr² + πrℓ = π(8.35)² + π(8.35)(14.6) = 219.0 + 382.9 = 601.9 ≈ 602.",
+    hint: "TSA = &pi;r<sup>2</sup> + &pi;r&ell;",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="155" rx="80" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="50" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
@@ -25,6 +26,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cone: h=12.3, V=845, find r",
     answerType: "standard", answer: 8.09, tolerance: 0.01, units: "",
     explanation: "V = πr²h/3. r² = 3V/(πh) = 3(845)/(π×12.3) = 2535/38.64 = 65.61. r = √65.61 = 8.099 ≈ 8.10.",
+    hint: "V = &frac13;&pi;r<sup>2</sup>h &rarr; r = &radic;(3V / &pi;h)",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="155" rx="75" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="55" y1="155" x2="130" y2="25" stroke="#667eea" stroke-width="2"/>
@@ -40,6 +42,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cone: h=120, R=48.3, find V",
     answerType: "standard", answer: 293000, tolerance: 1000, units: "",
     explanation: "V = (1/3)πR²h = (1/3)π(48.3)²(120) = (1/3)π(2332.89)(120) = (1/3)π(279947) = (1/3)(879,549) = 293,183 ≈ 293,000.",
+    hint: "V = &frac13;&pi;R<sup>2</sup>h",
     svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <line x1="110" y1="20" x2="40" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="110" y1="20" x2="180" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -56,6 +59,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cone: slant=792, D=468, find V",
     answerType: "standard", answer: 43600000, tolerance: 100000, units: "",
     explanation: "R = 468/2 = 234. h = √(792²−234²) = √(627264−54756) = √572508 = 756.6. V = (1/3)πR²h = (1/3)π(54756)(756.6) = (1/3)(130,151,000) = 43,384,000 ≈ 43,600,000.",
+    hint: "h = &radic;(&ell;<sup>2</sup> &minus; R<sup>2</sup>), then V = &frac13;&pi;R<sup>2</sup>h",
     svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <line x1="110" y1="20" x2="40" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="110" y1="20" x2="180" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -72,6 +76,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cuboid: space diagonal components, find volume",
     answerType: "standard", answer: 2140, tolerance: 10, units: "",
     explanation: "A cuboid with given edge lengths. Volume = length × width × height. If AB, BC are edges and BD is face diagonal: BD² = AB² + BC²? 21.5² = 462.25, 20.8² + 10.6² = 432.64 + 112.36 = 545. Not equal, so BD is space diagonal. Need more info from diagram.",
+    hint: "V = l &times; w &times; h; space diagonal d = &radic;(l<sup>2</sup> + w<sup>2</sup> + h<sup>2</sup>)",
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <polygon points="60,160 190,160 190,70 60,70" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="60,70 110,30 240,30 190,70" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -100,6 +105,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cuboid: l=7.34, h=4.24, V=84.8, find w",
     answerType: "standard", answer: 2.72, tolerance: 0.01, units: "",
     explanation: "V = lwh. w = V/(lh) = 84.8/(7.34 × 4.24) = 84.8/31.12 = 2.725 ≈ 2.73.",
+    hint: "V = lwh &rarr; w = V / (lh)",
     svg: `<svg viewBox="0 0 280 190" class="geo-svg">
       <polygon points="50,150 190,150 190,60 50,60" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="50,60 100,25 240,25 190,60" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -121,6 +127,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cylinder r=7.05, h=13.7 minus inscribed equilateral triangle prism",
     answerType: "standard", answer: 1490, tolerance: 10, units: "",
     explanation: "Cylinder V = π(7.05)²(13.7) = π(49.70)(13.7) = 2139. Equilateral triangle inscribed in circle r=7.05: side = r√3 = 12.21. Area = (√3/4)(12.21)² = 64.55. Prism V = 64.55 × 13.7 = 884.4. Difference = 2139-884 = 1255. Check.",
+    hint: "V<sub>cyl</sub> = &pi;r<sup>2</sup>h; inscribed equilateral side = r&radic;3; A = (&radic;3/4)s<sup>2</sup>",
     svg: `<svg viewBox="0 0 280 200" class="geo-svg">
       <ellipse cx="140" cy="40" rx="65" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="140" cy="160" rx="65" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -140,6 +147,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cylinder: d=8.44, TSA=420, find h",
     answerType: "standard", answer: 11.6, tolerance: 0.1, units: "",
     explanation: "TSA = 2πr² + 2πrh. r=4.22. 2π(4.22)²=111.9. 420-111.9=308.1=2π(4.22)h. h=308.1/26.52=11.62 ≈ 11.6.",
+    hint: "TSA = 2&pi;r<sup>2</sup> + 2&pi;rh &rarr; h = (TSA &minus; 2&pi;r<sup>2</sup>) / (2&pi;r)",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="35" rx="60" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="155" rx="60" ry="16" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -156,6 +164,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cylinder: r=3.68, h=9.21, find V",
     answerType: "standard", answer: 392, tolerance: 1, units: "",
     explanation: "V = πr²h = π(3.68)²(9.21) = π(13.54)(9.21) = π(124.7) = 391.7 ≈ 392.",
+    hint: "V = &pi;r<sup>2</sup>h",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="35" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="150" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -172,6 +181,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cylinder: h=0.0886, V=0.000165, find R",
     answerType: "standard", answer: 0.0243, tolerance: 0.0001, units: "",
     explanation: "V = πR²h. R² = V/(πh) = 0.000165/(π×0.0886) = 0.000165/0.2783 = 0.000593. R = √0.000593 = 0.02435 ≈ 0.0243.",
+    hint: "V = &pi;R<sup>2</sup>h &rarr; R = &radic;(V / &pi;h)",
     svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <ellipse cx="110" cy="35" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="150" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -188,6 +198,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Cylinder: R=156, TSA=482000, find h",
     answerType: "standard", answer: 336, tolerance: 1, units: "",
     explanation: "TSA = 2πR² + 2πRh = 2πR(R+h). (R+h) = TSA/(2πR) = 482000/(2π×156) = 482000/980.2 = 491.9. h = 491.9−156 = 335.9 ≈ 336.",
+    hint: "TSA = 2&pi;R(R + h) &rarr; h = TSA/(2&pi;R) &minus; R",
     svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <ellipse cx="110" cy="35" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="150" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -206,6 +217,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Frustum: r1=3.48/2=1.74, r2=9.15/2=4.575, V=198, find h",
     answerType: "standard", answer: 2.64, tolerance: 0.01, units: "",
     explanation: "V = πh(r₁² + r₁r₂ + r₂²)/3. Using diameters as radii: r₁=3.48/2=1.74, r₂=9.15/2=4.575. V = πh(3.0276+7.9605+20.930)/3 = πh(31.918)/3 = 33.41h. 198 = 33.41h → h = 5.93. Check if 3.48 and 9.15 are radii or diameters.",
+    hint: "V = (&pi;h/3)(R<sup>2</sup> + Rr + r<sup>2</sup>) &rarr; h = 3V / [&pi;(R<sup>2</sup> + Rr + r<sup>2</sup>)]",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="40" rx="40" ry="12" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="155" rx="90" ry="18" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -225,6 +237,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Frustum: r=15.2, R=28.6, h=31.4, find V",
     answerType: "standard", answer: 48800, tolerance: 100, units: "",
     explanation: "V = (πh/3)(R²+Rr+r²) = (π(31.4)/3)(28.6²+28.6×15.2+15.2²) = (32.89)(817.96+434.72+231.04) = 32.89(1483.72) = 48,800. Hmm let me recalc: (π×31.4/3)=32.89. 28.6²=817.96, 28.6×15.2=434.72, 15.2²=231.04. Sum=1483.72. V=32.89×1483.72=48,800. Wait: 32.89×1483.72=48,800. 3 sig figs: 48,800.",
+    hint: "V = (&pi;h/3)(R<sup>2</sup> + Rr + r<sup>2</sup>)",
     svg: `<svg viewBox="0 0 240 190" class="geo-svg">
       <line x1="80" y1="30" x2="30" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="160" y1="30" x2="210" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -245,6 +258,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Hemisphere: r=4.87, find TSA",
     answerType: "standard", answer: 224, tolerance: 1, units: "",
     explanation: "TSA = 2πr² + πr² = 3πr² = 3π(4.87)² = 3π(23.72) = 223.5 ≈ 224.",
+    hint: "TSA = 3&pi;r<sup>2</sup>",
     svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -259,6 +273,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Hemisphere: V=(2/3)πR³=3520, find R",
     answerType: "standard", answer: 11.9, tolerance: 0.1, units: "",
     explanation: "V = (2/3)πR³. R³ = 3V/(2π) = 3(3520)/(2π) = 10560/6.2832 = 1680.7. R = ∛1680.7 = 11.89 ≈ 11.9.",
+    hint: "V = (2/3)&pi;R<sup>3</sup> &rarr; R = &radic;<span style='text-decoration:overline'>3V / (2&pi;)</span>&thinsp;<sup>1/3</sup>",
     svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -273,6 +288,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Hemisphere: R=0.823, find TSA",
     answerType: "standard", answer: 6.39, tolerance: 0.01, units: "",
     explanation: "TSA = 3πR² = 3π(0.823)² = 3π(0.6773) = 6.384 ≈ 6.39.",
+    hint: "TSA = 3&pi;R<sup>2</sup>",
     svg: `<svg viewBox="0 0 220 140" class="geo-svg">
       <path d="M 30,100 A 80,80 0 0,1 190,100" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="100" rx="80" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -288,6 +304,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Isosceles triangle prism: base=0.565, sides=0.751, length=0.191, find TSA",
     answerType: "standard", answer: 0.668, tolerance: 0.001, units: "",
     explanation: "Triangle area: base=0.565, sides=0.751. Height of triangle = √(0.751²-(0.2825)²) = √(0.564-0.0798) = √0.4843 = 0.6959. Area = ½(0.565)(0.6959)=0.1966. TSA = 2(0.1966) + 0.191(0.565+0.751+0.751) = 0.3932 + 0.191(2.067) = 0.3932+0.3948 = 0.788. Check.",
+    hint: "TSA = 2 &times; base area + perimeter &times; length; triangle h = &radic;(s<sup>2</sup> &minus; (b/2)<sup>2</sup>)",
     svg: `<svg viewBox="0 0 280 190" class="geo-svg">
       <polygon points="50,150 170,150 110,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="110,40 230,40 170,150 50,150" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
@@ -305,6 +322,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Triangular prism: equilateral s=8.40, L=15.7, find V",
     answerType: "standard", answer: 480, tolerance: 1, units: "",
     explanation: "Base area = (s²√3)/4 = (8.40²)(√3)/4 = (70.56)(1.7321)/4 = 30.57. V = base area × L = 30.57 × 15.7 = 480.0 ≈ 480.",
+    hint: "Base area = (s<sup>2</sup>&radic;3) / 4; V = base area &times; L",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,150 130,30 130,150" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="130,150 230,150 230,30 130,30" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
@@ -323,6 +341,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Square pyramid: base=7.22, h=10.8, find volume",
     answerType: "standard", answer: 188, tolerance: 1, units: "",
     explanation: "V = (1/3)Bh = (1/3)(7.22)²(10.8) = (1/3)(52.13)(10.8) = (1/3)(563.0) = 187.7 ≈ 188.",
+    hint: "V = &frac13;s<sup>2</sup>h",
     svg: `<svg viewBox="0 0 260 200" class="geo-svg">
       <polygon points="70,160 190,160 210,120 90,120" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="70" y1="160" x2="140" y2="25" stroke="#667eea" stroke-width="2"/>
@@ -340,6 +359,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Regular tetrahedron: edge=6.50, find TSA",
     answerType: "standard", answer: 73.1, tolerance: 0.1, units: "",
     explanation: "TSA = √3 × s² = 1.7321 × (6.50)² = 1.7321 × 42.25 = 73.18 ≈ 73.2.",
+    hint: "TSA = &radic;3 &times; s<sup>2</sup>",
     svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <polygon points="130,25 50,160 210,160" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="130" y1="25" x2="170" y2="110" stroke="#667eea" stroke-width="2"/>
@@ -354,6 +374,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Square pyramid: s=44.0, h=67.5, find V",
     answerType: "standard", answer: 43600, tolerance: 100, units: "",
     explanation: "V = (1/3)×base area×h = (1/3)(44.0²)(67.5) = (1/3)(1936)(67.5) = (1/3)(130,680) = 43,560 ≈ 43,600.",
+    hint: "V = &frac13;s<sup>2</sup>h",
     svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <polygon points="110,20 30,150 80,180 190,180 200,140" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="30" y1="150" x2="200" y2="140" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3"/>
@@ -370,6 +391,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Rectangular solid: l=3770, w=1670, h=2240, find TSA",
     answerType: "standard", answer: 37100000, tolerance: 100000, units: "",
     explanation: "TSA = 2(lw+lh+wh) = 2(3770×1670 + 3770×2240 + 1670×2240) = 2(6,295,900 + 8,444,800 + 3,740,800) = 2(18,481,500) = 36,963,000 ≈ 37,100,000.",
+    hint: "TSA = 2(lw + lh + wh)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,140 160,140 160,50 30,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="30,50 70,20 200,20 160,50" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -386,6 +408,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Rectangular solid: l=76.8, w=46.3, h=36.9, find diagonal AB",
     answerType: "standard", answer: 96.9, tolerance: 0.1, units: "",
     explanation: "AB = √(l²+w²+h²) = √(76.8²+46.3²+36.9²) = √(5898+2144+1362) = √9404 = 96.98 ≈ 96.9.",
+    hint: "d = &radic;(l<sup>2</sup> + w<sup>2</sup> + h<sup>2</sup>)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,140 160,140 160,50 30,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="30,50 70,20 200,20 160,50" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -407,6 +430,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Sphere: SA=4πR²=0.0696, find R",
     answerType: "standard", answer: 0.0744, tolerance: 0.0001, units: "",
     explanation: "4πR² = 0.0696. R² = 0.0696/(4π) = 0.005541. R = √0.005541 = 0.07444 ≈ 0.0744.",
+    hint: "SA = 4&pi;R<sup>2</sup> &rarr; R = &radic;(SA / 4&pi;)",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="90" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
@@ -421,6 +445,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Sphere: V=(4/3)πR³=2140, find D",
     answerType: "standard", answer: 16, tolerance: 0.1, units: "",
     explanation: "R³ = 3V/(4π) = 6420/(4π) = 510.9. R = ∛510.9 = 7.998. D = 2R = 16.0.",
+    hint: "V = (4/3)&pi;R<sup>3</sup> &rarr; R = (3V / 4&pi;)<sup>1/3</sup>; D = 2R",
     svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="90" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
@@ -434,6 +459,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Sphere: D=7260, find V",
     answerType: "standard", answer: 200000000000, tolerance: 1000000000, units: "",
     explanation: "R = 7260/2 = 3630. V = (4/3)πR³ = (4/3)π(3630)³ = (4/3)π(4.782×10¹⁰) = 2.004×10¹¹ ≈ 2.00×10¹¹.",
+    hint: "V = (4/3)&pi;R<sup>3</sup>; R = D/2",
     svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>
@@ -447,6 +473,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Sphere: V=654, find R",
     answerType: "standard", answer: 5.39, tolerance: 0.01, units: "",
     explanation: "V = (4/3)πR³. R³ = 3V/(4π) = 3(654)/(4π) = 1962/12.566 = 156.1. R = ∛156.1 = 5.386 ≈ 5.39.",
+    hint: "V = (4/3)&pi;R<sup>3</sup> &rarr; R = (3V / 4&pi;)<sup>1/3</sup>",
     svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>
@@ -460,6 +487,7 @@ const GEOMETRY_3D_PROBLEMS = [
     plain: "Sphere: SA=235, find D",
     answerType: "standard", answer: 8.65, tolerance: 0.01, units: "",
     explanation: "SA = 4πR². R² = SA/(4π) = 235/12.566 = 18.70. R = 4.325. D = 2R = 8.649 ≈ 8.65.",
+    hint: "SA = 4&pi;R<sup>2</sup> &rarr; R = &radic;(SA / 4&pi;); D = 2R",
     svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>

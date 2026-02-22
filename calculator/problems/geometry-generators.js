@@ -45,6 +45,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: R=${R}, find D`,
       answerType: "standard", answer: sigFig(D, 3), tolerance: sigFig(D, 3) * 0.005 || 0.001, units: "",
       explanation: `D = 2R = 2(${R}) = ${sigFig(D, 4)}.`,
+      hint: "D = 2R",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="110" y1="90" x2="175" y2="90" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -65,6 +66,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: D=${D}, find Area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `R = ${D}/2 = ${R}. A = πR² = π(${R})² = ${sigFig(A, 4)}.`,
+      hint: "R = D/2, then A = &pi;R<sup>2</sup>",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="45" y1="90" x2="175" y2="90" stroke="#ed8936" stroke-width="1.5"/>
@@ -85,6 +87,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: A=${A}, find D`,
       answerType: "standard", answer: sigFig(D, 3), tolerance: Math.max(sigFig(D, 3) * 0.005, 0.001), units: "",
       explanation: `A = πR². R² = ${A}/π = ${sigFig(A/Math.PI, 4)}. R = ${sigFig(R, 4)}. D = 2R = ${sigFig(D, 4)}.`,
+      hint: "A = &pi;R<sup>2</sup> &rarr; R = &radic;(A/&pi;), then D = 2R",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="85" y="95" fill="#ed8936" font-size="11">Area = ${A}</text>
@@ -104,6 +107,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: C=${C}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `C = 2πR. R = C/(2π) = ${C}/${sigFig(2*Math.PI, 5)} = ${sigFig(R, 4)}.`,
+      hint: "C = 2&pi;R &rarr; R = C/(2&pi;)",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="55" y="30" fill="#ed8936" font-size="10">C = ${C}</text>
@@ -124,6 +128,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: C=${C}, find Area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `R = C/(2π) = ${C}/${sigFig(2*Math.PI,5)} = ${sigFig(R,4)}. A = πR² = ${sigFig(A,4)}.`,
+      hint: "R = C/(2&pi;), then A = &pi;R<sup>2</sup>",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="55" y="30" fill="#ed8936" font-size="10">C = ${C}</text>
@@ -142,6 +147,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Circle: A=${A}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `A = πR². R² = ${A}/π = ${sigFig(A/Math.PI,4)}. R = ${sigFig(R,4)}.`,
+      hint: "A = &pi;R<sup>2</sup> &rarr; R = &radic;(A/&pi;)",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <circle cx="110" cy="90" r="65" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="75" y="95" fill="#ed8936" font-size="11">Area = ${A}</text>
@@ -162,6 +168,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Semicircle: R=${R}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = πR²/2 = π(${R})²/2 = ${sigFig(A, 4)}.`,
+      hint: "A = &pi;R<sup>2</sup>/2",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <path d="M 30 130 A 100 100 0 0 1 230 130" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="30" y1="130" x2="230" y2="130" stroke="#667eea" stroke-width="2"/>
@@ -183,6 +190,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Semicircle: R=${R}, find perimeter`,
       answerType: "standard", answer: sigFig(P, 3), tolerance: Math.max(sigFig(P, 3) * 0.005, 0.001), units: "",
       explanation: `P = R(π+2) = ${R}(${sigFig(Math.PI+2, 5)}) = ${sigFig(P, 4)}.`,
+      hint: "P = &pi;R + 2R",
       svg: `<svg viewBox="0 0 220 150" class="geo-svg">
       <path d="M 30,110 A 80,80 0 0,1 190,110" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="30" y1="110" x2="190" y2="110" stroke="#667eea" stroke-width="2"/>
@@ -203,6 +211,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Semicircle: A=${A}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `A = πR²/2. R² = 2A/π = ${sigFig(2*A/Math.PI, 4)}. R = ${sigFig(R, 4)}.`,
+      hint: "A = &pi;R<sup>2</sup>/2 &rarr; R = &radic;(2A/&pi;)",
       svg: `<svg viewBox="0 0 220 150" class="geo-svg">
       <path d="M 30,110 A 80,80 0 0,1 190,110" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="30" y1="110" x2="190" y2="110" stroke="#667eea" stroke-width="2"/>
@@ -223,6 +232,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Quarter circle: R=${R}, find perimeter`,
       answerType: "standard", answer: sigFig(P, 3), tolerance: Math.max(sigFig(P, 3) * 0.005, 0.001), units: "",
       explanation: `P = πR/2 + 2R = ${sigFig(Math.PI*R/2, 4)} + ${sigFig(2*R, 4)} = ${sigFig(P, 4)}.`,
+      hint: "P = &pi;R/2 + 2R",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <path d="M 30,30 L 30,150 A 120,120 0 0,0 150,30 Z" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="30" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -241,6 +251,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Quarter circle: A=${A}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `A = πR²/4. R² = 4A/π = ${sigFig(4*A/Math.PI, 4)}. R = ${sigFig(R, 4)}.`,
+      hint: "A = &pi;R<sup>2</sup>/4 &rarr; R = &radic;(4A/&pi;)",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <path d="M 30,30 L 30,150 A 120,120 0 0,0 150,30 Z" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="30" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -260,6 +271,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Square: s=${s}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = s² = (${s})² = ${sigFig(A, 4)}.`,
+      hint: "A = s<sup>2</sup>",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <rect x="30" y="20" width="140" height="140" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="8" y="95" fill="#ed8936" font-size="11">${s}</text>
@@ -278,6 +290,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Square: P=${P}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `s = P/4 = ${P}/4 = ${sigFig(s, 4)}. A = s² = ${sigFig(A, 4)}.`,
+      hint: "s = P/4, then A = s<sup>2</sup>",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <rect x="30" y="20" width="140" height="140" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="55" y="15" fill="#ed8936" font-size="11">P = ${P}</text>
@@ -295,6 +308,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Square: s=${s}, find diagonal`,
       answerType: "standard", answer: sigFig(d, 3), tolerance: Math.max(sigFig(d, 3) * 0.005, 0.001), units: "",
       explanation: `Diagonal = s√2 = ${s} × 1.4142 = ${sigFig(d, 4)}.`,
+      hint: "d = s&radic;2",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <rect x="30" y="20" width="140" height="140" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="30" y1="160" x2="170" y2="20" stroke="#667eea" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -313,6 +327,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Square: A=${A}, find side`,
       answerType: "standard", answer: sigFig(s, 3), tolerance: Math.max(sigFig(s, 3) * 0.005, 0.001), units: "",
       explanation: `s = √A = √${A} = ${sigFig(s, 4)}.`,
+      hint: "s = &radic;A",
       svg: `<svg viewBox="0 0 200 180" class="geo-svg">
       <rect x="30" y="20" width="140" height="140" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="65" y="95" fill="#ed8936" font-size="11">Area = ${A}</text>
@@ -332,6 +347,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Rectangle: l=${l}, w=${w}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = l×w = ${l} × ${w} = ${sigFig(A, 4)}.`,
+      hint: "A = l &times; w",
       svg: `<svg viewBox="0 0 260 140" class="geo-svg">
       <rect x="20" y="20" width="220" height="100" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="130" y="135" fill="#ed8936" font-size="11" text-anchor="middle">${l}</text>
@@ -351,6 +367,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Rectangle: w=${w}, P=${sigFig(P,4)}, find length`,
       answerType: "standard", answer: sigFig(l, 3), tolerance: Math.max(sigFig(l, 3) * 0.005, 0.001), units: "",
       explanation: `P = 2(l+w). l+w = ${sigFig(P,4)}/2 = ${sigFig(P/2,4)}. l = ${sigFig(P/2,4)}−${w} = ${sigFig(l,4)}.`,
+      hint: "P = 2(l + w) &rarr; l = P/2 &minus; w",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <rect x="20" y="30" width="220" height="100" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="248" y="85" fill="#ed8936" font-size="11">${w}</text>
@@ -371,6 +388,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Parallelogram: b=${b}, h=${h}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = b×h = ${b} × ${h} = ${sigFig(A, 4)}.`,
+      hint: "A = b &times; h",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <polygon points="60,130 240,130 200,30 20,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="60" y1="30" x2="60" y2="130" stroke="#ed8936" stroke-width="1" stroke-dasharray="4,3"/>
@@ -391,6 +409,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Parallelogram: b=${b}, A=${sigFig(A,3)}, find h`,
       answerType: "standard", answer: sigFig(h, 3), tolerance: Math.max(sigFig(h, 3) * 0.005, 0.001), units: "",
       explanation: `A = b×h. h = A/b = ${sigFig(A,3)}/${b} = ${sigFig(h, 4)}.`,
+      hint: "A = b &times; h &rarr; h = A/b",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <polygon points="60,130 240,130 200,30 20,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="60" y1="30" x2="60" y2="130" stroke="#48bb78" stroke-width="1" stroke-dasharray="4,3"/>
@@ -412,6 +431,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Rhombus: d1=${d1}, d2=${d2}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = d₁d₂/2 = (${d1})(${d2})/2 = ${sigFig(A, 4)}.`,
+      hint: "A = d<sub>1</sub> &times; d<sub>2</sub> / 2",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="130,20 220,90 130,160 40,90" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="130" y1="20" x2="130" y2="160" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -433,6 +453,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Rhombus: side=${s}, angle=${angle}°, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = s²sin(θ) = (${s})²sin(${angle}°) = ${sigFig(s*s, 4)}×${sigFig(Math.sin(angle*Math.PI/180), 4)} = ${sigFig(A, 4)}.`,
+      hint: "A = s<sup>2</sup> &times; sin(&theta;)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="85,150 195,150 175,40 65,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="140" y="168" fill="#ed8936" font-size="11" text-anchor="middle">${s}</text>
@@ -461,6 +482,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Isosceles trapezoid: a=${a}, b=${b}, leg=${leg}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `Half-base diff = (${b}−${a})/2 = ${sigFig(halfDiff,4)}. h = √(${leg}²−${sigFig(halfDiff,4)}²) = ${sigFig(h,4)}. A = (a+b)/2 × h = ${sigFig((a+b)/2,4)} × ${sigFig(h,4)} = ${sigFig(A,4)}.`,
+      hint: "A = &frac12;(a + b) &times; h",
       svg: `<svg viewBox="0 0 260 170" class="geo-svg">
       <polygon points="75,40 185,40 230,130 30,130" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="130" y="30" fill="#ed8936" font-size="11" text-anchor="middle">${a}</text>
@@ -482,6 +504,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Isosceles trapezoid: a=${a}, b=${b}, leg=${leg}, find perimeter`,
       answerType: "standard", answer: sigFig(P, 3), tolerance: Math.max(sigFig(P, 3) * 0.005, 0.001), units: "",
       explanation: `P = a + b + 2×leg = ${a} + ${b} + 2(${leg}) = ${sigFig(P, 4)}.`,
+      hint: "P = a + b + c + d (sum all sides)",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <polygon points="75,30 185,30 240,130 20,130" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="130" y="22" fill="#ed8936" font-size="11" text-anchor="middle">${a}</text>
@@ -502,6 +525,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Equilateral triangle: s=${s}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = (s²√3)/4 = (${s})²(√3)/4 = ${sigFig(A, 4)}.`,
+      hint: "A = (s<sup>2</sup>&radic;3) / 4",
       svg: `<svg viewBox="0 0 240 190" class="geo-svg">
       <polygon points="120,20 20,170 220,170" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="120" y="185" fill="#ed8936" font-size="11" text-anchor="middle">${s}</text>
@@ -519,6 +543,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Equilateral triangle: A=${A}, find side`,
       answerType: "standard", answer: sigFig(s, 3), tolerance: Math.max(sigFig(s, 3) * 0.005, 0.001), units: "",
       explanation: `A = (s²√3)/4. s² = 4A/√3 = ${sigFig(4*A/Math.sqrt(3), 4)}. s = ${sigFig(s, 4)}.`,
+      hint: "A = (s<sup>2</sup>&radic;3)/4 &rarr; s = &radic;(4A/&radic;3)",
       svg: `<svg viewBox="0 0 240 190" class="geo-svg">
       <polygon points="120,20 20,170 220,170" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="85" y="110" fill="#ed8936" font-size="11">A = ${A}</text>
@@ -539,6 +564,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Sector: r=${r}, θ=${deg}°, find arc length`,
       answerType: "standard", answer: sigFig(arc, 3), tolerance: Math.max(sigFig(arc, 3) * 0.005, 0.001), units: "",
       explanation: `Arc = rθ(rad) = ${r} × ${deg}° × π/180 = ${r} × ${sigFig(rad, 4)} = ${sigFig(arc, 4)}.`,
+      hint: "Arc = r&theta; (convert &theta; to radians first)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <path d="M 60 150 L 60 50 A 100 100 0 0 1 154 118 Z" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="60" y1="150" x2="60" y2="50" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -560,6 +586,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Sector: r=${r}, A=${sigFig(A,3)}, find θ (rad)`,
       answerType: "standard", answer: sigFig(theta, 3), tolerance: Math.max(sigFig(theta, 3) * 0.005, 0.001), units: "rad",
       explanation: `A = r²θ/2. θ = 2A/r² = 2(${sigFig(A,3)})/(${r})² = ${sigFig(theta, 4)} rad.`,
+      hint: "A = &frac12;r<sup>2</sup>&theta; &rarr; &theta; = 2A/r<sup>2</sup>",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <path d="M 50 150 L 50 40 A 110 110 0 0 1 140 130 Z" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="30" y="100" fill="#ed8936" font-size="11">${r}</text>
@@ -581,6 +608,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Annulus: R=${R}, r=${r}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = π(R²−r²) = π(${sigFig(R*R,4)}−${sigFig(r*r,4)}) = ${sigFig(A, 4)}.`,
+      hint: "A = &pi;(R<sup>2</sup> &minus; r<sup>2</sup>)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <circle cx="130" cy="90" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <circle cx="130" cy="90" r="38" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -604,6 +632,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Regular hexagon: side=${s}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = (3√3/2)s² = 2.5981×(${s})² = ${sigFig(A, 4)}.`,
+      hint: "A = (3&radic;3/2)s<sup>2</sup>",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="130,20 210,55 210,125 130,160 50,125 50,55" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="130" y1="20" x2="210" y2="55" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -623,6 +652,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Regular hexagon: apothem=${a}, find perimeter`,
       answerType: "standard", answer: sigFig(P, 3), tolerance: Math.max(sigFig(P, 3) * 0.005, 0.001), units: "",
       explanation: `s = 2a/√3 = 2(${a})/1.7321 = ${sigFig(s, 4)}. P = 6s = ${sigFig(P, 4)}.`,
+      hint: "s = 2a/&radic;3, then P = 6s",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="130,20 210,55 210,125 130,160 50,125 50,55" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="130" y1="90" x2="210" y2="90" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -644,6 +674,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Ellipse: a=${a}, b=${b}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = πab = π(${a})(${b}) = ${sigFig(A, 4)}.`,
+      hint: "A = &pi;ab",
       svg: `<svg viewBox="0 0 260 170" class="geo-svg">
       <ellipse cx="130" cy="85" rx="100" ry="60" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="130" y1="85" x2="230" y2="85" stroke="#ed8936" stroke-width="1.5" stroke-dasharray="5,4"/>
@@ -667,6 +698,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Right triangle: a=${a}, b=${b}, find c`,
       answerType: "standard", answer: sigFig(c, 3), tolerance: Math.max(sigFig(c, 3) * 0.005, 0.001), units: "",
       explanation: `c = √(a²+b²) = √(${sigFig(a*a,4)}+${sigFig(b*b,4)}) = ${sigFig(c, 4)}.`,
+      hint: "c = &radic;(a<sup>2</sup> + b<sup>2</sup>)",
       svg: `<svg viewBox="0 0 240 180" class="geo-svg">
       <polygon points="40,150 200,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -688,6 +720,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Right triangle: c=${sigFig(c,4)}, b=${b}, find a`,
       answerType: "standard", answer: sigFig(a, 3), tolerance: Math.max(sigFig(a, 3) * 0.005, 0.001), units: "",
       explanation: `a = √(c²−b²) = √(${sigFig(c*c,4)}−${sigFig(b*b,4)}) = ${sigFig(a, 4)}.`,
+      hint: "a = &radic;(c<sup>2</sup> &minus; b<sup>2</sup>)",
       svg: `<svg viewBox="0 0 250 180" class="geo-svg">
       <polygon points="30,160 220,160 220,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -708,6 +741,7 @@ const GEO_GENERATORS_BASIC = [
       plain: `Right triangle: a=${a}, b=${b}, find area`,
       answerType: "standard", answer: sigFig(A, 3), tolerance: Math.max(sigFig(A, 3) * 0.005, 0.001), units: "",
       explanation: `A = (1/2)ab = (1/2)(${a})(${b}) = ${sigFig(A, 4)}.`,
+      hint: "A = &frac12; &times; a &times; b",
       svg: `<svg viewBox="0 0 220 180" class="geo-svg">
       <polygon points="30,160 200,160 30,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="30" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -736,6 +770,7 @@ const GEO_GENERATORS_3D = [
       plain: `Sphere: R=${R}, find V`,
       answerType: "standard", answer: sigFig(V, 3), tolerance: Math.max(sigFig(V, 3) * 0.005, 0.001), units: "",
       explanation: `V = (4/3)πR³ = (4/3)π(${R})³ = ${sigFig(V, 4)}.`,
+      hint: "V = (4/3)&pi;R<sup>3</sup>",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>
@@ -755,6 +790,7 @@ const GEO_GENERATORS_3D = [
       plain: `Sphere: V=${V}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `V = (4/3)πR³. R³ = 3V/(4π) = ${sigFig(3*V/(4*Math.PI), 4)}. R = ${sigFig(R, 4)}.`,
+      hint: "V = (4/3)&pi;R<sup>3</sup> &rarr; R = (3V/(4&pi;))<sup>1/3</sup>",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>
@@ -775,6 +811,7 @@ const GEO_GENERATORS_3D = [
       plain: `Sphere: SA=${SA}, find D`,
       answerType: "standard", answer: sigFig(D, 3), tolerance: Math.max(sigFig(D, 3) * 0.005, 0.001), units: "",
       explanation: `SA = 4πR². R = √(SA/(4π)) = ${sigFig(R, 4)}. D = 2R = ${sigFig(D, 4)}.`,
+      hint: "SA = 4&pi;R<sup>2</sup> &rarr; R = &radic;(SA/(4&pi;)), then D = 2R",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="95" r="70" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="95" rx="70" ry="20" fill="none" stroke="#667eea" stroke-width="1" stroke-dasharray="5,4"/>
@@ -795,6 +832,7 @@ const GEO_GENERATORS_3D = [
       plain: `Hemisphere: r=${R}, find TSA`,
       answerType: "standard", answer: sigFig(TSA, 3), tolerance: Math.max(sigFig(TSA, 3) * 0.005, 0.001), units: "",
       explanation: `TSA = 3πR² = 3π(${R})² = ${sigFig(TSA, 4)}.`,
+      hint: "TSA = 3&pi;R<sup>2</sup>",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -815,6 +853,7 @@ const GEO_GENERATORS_3D = [
       plain: `Hemisphere: V=(2/3)πR³=${V}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `V = (2/3)πR³. R³ = 3V/(2π) = ${sigFig(3*V/(2*Math.PI), 4)}. R = ${sigFig(R, 4)}.`,
+      hint: "V = (2/3)&pi;R<sup>3</sup> &rarr; R = (3V/(2&pi;))<sup>1/3</sup>",
       svg: `<svg viewBox="0 0 260 160" class="geo-svg">
       <path d="M 40 110 A 90 90 0 0 1 220 110" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="110" rx="90" ry="20" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -837,6 +876,7 @@ const GEO_GENERATORS_3D = [
       plain: `Cylinder: r=${r}, h=${h}, find V`,
       answerType: "standard", answer: sigFig(V, 3), tolerance: Math.max(sigFig(V, 3) * 0.005, 0.001), units: "",
       explanation: `V = πr²h = π(${r})²(${h}) = ${sigFig(V, 4)}.`,
+      hint: "V = &pi;r<sup>2</sup>h",
       svg: `<svg viewBox="0 0 260 190" class="geo-svg">
       <ellipse cx="130" cy="35" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="130" cy="150" rx="55" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -860,6 +900,7 @@ const GEO_GENERATORS_3D = [
       plain: `Cylinder: R=${R}, h=${h}, find TSA`,
       answerType: "standard", answer: sigFig(TSA, 3), tolerance: Math.max(sigFig(TSA, 3) * 0.005, 0.001), units: "",
       explanation: `TSA = 2πR(R+h) = 2π(${R})(${R}+${h}) = ${sigFig(TSA, 4)}.`,
+      hint: "SA = 2&pi;r(r + h)",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <ellipse cx="110" cy="35" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="150" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -883,6 +924,7 @@ const GEO_GENERATORS_3D = [
       plain: `Cylinder: h=${h}, V=${sigFig(V,3)}, find R`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `V = πR²h. R² = V/(πh) = ${sigFig(V,3)}/(π×${h}) = ${sigFig(V/(Math.PI*h), 4)}. R = ${sigFig(R, 4)}.`,
+      hint: "V = &pi;r<sup>2</sup>h &rarr; r = &radic;(V/(&pi;h))",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <ellipse cx="110" cy="35" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
       <ellipse cx="110" cy="150" rx="50" ry="15" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -907,6 +949,7 @@ const GEO_GENERATORS_3D = [
       plain: `Cone: R=${R}, h=${h}, find V`,
       answerType: "standard", answer: sigFig(V, 3), tolerance: Math.max(sigFig(V, 3) * 0.005, 0.001), units: "",
       explanation: `V = (1/3)πR²h = (1/3)π(${R})²(${h}) = ${sigFig(V, 4)}.`,
+      hint: "V = &frac13;&pi;r<sup>2</sup>h",
       svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <line x1="110" y1="20" x2="40" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="110" y1="20" x2="180" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -930,6 +973,7 @@ const GEO_GENERATORS_3D = [
       plain: `Cone: h=${h}, V=${sigFig(V,3)}, find r`,
       answerType: "standard", answer: sigFig(R, 3), tolerance: Math.max(sigFig(R, 3) * 0.005, 0.001), units: "",
       explanation: `V = πr²h/3. r² = 3V/(πh) = ${sigFig(3*V/(Math.PI*h), 4)}. r = ${sigFig(R, 4)}.`,
+      hint: "V = &frac13;&pi;r<sup>2</sup>h &rarr; r = &radic;(3V/(&pi;h))",
       svg: `<svg viewBox="0 0 220 200" class="geo-svg">
       <line x1="110" y1="20" x2="40" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="110" y1="20" x2="180" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -953,6 +997,7 @@ const GEO_GENERATORS_3D = [
       plain: `Square pyramid: base=${s}, h=${h}, find volume`,
       answerType: "standard", answer: sigFig(V, 3), tolerance: Math.max(sigFig(V, 3) * 0.005, 0.001), units: "",
       explanation: `V = (1/3)s²h = (1/3)(${s})²(${h}) = ${sigFig(V, 4)}.`,
+      hint: "V = &frac13; &times; s<sup>2</sup> &times; h",
       svg: `<svg viewBox="0 0 260 200" class="geo-svg">
       <polygon points="70,160 190,160 210,120 90,120" fill="none" stroke="#667eea" stroke-width="2"/>
       <line x1="70" y1="160" x2="140" y2="25" stroke="#667eea" stroke-width="2"/>
@@ -979,6 +1024,7 @@ const GEO_GENERATORS_3D = [
       plain: `Rectangular solid: l=${l}, w=${w}, h=${h}, find TSA`,
       answerType: "standard", answer: sigFig(TSA, 3), tolerance: Math.max(sigFig(TSA, 3) * 0.005, 0.001), units: "",
       explanation: `TSA = 2(lw+lh+wh) = 2(${sigFig(l*w,4)}+${sigFig(l*h,4)}+${sigFig(w*h,4)}) = ${sigFig(TSA, 4)}.`,
+      hint: "SA = 2(lw + lh + wh)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,140 160,140 160,50 30,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="30,50 70,20 200,20 160,50" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -1003,6 +1049,7 @@ const GEO_GENERATORS_3D = [
       plain: `Rectangular solid: l=${l}, w=${w}, h=${h}, find diagonal`,
       answerType: "standard", answer: sigFig(d, 3), tolerance: Math.max(sigFig(d, 3) * 0.005, 0.001), units: "",
       explanation: `d = √(l²+w²+h²) = √(${sigFig(l*l,4)}+${sigFig(w*w,4)}+${sigFig(h*h,4)}) = ${sigFig(d, 4)}.`,
+      hint: "d = &radic;(l<sup>2</sup> + w<sup>2</sup> + h<sup>2</sup>)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,140 160,140 160,50 30,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="30,50 70,20 200,20 160,50" fill="none" stroke="#667eea" stroke-width="2"/>
@@ -1029,6 +1076,7 @@ const GEO_GENERATORS_3D = [
       plain: `Frustum: r=${r}, R=${R}, h=${h}, find V`,
       answerType: "standard", answer: sigFig(V, 3), tolerance: Math.max(sigFig(V, 3) * 0.005, 0.001), units: "",
       explanation: `V = (πh/3)(R²+Rr+r²) = (π(${h})/3)(${sigFig(R*R,4)}+${sigFig(R*r,4)}+${sigFig(r*r,4)}) = ${sigFig(V, 4)}.`,
+      hint: "V = (&pi;h/3)(R<sup>2</sup> + Rr + r<sup>2</sup>)",
       svg: `<svg viewBox="0 0 240 190" class="geo-svg">
       <line x1="80" y1="30" x2="30" y2="170" stroke="#667eea" stroke-width="2"/>
       <line x1="160" y1="30" x2="210" y2="170" stroke="#667eea" stroke-width="2"/>
@@ -1067,6 +1115,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Right triangle: hyp=${hyp}, angle=${angleStr}, find opp`,
       answerType: "standard", answer: sigFig(opp, 3), tolerance: Math.max(sigFig(opp, 3) * 0.005, 0.001), units: "",
       explanation: `opp = hyp × sin(${angleStr}) = ${hyp} × ${sigFig(Math.sin(angleRad), 4)} = ${sigFig(opp, 4)}.`,
+      hint: "opp = hyp &times; sin(&theta;)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -1092,6 +1141,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Right triangle: θ=${angleStr}, adj=${adj}, find opp`,
       answerType: "standard", answer: sigFig(opp, 3), tolerance: Math.max(sigFig(opp, 3) * 0.005, 0.001), units: "",
       explanation: `opp = adj × tan(${angleStr}) = ${adj} × ${sigFig(Math.tan(angleRad), 4)} = ${sigFig(opp, 4)}.`,
+      hint: "opp = adj &times; tan(&theta;)",
       svg: `<svg viewBox="0 0 240 180" class="geo-svg">
       <polygon points="30,160 220,160 220,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="212" y="152" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -1115,6 +1165,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Right triangle: hyp=${sigFig(hyp,4)}, leg=${sigFig(leg,3)}, find angle (deg)`,
       answerType: "standard", answer: sigFig(angleDeg, 3), tolerance: 0.5, units: "deg",
       explanation: `sin(θ) = ${sigFig(leg,3)}/${sigFig(hyp,4)} = ${sigFig(Math.sin(angleRad), 4)}. θ = arcsin(...) = ${sigFig(angleDeg, 4)}°.`,
+      hint: "sin(&theta;) = opp/hyp &rarr; &theta; = arcsin(opp/hyp)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,50" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -1138,6 +1189,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Right triangle: hyp=${sigFig(hyp,4)}, leg=${sigFig(leg,3)}, find angle (rad)`,
       answerType: "standard", answer: sigFig(angleRad, 3), tolerance: Math.max(sigFig(angleRad, 3) * 0.005, 0.001), units: "rad",
       explanation: `sin(θ) = ${sigFig(leg,3)}/${sigFig(hyp,4)} = ${sigFig(Math.sin(angleRad), 4)}. θ = arcsin(...) = ${sigFig(angleRad, 4)} rad.`,
+      hint: "sin(&theta;) = opp/hyp &rarr; &theta; = arcsin(opp/hyp) (in radians)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="40,150 220,150 40,40" fill="none" stroke="#667eea" stroke-width="2"/>
       <rect x="40" y="142" width="8" height="8" fill="none" stroke="#8899aa" stroke-width="1"/>
@@ -1163,6 +1215,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Scalene triangle: a=${a}, b=${b}, C=${C}°, find c`,
       answerType: "standard", answer: sigFig(c, 3), tolerance: Math.max(sigFig(c, 3) * 0.005, 0.001), units: "",
       explanation: `c² = a²+b²−2ab·cos(C) = ${sigFig(a*a,4)}+${sigFig(b*b,4)}−2(${a})(${b})cos(${C}°) = ${sigFig(c*c,4)}. c = ${sigFig(c, 4)}.`,
+      hint: "c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup> &minus; 2ab&middot;cos(C)",
       svg: `<svg viewBox="0 0 260 180" class="geo-svg">
       <polygon points="30,150 240,150 170,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="125" y="168" fill="#ed8936" font-size="10">${a}</text>
@@ -1192,6 +1245,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Scalene triangle: side=${a} opposite ${A}°, angles ${A}° and ${B}°, find side opposite ${C}°`,
       answerType: "standard", answer: sigFig(c, 3), tolerance: Math.max(sigFig(c, 3) * 0.005, 0.001), units: "",
       explanation: `Third angle = ${C}°. Law of sines: x/sin(${C}°) = ${a}/sin(${A}°). x = ${a}×sin(${C}°)/sin(${A}°) = ${sigFig(c, 4)}.`,
+      hint: "a/sin(A) = c/sin(C) (Law of Sines)",
       svg: `<svg viewBox="0 0 260 170" class="geo-svg">
       <polygon points="40,140 220,140 150,30" fill="none" stroke="#667eea" stroke-width="2"/>
       <text x="50" y="135" fill="#ed8936" font-size="10">${A}°</text>
@@ -1212,6 +1266,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Equilateral triangle s=${s} with inscribed circle, find r`,
       answerType: "standard", answer: sigFig(r, 3), tolerance: Math.max(sigFig(r, 3) * 0.005, 0.001), units: "",
       explanation: `r = s/(2√3) = ${s}/${sigFig(2*Math.sqrt(3), 4)} = ${sigFig(r, 4)}.`,
+      hint: "r = s / (2&radic;3)",
       svg: `<svg viewBox="0 0 240 190" class="geo-svg">
       <polygon points="120,6 30,162 210,162" fill="none" stroke="#667eea" stroke-width="2"/>
       <circle cx="120" cy="110" r="52" fill="none" stroke="#ed8936" stroke-width="1.5"/>
@@ -1232,6 +1287,7 @@ const GEO_GENERATORS_ADVANCED = [
       plain: `Circle R=${R} with inscribed equilateral triangle, find side`,
       answerType: "standard", answer: sigFig(s, 3), tolerance: Math.max(sigFig(s, 3) * 0.005, 0.001), units: "",
       explanation: `s = R√3 = ${R} × 1.7321 = ${sigFig(s, 4)}.`,
+      hint: "s = R&radic;3",
       svg: `<svg viewBox="0 0 220 190" class="geo-svg">
       <circle cx="110" cy="100" r="75" fill="none" stroke="#667eea" stroke-width="2"/>
       <polygon points="110,25 45,138 175,138" fill="none" stroke="#ed8936" stroke-width="1.5"/>
