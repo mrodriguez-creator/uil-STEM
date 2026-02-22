@@ -423,13 +423,15 @@ function renderMenu() {
         </div>
       </div>
 
-      <div class="section-tag">Skills – Choose a Topic</div>
+      <div class="section-tag">Skills – Choose a Topic <span class="section-tag-hint">(ordered by test page)</span></div>
       <div class="topic-grid">
         ${topics.map(t => {
           const key = t.category + '|' + t.topic;
           const ts = stats.topicScores[key];
           const pct = ts ? Math.round(ts.correct / ts.total * 100) + '%' : '';
+          const page = getTopicPage(t.category, t.topic);
           return `<button class="topic-btn" onclick="startSkills('${t.category}','${t.topic}')">
+            ${page ? `<div class="tb-page">${page}</div>` : ''}
             <div class="tb-icon">${topicIcon(t.topic)}</div>
             <div class="tb-name">${t.topic}</div>
             <div class="tb-sub">${t.count} Qs${pct ? ' · ' + pct : ''}</div>

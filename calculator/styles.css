@@ -48,6 +48,8 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .topic-btn .tb-icon { font-size: 1.5rem; margin-bottom: 4px; }
 .topic-btn .tb-name { font-weight: 600; font-size: 0.78rem; }
 .topic-btn .tb-sub { color: #667eea; font-size: 0.66rem; margin-top: 2px; }
+.topic-btn .tb-page { font-size: 0.58rem; font-weight: 700; color: #a0aec0; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px; background: rgba(102,126,234,0.15); display: inline-block; padding: 1px 6px; border-radius: 4px; }
+.section-tag-hint { font-weight: 400; color: #a0aec0; letter-spacing: 0.5px; }
 
 /* ── TEST SCREEN ── */
 .test-header { background: #1a1f2e; padding: 14px 20px; border-bottom: 2px solid #2d3748; }
