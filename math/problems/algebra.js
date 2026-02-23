@@ -1,0 +1,77 @@
+// UIL Mathematics – Algebra Problems
+const ALGEBRA_PROBLEMS = [
+
+  // ── POLYNOMIAL OPERATIONS & FACTORING ──
+  { id: "a1", topic: "Algebra", question: "If (3x &minus; 2)&sup3; is expanded as ax&sup3; + bx&sup2; + cx + d, then a + b + c + d = ______.", choices: ["&minus;3", "&minus;1", "0", "1", "3"], answer: 3, explanation: "Set x = 1: (3 &minus; 2)&sup3; = 1. So a + b + c + d = 1." },
+  { id: "a2", topic: "Algebra", question: "The expression 8x&sup3; + 27 factors as (2x + 3)(4x&sup2; + kx + 9). Find k.", choices: ["&minus;10", "&minus;8", "&minus;6", "&minus;4", "&minus;2"], answer: 2, explanation: "Sum of cubes: a&sup3; + b&sup3; = (a + b)(a&sup2; &minus; ab + b&sup2;). Here a = 2x, b = 3. So 4x&sup2; &minus; 6x + 9. k = &minus;6." },
+  { id: "a3", topic: "Algebra", question: "If x&sup2; + y&sup2; = 29 and xy = 10, then (x + y)&sup2; = ______.", choices: ["39", "43", "47", "49", "51"], answer: 3, explanation: "(x + y)&sup2; = x&sup2; + 2xy + y&sup2; = 29 + 20 = 49." },
+  { id: "a4", topic: "Algebra", question: "If a + b = 8 and ab = 13, then a&sup2; + b&sup2; = ______.", choices: ["34", "36", "38", "40", "42"], answer: 2, explanation: "a&sup2; + b&sup2; = (a + b)&sup2; &minus; 2ab = 64 &minus; 26 = 38." },
+  { id: "a5", topic: "Algebra", question: "When x&sup3; &minus; 5x&sup2; + 3x + 7 is divided by (x &minus; 2), the remainder is ______.", choices: ["&minus;3", "&minus;1", "1", "3", "5"], answer: 2, explanation: "By the Remainder Theorem, f(2) = 8 &minus; 20 + 6 + 7 = 1." },
+
+  // ── SOLVING POLYNOMIAL EQUATIONS / ROOTS ──
+  { id: "a6", topic: "Algebra", question: "The roots of 2x&sup3; &minus; 9x&sup2; + 7x + 6 = 0 are &minus;1/2, 2, and r. Find r.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "By Vieta&rsquo;s: sum of roots = 9/2. So &minus;1/2 + 2 + r = 9/2 &rarr; r = 3." },
+  { id: "a7", topic: "Algebra", question: "If f(x) = x&sup3; &minus; 6x&sup2; + 11x &minus; 6, then the sum of all roots of f(x) = 0 is ______.", choices: ["4", "5", "6", "7", "8"], answer: 2, explanation: "By Vieta&rsquo;s formulas, sum of roots = &minus;(&minus;6)/1 = 6. (The roots are 1, 2, 3.)" },
+  { id: "a8", topic: "Algebra", question: "If two roots of x&sup3; &minus; 10x&sup2; + cx + d = 0 are 3 and 5, the third root is ______.", choices: ["&minus;2", "0", "2", "4", "6"], answer: 2, explanation: "Sum of roots = 10. So 3 + 5 + r = 10, r = 2." },
+  { id: "a9", topic: "Algebra", question: "The polynomial f(x) = x&sup4; &minus; 5x&sup3; + 5x&sup2; + 5x &minus; 6 has integer roots. The product of the two largest roots is ______.", choices: ["3", "4", "5", "6", "8"], answer: 3, explanation: "Roots are &minus;1, 1, 2, 3 (verify each gives f = 0). The two largest are 2 and 3. Product = 6." },
+  { id: "a10", topic: "Algebra", question: "How many real solutions does x&sup4; &minus; 4x&sup2; + 3 = 0 have?", choices: ["0", "1", "2", "3", "4"], answer: 4, explanation: "Let u = x&sup2;: u&sup2; &minus; 4u + 3 = 0, (u &minus; 1)(u &minus; 3) = 0. u = 1 gives x = &plusmn;1, u = 3 gives x = &plusmn;&radic;3. Four real solutions." },
+
+  // ── QUADRATIC FUNCTIONS ──
+  { id: "a11", topic: "Algebra", question: "The vertex of y = 2x&sup2; &minus; 12x + 23 is (h, k). Find h + k.", choices: ["5", "6", "7", "8", "9"], answer: 3, explanation: "h = 12/(2&times;2) = 3. k = 2(9) &minus; 12(3) + 23 = 18 &minus; 36 + 23 = 5. h + k = 3 + 5 = 8." },
+  { id: "a12", topic: "Algebra", question: "The quadratic f(x) = &minus;3x&sup2; + 18x &minus; 22 has a maximum value of ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "Vertex at x = &minus;18/(2(&minus;3)) = 3. f(3) = &minus;27 + 54 &minus; 22 = 5." },
+  { id: "a13", topic: "Algebra", question: "For what value of k does x&sup2; + kx + 16 = 0 have exactly one real solution?", choices: ["4", "6", "8", "10", "12"], answer: 2, explanation: "Discriminant = k&sup2; &minus; 64 = 0 gives k = &plusmn;8. The positive value is 8." },
+  { id: "a14", topic: "Algebra", question: "If the parabola y = x&sup2; &minus; 6x + c passes through (1, 3), then the y-intercept is ______.", choices: ["5", "6", "7", "8", "9"], answer: 3, explanation: "3 = 1 &minus; 6 + c, c = 8. The y-intercept is c = 8." },
+  { id: "a15", topic: "Algebra", question: "The quadratic with roots 3 + &radic;5 and 3 &minus; &radic;5, and leading coefficient 1, has a y-intercept of ______.", choices: ["2", "3", "4", "5", "6"], answer: 2, explanation: "f(x) = (x &minus; (3+&radic;5))(x &minus; (3&minus;&radic;5)) = x&sup2; &minus; 6x + (9 &minus; 5) = x&sup2; &minus; 6x + 4. y-intercept = 4." },
+
+  // ── RATIONAL EXPRESSIONS ──
+  { id: "a16", topic: "Algebra", question: "Simplify: (x&sup2; &minus; 9)/(x&sup2; + 5x + 6). At x = 5, this equals ______.", choices: ["1/3", "2/5", "1/2", "2/7", "3/7"], answer: 3, explanation: "Factor: (x+3)(x&minus;3)/((x+2)(x+3)) = (x&minus;3)/(x+2). At x = 5: 2/7." },
+  { id: "a17", topic: "Algebra", question: "If 3/(x &minus; 1) + 2/(x + 1) = 1, the sum of the solutions is ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "Multiply by (x&minus;1)(x+1): 3(x+1) + 2(x&minus;1) = x&sup2;&minus;1. 5x + 1 = x&sup2; &minus; 1. x&sup2; &minus; 5x &minus; 2 = 0. Sum = 5." },
+  { id: "a18", topic: "Algebra", question: "The slant asymptote of f(x) = (2x&sup2; + 3x &minus; 5)/(x + 2) is y = ax + b. Find a + b.", choices: ["&minus;2", "&minus;1", "0", "1", "2"], answer: 3, explanation: "Divide 2x&sup2; + 3x &minus; 5 by x + 2: quotient is 2x &minus; 1 with remainder &minus;3. Slant asymptote y = 2x &minus; 1. a + b = 2 + (&minus;1) = 1." },
+  { id: "a19", topic: "Algebra", question: "How many vertical asymptotes does f(x) = (x&sup2; &minus; 4)/(x&sup3; &minus; x) have?", choices: ["0", "1", "2", "3", "4"], answer: 3, explanation: "f(x) = (x&minus;2)(x+2)/(x(x&minus;1)(x+1)). No common factors cancel. Vertical asymptotes at x = 0, 1, and &minus;1. Three total." },
+  { id: "a20", topic: "Algebra", question: "If f(x) = (x + 1)/(x &minus; 3), then f(f(7)) = ______.", choices: ["&minus;3", "&minus;2", "&minus;1", "0", "1"], answer: 0, explanation: "f(7) = 8/4 = 2. f(2) = 3/(2 &minus; 3) = 3/(&minus;1) = &minus;3." },
+
+  // ── FUNCTION COMPOSITION & INVERSES ──
+  { id: "a21", topic: "Algebra", question: "If f(x) = 3x + 1 and g(x) = x&sup2; &minus; 2, then f(g(3)) = ______.", choices: ["19", "20", "21", "22", "23"], answer: 3, explanation: "g(3) = 9 &minus; 2 = 7. f(7) = 21 + 1 = 22." },
+  { id: "a22", topic: "Algebra", question: "If f(x) = 2x &minus; 5, then f&lt;sup&gt;&minus;1&lt;/sup&gt;(9) = ______.", choices: ["5", "6", "7", "8", "9"], answer: 2, explanation: "f(x) = 9 gives 2x &minus; 5 = 9, x = 7. So f&lt;sup&gt;&minus;1&lt;/sup&gt;(9) = 7." },
+  { id: "a23", topic: "Algebra", question: "If f(x) = (3x + 1)/(2x &minus; 1), then f<sup>&minus;1</sup>(2) = ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "Set (3x+1)/(2x&minus;1) = 2. 3x + 1 = 4x &minus; 2. x = 3." },
+  { id: "a24", topic: "Algebra", question: "If f(x) = 4x &minus; 3 and g(x) = 2x + 5, then (f &compfn; g)&lt;sup&gt;&minus;1&lt;/sup&gt;(25) = ______.", choices: ["0", "1", "2", "3", "4"], answer: 1, explanation: "f(g(x)) = 4(2x+5) &minus; 3 = 8x + 17. Set 8x + 17 = 25, x = 1." },
+  { id: "a25", topic: "Algebra", question: "If f(x) = x&sup3; + 2, then f&lt;sup&gt;&minus;1&lt;/sup&gt;(29) = ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "x&sup3; + 2 = 29, x&sup3; = 27, x = 3." },
+
+  // ── SEQUENCES & SERIES ──
+  { id: "a26", topic: "Algebra", question: "In an arithmetic sequence, the 5th term is 17 and the 12th term is 45. The first term is ______.", choices: ["1", "2", "3", "4", "5"], answer: 0, explanation: "d = (45 &minus; 17)/7 = 4. a&sub1; = 17 &minus; 4(4) = 1." },
+  { id: "a27", topic: "Algebra", question: "The sum of the first 20 terms of the arithmetic series 3 + 7 + 11 + 15 + &hellip; is ______.", choices: ["810", "820", "830", "840", "850"], answer: 1, explanation: "a&sub1; = 3, d = 4. a&sub2;&sub0; = 3 + 19(4) = 79. S = 20(3 + 79)/2 = 820." },
+  { id: "a28", topic: "Algebra", question: "A geometric series has first term 6 and common ratio 1/3. The sum of the infinite series is ______.", choices: ["7", "8", "9", "10", "11"], answer: 2, explanation: "S = a/(1 &minus; r) = 6/(1 &minus; 1/3) = 6/(2/3) = 9." },
+  { id: "a29", topic: "Algebra", question: "In a geometric sequence, the 3rd term is 12 and the 6th term is 96. The first term is ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "ar&sup2; = 12, ar&sup5; = 96. r&sup3; = 8, r = 2. a = 12/4 = 3." },
+  { id: "a30", topic: "Algebra", question: "The sum &sum;<sub>k=1</sub><sup>6</sup> (2k + 1) = ______.", choices: ["46", "48", "50", "52", "54"], answer: 1, explanation: "&sum;(2k+1) for k=1..6 = (3+5+7+9+11+13) = 48." },
+
+  // ── DOMAIN & RANGE ──
+  { id: "a31", topic: "Algebra", question: "The domain of f(x) = &radic;(5x &minus; 15) is x &ge; ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "5x &minus; 15 &ge; 0 gives x &ge; 3." },
+  { id: "a32", topic: "Algebra", question: "The domain of f(x) = 1/(x&sup2; &minus; 4) excludes how many integer values of x?", choices: ["0", "1", "2", "3", "4"], answer: 2, explanation: "x&sup2; &minus; 4 = 0 at x = 2 and x = &minus;2. Two integers excluded." },
+  { id: "a33", topic: "Algebra", question: "If f(x) = x&sup2; &minus; 4x + 7, the minimum value of f(x) is ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "Complete the square: (x &minus; 2)&sup2; + 3. Minimum = 3." },
+
+  // ── INEQUALITIES ──
+  { id: "a34", topic: "Algebra", question: "The solution to x&sup2; &minus; 5x &minus; 6 &lt; 0 is the interval (&minus;a, b). Find a + b.", choices: ["5", "6", "7", "8", "9"], answer: 2, explanation: "x&sup2; &minus; 5x &minus; 6 = (x &minus; 6)(x + 1). Negative between roots: (&minus;1, 6). a = 1, b = 6. a + b = 7." },
+  { id: "a35", topic: "Algebra", question: "How many integers satisfy |2x &minus; 3| &le; 7?", choices: ["5", "6", "7", "8", "9"], answer: 3, explanation: "&minus;7 &le; 2x &minus; 3 &le; 7 gives &minus;4 &le; 2x &le; 10, so &minus;2 &le; x &le; 5. Integers: &minus;2,&minus;1,0,1,2,3,4,5 = 8." },
+  { id: "a36", topic: "Algebra", question: "How many integers satisfy both |x &minus; 4| &gt; 2 and 0 &le; x &lt; 9?", choices: ["3", "4", "5", "6", "7"], answer: 1, explanation: "|x&minus;4| &gt; 2 means x &lt; 2 or x &gt; 6. Combined with 0 &le; x &lt; 9: 0 &le; x &lt; 2 gives integers 0, 1; and 6 &lt; x &lt; 9 gives integers 7, 8. Total = 4." },
+
+  // ── EXPONENTIAL & LOGARITHMIC EQUATIONS ──
+  { id: "a37", topic: "Algebra", question: "If 2<sup>x</sup> = 32, then x = ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "2&sup5; = 32, so x = 5." },
+  { id: "a38", topic: "Algebra", question: "If log<sub>3</sub>(x) = 4, then x = ______.", choices: ["12", "27", "64", "81", "243"], answer: 3, explanation: "x = 3&sup4; = 81." },
+  { id: "a39", topic: "Algebra", question: "log<sub>2</sub>(8) + log<sub>2</sub>(4) = ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "log<sub>2</sub>(8) = 3, log<sub>2</sub>(4) = 2. Sum = 5." },
+  { id: "a40", topic: "Algebra", question: "If 3<sup>2x&minus;1</sup> = 27, then x = ______.", choices: ["1", "3/2", "2", "5/2", "3"], answer: 2, explanation: "27 = 3&sup3;. So 2x &minus; 1 = 3, x = 2." },
+  { id: "a41", topic: "Algebra", question: "Solve: log(x) + log(x &minus; 3) = 1. The solution is x = ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "log(x(x&minus;3)) = 1, so x&sup2; &minus; 3x = 10. x&sup2; &minus; 3x &minus; 10 = 0, (x&minus;5)(x+2)=0. x = 5 (reject &minus;2)." },
+
+  // ── ABSOLUTE VALUE ──
+  { id: "a42", topic: "Algebra", question: "The number of solutions to |2x &minus; 5| = 3 is ______.", choices: ["0", "1", "2", "3", "4"], answer: 2, explanation: "2x &minus; 5 = 3 gives x = 4. 2x &minus; 5 = &minus;3 gives x = 1. Two solutions." },
+  { id: "a43", topic: "Algebra", question: "The solution to |x + 1| = |3 &minus; x| is x = ______.", choices: ["&minus;1", "0", "1", "2", "3"], answer: 2, explanation: "Square both sides: (x+1)&sup2; = (3&minus;x)&sup2;. x&sup2;+2x+1 = 9&minus;6x+x&sup2;. 8x = 8. x = 1." },
+  { id: "a44", topic: "Algebra", question: "The equation |3x &minus; 6| = &minus;2 has how many solutions?", choices: ["0", "1", "2", "3", "infinitely many"], answer: 0, explanation: "Absolute value is always &ge; 0, so it can never equal &minus;2. Zero solutions." },
+
+  // ── VARIATION ──
+  { id: "a45", topic: "Algebra", question: "y varies directly as x. If y = 15 when x = 3, find y when x = 7.", choices: ["25", "30", "35", "40", "45"], answer: 2, explanation: "k = 15/3 = 5. y = 5(7) = 35." },
+  { id: "a46", topic: "Algebra", question: "y varies inversely as x&sup2;. If y = 4 when x = 3, find y when x = 6.", choices: ["1/2", "3/4", "1", "5/4", "3/2"], answer: 2, explanation: "k = y &times; x&sup2; = 4 &times; 9 = 36. When x = 6: y = 36/36 = 1." },
+  { id: "a47", topic: "Algebra", question: "z varies jointly as x and the square of y. If z = 72 when x = 2 and y = 3, find z when x = 4 and y = 2.", choices: ["56", "60", "64", "68", "72"], answer: 2, explanation: "k = 72/(2 &times; 9) = 4. z = 4(4)(4) = 64." },
+
+  // ── SYSTEMS OF EQUATIONS ──
+  { id: "a48", topic: "Algebra", question: "If 2x + 3y = 13 and 4x &minus; y = 5, then x + y = ______.", choices: ["3", "4", "5", "6", "7"], answer: 2, explanation: "From 4x &minus; y = 5: y = 4x &minus; 5. Sub: 2x + 3(4x&minus;5) = 13, 14x &minus; 15 = 13, x = 2. y = 3. x + y = 5." },
+  { id: "a49", topic: "Algebra", question: "The system x + y + z = 6, x &minus; y = 2, y + z = 3 has the solution x = ______.", choices: ["1", "2", "3", "4", "5"], answer: 2, explanation: "From x &minus; y = 2 and y + z = 3: x = y + 2 and z = 3 &minus; y. Sub into x+y+z=6: (y+2)+y+(3&minus;y) = 6, y + 5 = 6, y = 1. x = 3." },
+  { id: "a50", topic: "Algebra", question: "The graphs of y = x&sup2; and y = 2x + 3 intersect at two points. The sum of the x-coordinates of the intersection points is ______.", choices: ["&minus;1", "0", "1", "2", "3"], answer: 3, explanation: "x&sup2; = 2x + 3, x&sup2; &minus; 2x &minus; 3 = 0. By Vieta&rsquo;s, sum of roots = 2." },
+];
