@@ -19,6 +19,7 @@ const state = {
   timed: false,
   timerInterval: null,
   showModal: false,       // time picker modal
+  hintVisible: false,     // hint toggle state
 };
 
 // ── PERSISTENCE ──
@@ -92,7 +93,7 @@ function startSkills(topic) {
   setState({
     screen: 'test', mode: 'skills', topic,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, results: [], timed: false, timeLeft: 0
+    score: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
 }
 
@@ -101,7 +102,7 @@ function startDrill() {
   setState({
     screen: 'test', mode: 'drill', topic: null,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, results: [], timed: false, timeLeft: 0
+    score: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
 }
 
@@ -110,9 +111,15 @@ function startPractice(seconds) {
   setState({
     screen: 'test', mode: 'practice', topic: null,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, results: [], showModal: false
+    score: 0, results: [], showModal: false, hintVisible: false
   });
   startTimer(seconds);
+}
+
+// ── HINT TOGGLE ──
+function toggleHint() {
+  state.hintVisible = !state.hintVisible;
+  render();
 }
 
 // ── ANSWER LOGIC ──
@@ -134,14 +141,14 @@ function nextQuestion() {
     finishTest();
     return;
   }
-  setState({ idx: state.idx + 1, selected: -1, answered: false });
+  setState({ idx: state.idx + 1, selected: -1, answered: false, hintVisible: false });
 }
 
 function skipQuestion() {
   const q = state.problems[state.idx];
   state.results.push({ question: q, selected: -1, correct: q.answer, isCorrect: false });
   if (state.idx + 1 >= state.problems.length) { finishTest(); return; }
-  setState({ idx: state.idx + 1, selected: -1, answered: false });
+  setState({ idx: state.idx + 1, selected: -1, answered: false, hintVisible: false });
 }
 
 function finishTest() {
@@ -314,6 +321,18 @@ function renderTest() {
           </button>`;
         }).join('')}
       </div>
+      ${q.hint && !state.answered ? `
+      <div class="hint-section">
+        <button class="hint-toggle" onclick="toggleHint()">
+          <span class="hint-icon">${state.hintVisible ? '▼' : '▶'}</span>
+          ${state.hintVisible ? 'Hide Hint' : 'Show Hint'}
+        </button>
+        ${state.hintVisible ? `
+        <div class="hint-content">
+          <div class="hint-label">💡 Hint</div>
+          <div class="hint-text">${q.hint}</div>
+        </div>` : ''}
+      </div>` : ''}
       ${feedbackHTML}
       <div class="btn-row">
         ${!state.answered ? `
