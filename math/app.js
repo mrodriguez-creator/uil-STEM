@@ -207,7 +207,7 @@ function renderMenu() {
     <div class="header">
       <a href="../index.html" class="back-home">&larr; STEM Home</a>
       <h1>📐 UIL Mathematics</h1>
-      <p>60 multiple-choice questions &middot; 40 minutes &middot; No calculator</p>
+      <p>60 multiple-choice questions &middot; 40 minutes &middot; Calculator allowed</p>
     </div>
     ${state.showModal ? renderTimePicker() : ''}
     <div class="menu-body">
@@ -234,7 +234,7 @@ function renderMenu() {
           <div class="fc-icon">📐</div>
           <div>
             <h2>Mathematics</h2>
-            <p>UIL Mathematics covers algebra, geometry, trigonometry, pre-calculus, calculus, statistics, and word problems. 5-choice multiple choice (A–E). No calculator allowed.</p>
+            <p>UIL Mathematics covers algebra, geometry, trigonometry, pre-calculus, calculus, statistics, and word problems. 5-choice multiple choice (A–E). Calculator allowed.</p>
           </div>
         </div>
         <div class="mode-row">
