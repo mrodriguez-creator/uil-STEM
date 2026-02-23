@@ -20,6 +20,7 @@ const state = {
   timerInterval: null,
   showModal: false,       // time picker modal
   hintVisible: false,     // hint toggle state
+  difficultyFilter: 0,    // 0 = all, 1-5 = specific difficulty
 };
 
 // ── PERSISTENCE ──
@@ -86,10 +87,20 @@ function timerClass() {
   return 'urgent';
 }
 
+// ── DIFFICULTY HELPERS ──
+function difficultyStars(d) {
+  return '<span class="difficulty-stars">' + '★'.repeat(d) + '<span class="star-empty">' + '☆'.repeat(5 - d) + '</span></span>';
+}
+
+function filterByDifficulty(questions) {
+  if (state.difficultyFilter === 0) return questions;
+  return questions.filter(q => q.difficulty === state.difficultyFilter);
+}
+
 // ── START MODES ──
 function startSkills(topic) {
-  const questions = shuffleArray(getQuestionsForTopic(topic));
-  if (questions.length === 0) return;
+  const questions = shuffleArray(filterByDifficulty(getQuestionsForTopic(topic)));
+  if (questions.length === 0) { alert('No questions match that difficulty level.'); return; }
   setState({
     screen: 'test', mode: 'skills', topic,
     problems: questions, idx: 0, selected: -1, answered: false,
@@ -98,7 +109,9 @@ function startSkills(topic) {
 }
 
 function startDrill() {
-  const questions = shuffleArray(getAllQuestions());
+  const filtered = filterByDifficulty(getAllQuestions());
+  if (filtered.length === 0) { alert('No questions match that difficulty level.'); return; }
+  const questions = shuffleArray(filtered);
   setState({
     screen: 'test', mode: 'drill', topic: null,
     problems: questions, idx: 0, selected: -1, answered: false,
@@ -209,6 +222,12 @@ function renderMenu() {
         </div>
       ` : ''}
 
+      <div class="section-tag">Difficulty Filter</div>
+      <div class="diff-filter">
+        <button class="diff-btn ${state.difficultyFilter === 0 ? 'active' : ''}" onclick="setState({difficultyFilter:0})">All</button>
+        ${[1,2,3,4,5].map(d => `<button class="diff-btn ${state.difficultyFilter === d ? 'active' : ''}" onclick="setState({difficultyFilter:${d}})">${'★'.repeat(d)}</button>`).join('')}
+      </div>
+
       <div class="section-tag">Practice Modes</div>
       <div class="focus-card">
         <div class="fc-head">
@@ -235,10 +254,11 @@ function renderMenu() {
         ${topics.map(t => {
           const ts = stats.topicScores[t.topic];
           const pct = ts ? Math.round(ts.correct / ts.total * 100) + '%' : '';
-          return `<button class="topic-btn" onclick="startSkills('${t.topic}')">
+          const filteredCount = state.difficultyFilter === 0 ? t.count : getQuestionsForTopic(t.topic).filter(q => q.difficulty === state.difficultyFilter).length;
+          return `<button class="topic-btn" onclick="startSkills('${t.topic}')" ${filteredCount === 0 ? 'disabled style="opacity:0.4"' : ''}>
             <div class="tb-icon">${topicIcon(t.topic)}</div>
             <div class="tb-name">${t.topic}</div>
-            <div class="tb-sub">${t.count} Qs${pct ? ' · ' + pct : ''}</div>
+            <div class="tb-sub">${filteredCount} Qs${pct ? ' · ' + pct : ''}</div>
           </button>`;
         }).join('')}
       </div>
@@ -304,7 +324,10 @@ function renderTest() {
     <div class="test-body">
       <div class="question-box">
         <div class="question-text math-expr">${q.question}</div>
-        <div class="question-tag">${q.topic}</div>
+        <div class="question-meta">
+          <span class="question-tag">${q.topic}</span>
+          ${q.difficulty ? difficultyStars(q.difficulty) : ''}
+        </div>
       </div>
       <div class="choices">
         ${q.choices.map((c, i) => {
