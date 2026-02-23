@@ -5,25 +5,25 @@ const NUMERICAL_PROBLEMS = [
 
   // ── ARITHMETIC (12) ──
   { id: "n1", category: "numerical", topic: "Arithmetic",
-    display: "(&minus;24.7 &minus; 20.7) / (&minus;38.2)",
+    display: "<span class='frac'><span class='num'>&minus;24.7 &minus; 20.7</span><span class='den'>&minus;38.2</span></span>",
     plain: "(-24.7 - 20.7) / (-38.2)",
     answerType: "standard", answer: 1.19, tolerance: 0.01, units: "",
     explanation: "(-24.7 - 20.7) = -45.4. Then -45.4 / (-38.2) = 1.188... ≈ 1.19 (3 sig figs)."
   },
   { id: "n2", category: "numerical", topic: "Arithmetic",
-    display: "&minus;0.918 / 0.575 + 0.744 &minus; 1.6",
+    display: "<span class='frac'><span class='num'>&minus;0.918</span><span class='den'>0.575</span></span> + 0.744 &minus; 1.6",
     plain: "-0.918/0.575 + 0.744 - 1.6",
     answerType: "standard", answer: -2.45, tolerance: 0.01, units: "",
     explanation: "-0.918/0.575 = -1.5965... + 0.744 - 1.6 = -2.4526... ≈ -2.45."
   },
   { id: "n3", category: "numerical", topic: "Arithmetic",
-    display: "(2.62)(21.2)(71.9) / (&minus;76) + 8.75",
+    display: "<span class='frac'><span class='num'>(2.62)(21.2)(71.9)</span><span class='den'>&minus;76</span></span> + 8.75",
     plain: "(2.62)(21.2)(71.9)/(-76) + 8.75",
     answerType: "standard", answer: -43.8, tolerance: 0.1, units: "",
     explanation: "(2.62)(21.2)(71.9) = 3993.07... / (-76) = -52.54... + 8.75 = -43.79... ≈ -43.8."
   },
   { id: "n4", category: "numerical", topic: "Arithmetic",
-    display: "(2520 &minus; 2040) / {(&minus;0.191)/(&minus;0.706)} + (449 &minus; 263)",
+    display: "<span class='frac'><span class='num'>2520 &minus; 2040</span><span class='den'><span class='frac'><span class='num'>&minus;0.191</span><span class='den'>&minus;0.706</span></span></span></span> + (449 &minus; 263)",
     plain: "(2520-2040)/{(-0.191)/(-0.706)} + (449-263)",
     answerType: "standard", answer: 1960, tolerance: 10, units: "",
     explanation: "480/0.27054... + 186 = 1774.3... + 186 = 1960.3... ≈ 1960 or 1.96×10³."
@@ -79,25 +79,25 @@ const NUMERICAL_PROBLEMS = [
 
   // ── COMPLEX EXPRESSIONS (25) ──
   { id: "n9", category: "numerical", topic: "Complex Expressions",
-    display: "(4960 + 2220) / (0.451 &minus; 0.496) + (&minus;22600 + 92600) / (4.26 &minus; 3.22)",
+    display: "<span class='frac'><span class='num'>4960 + 2220</span><span class='den'>0.451 &minus; 0.496</span></span> + <span class='frac'><span class='num'>&minus;22600 + 92600</span><span class='den'>4.26 &minus; 3.22</span></span>",
     plain: "(4960+2220)/(0.451-0.496) + (-22600+92600)/(4.26-3.22)",
     answerType: "standard", answer: -92600, tolerance: 100, units: "",
     explanation: "7180/(-0.045) + 70000/1.04 = -159556 + 67308 = -92248 ≈ -92200 or -9.22×10⁴."
   },
   { id: "n10", category: "numerical", topic: "Complex Expressions",
-    display: "(3.7)(29.1) &minus; (&minus;86.9 + 61.4)(&minus;16.4) / [(&minus;61.2 + 101 + 88.5)(26.9)]",
+    display: "(3.7)(29.1) &minus; <span class='frac'><span class='num'>(&minus;86.9 + 61.4)(&minus;16.4)</span><span class='den'>(&minus;61.2 + 101 + 88.5)(26.9)</span></span>",
     plain: "(3.7)(29.1) - (-86.9+61.4)(-16.4) / [(-61.2+101+88.5)(26.9)]",
     answerType: "standard", answer: 107, tolerance: 1, units: "",
     explanation: "Numerator parts and denominator calculated step by step."
   },
   { id: "n11", category: "numerical", topic: "Complex Expressions",
-    display: "1 / (4.21 + 7.68) + 1 / (7.54 &minus; 52.3) + 1 / (2.88)",
+    display: "<span class='frac'><span class='num'>1</span><span class='den'>4.21 + 7.68</span></span> + <span class='frac'><span class='num'>1</span><span class='den'>7.54 &minus; 52.3</span></span> + <span class='frac'><span class='num'>1</span><span class='den'>2.88</span></span>",
     plain: "1/(4.21+7.68) + 1/(7.54-52.3) + 1/(2.88)",
     answerType: "standard", answer: 0.41, tolerance: 0.001, units: "",
     explanation: "1/11.89 + 1/(-44.76) + 1/2.88 = 0.08411 - 0.02234 + 0.34722 = 0.409 ≈ 0.409."
   },
   { id: "n12", category: "numerical", topic: "Complex Expressions",
-    display: "56.6 &minus; 77.6 / Log(52 + 28.1)",
+    display: "<span class='frac'><span class='num'>56.6 &minus; 77.6</span><span class='den'>Log(52 + 28.1)</span></span>",
     plain: "(56.6 - 77.6) / Log(52 + 28.1)",
     answerType: "standard", answer: -11.6, tolerance: 0.1, units: "",
     explanation: "Log(80.1) = 1.9036... Then -21.0/1.9036 = -11.03 ≈ -11.0."
@@ -145,7 +145,7 @@ const NUMERICAL_PROBLEMS = [
     explanation: "1/12.43 = 0.08045. 1/(-0.026) = -38.46. 1/0.101 = 9.901. Sum = 0.08045-38.46+9.901 = -28.48 ≈ -28.5."
   },
   { id: "n48", category: "numerical", topic: "Complex Expressions",
-    display: "<span class='frac'><span class='num'>√{(0.00519) / {(0.00285)/√0.00638}}</span><span class='den'>0.125 + (0.653)(1.8)</span></span> + {0.0688 + 0.553}<sup>1/2</sup>",
+    display: "<span class='frac'><span class='num'>√{<span class='frac'><span class='num'>0.00519</span><span class='den'><span class='frac'><span class='num'>0.00285</span><span class='den'>√0.00638</span></span></span></span>}</span><span class='den'>0.125 + (0.653)(1.8)</span></span> + {0.0688 + 0.553}<sup>1/2</sup>",
     plain: "sqrt[(0.00519)/((0.00285)/sqrt(0.00638))] / [0.125+(0.653)(1.8)] + sqrt(0.6218)",
     answerType: "standard", answer: 1.08, tolerance: 0.01, units: "",
     explanation: "√0.00638=0.07988. 0.00285/0.07988=0.03568. 0.00519/0.03568=0.14546. √0.14546=0.3814. /1.3004=0.2933. +√0.6218=0.7885. Total=1.08."
@@ -163,13 +163,13 @@ const NUMERICAL_PROBLEMS = [
     explanation: "1/2090=4.785×10⁻⁴. 260/1008016=2.579×10⁻⁴. √0.152/1513.21=0.3899/1513.21=2.577×10⁻⁴. Numerator≈4.787×10⁻⁴. Denominator: 276676-383000=-106324. Result: -4.50×10⁻⁹."
   },
   { id: "n57", category: "numerical", topic: "Complex Expressions",
-    display: "<span class='frac'><span class='num'>(6020 &minus; 3020)</span><span class='den'>{(9.62)/(&minus;8.5)}</span></span> + (2150 &minus; 1290)",
+    display: "<span class='frac'><span class='num'>6020 &minus; 3020</span><span class='den'><span class='frac'><span class='num'>9.62</span><span class='den'>&minus;8.5</span></span></span></span> + (2150 &minus; 1290)",
     plain: "(6020-3020)/[(9.62)/(-8.5)] + (2150-1290)",
     answerType: "standard", answer: -1790, tolerance: 10, units: "",
     explanation: "3000/(-1.1318) = -2650.6. + 860 = -1790.6 ≈ -1790."
   },
   { id: "n58", category: "numerical", topic: "Complex Expressions",
-    display: "<span class='frac'><span class='num'>{(0.741 &minus; 0.282 + 0.327)/(9.95)}</span><span class='den'>{(1.32)(1.85)/(&minus;4.9)}</span></span>",
+    display: "<span class='frac'><span class='num'><span class='frac'><span class='num'>0.741 &minus; 0.282 + 0.327</span><span class='den'>9.95</span></span></span><span class='den'><span class='frac'><span class='num'>(1.32)(1.85)</span><span class='den'>&minus;4.9</span></span></span></span>",
     plain: "[(0.741-0.282+0.327)/9.95] / [(1.32)(1.85)/(-4.9)]",
     answerType: "standard", answer: -0.159, tolerance: 0.001, units: "",
     explanation: "(0.786/9.95)=0.07899. (2.442/(-4.9))=-0.4984. 0.07899/(-0.4984)=-0.1585 ≈ -0.159."
@@ -205,7 +205,7 @@ const NUMERICAL_PROBLEMS = [
     explanation: "3049 + 2673 - 2533 = 3189. Wait, key says 8250 = 8.25×10³. Recheck carefully."
   },
   { id: "n70", category: "numerical", topic: "Complex Expressions",
-    display: "<span class='frac'><span class='num'>√{(80800)/{(52400)/√14000}}</span><span class='den'>5.34 + (0.506)(1.72)</span></span> + {0.0688 + 0.553}<sup>1/2</sup> + {2.35 + 3.21}<sup>1/2</sup>",
+    display: "<span class='frac'><span class='num'>√{<span class='frac'><span class='num'>80800</span><span class='den'><span class='frac'><span class='num'>52400</span><span class='den'>√14000</span></span></span></span>}</span><span class='den'>5.34 + (0.506)(1.72)</span></span> + {0.0688 + 0.553}<sup>1/2</sup> + {2.35 + 3.21}<sup>1/2</sup>",
     plain: "sqrt[80800/((52400)/sqrt(14000))] / [5.34+(0.506)(1.72)] + sqrt(0.6218) + sqrt(5.56)",
     answerType: "standard", answer: 4.53, tolerance: 0.01, units: "",
     explanation: "√14000=118.3. 52400/118.3=442.9. 80800/442.9=182.4. √182.4=13.51. /(5.34+0.870)=13.51/6.21=2.176. +0.7885+2.358=5.32. Key: 4.53."
@@ -231,7 +231,7 @@ const NUMERICAL_PROBLEMS = [
 
   // ── EXPONENTIALS (10) ──
   { id: "n21", category: "numerical", topic: "Exponentials",
-    display: "e<sup>+0.424</sup> + e<sup>&minus;0.695</sup> / (&minus;85700 + 31400)",
+    display: "e<sup>+0.424</sup> + <span class='frac'><span class='num'>e<sup>&minus;0.695</sup></span><span class='den'>&minus;85700 + 31400</span></span>",
     plain: "e^(0.424) + e^(-0.695) / (-85700 + 31400)",
     answerType: "standard", answer: 1.52, tolerance: 0.01, units: "",
     explanation: "e^0.424 = 1.5283. e^-0.695 = 0.4993. /(−54300) = −9.19×10⁻⁶ ≈ 0. Total ≈ 1.53."
@@ -243,19 +243,19 @@ const NUMERICAL_PROBLEMS = [
     explanation: "π^e = 22.459... e^π = 23.141... Sum = 45.600... ≈ 45.6."
   },
   { id: "n23", category: "numerical", topic: "Exponentials",
-    display: "(28 + e<sup>(2.46 + 1.13)</sup>) / (0.0952 &minus; e<sup>&minus;(0.937 &minus; 0.416)</sup>)",
+    display: "<span class='frac'><span class='num'>28 + e<sup>(2.46 + 1.13)</sup></span><span class='den'>0.0952 &minus; e<sup>&minus;(0.937 &minus; 0.416)</sup></span></span>",
     plain: "(28 + e^(3.59)) / (0.0952 - e^(-0.521))",
     answerType: "standard", answer: -74.4, tolerance: 0.1, units: "",
     explanation: "e^3.59=36.23. 28+36.23=64.23. e^-0.521=0.5940. 0.0952-0.5940=-0.4988. 64.23/-0.4988=-128.8. Check."
   },
   { id: "n24", category: "numerical", topic: "Exponentials",
-    display: "(0.00659)(0.0064) × 10<sup>{&minus;0.00101/(&minus;8.66×10⁻⁴)}</sup>",
+    display: "(0.00659)(0.0064) × 10<sup><span class='frac'><span class='num'>&minus;0.00101</span><span class='den'>&minus;8.66×10⁻⁴</span></span></sup>",
     plain: "(0.00659)(0.0064) × 10^(-0.00101/(-8.66e-4))",
     answerType: "standard", answer: 0.000545, tolerance: 0.000001, units: "",
     explanation: "(0.00659)(0.0064)=4.218×10⁻⁵. Exponent: -0.00101/-8.66×10⁻⁴=1.1662. 10^1.1662=14.66. Product = 6.18×10⁻⁴. Check."
   },
   { id: "n25", category: "numerical", topic: "Exponentials",
-    display: "10<sup>+(0.791)</sup> + 10<sup>&minus;(0.211)</sup> + [10<sup>(0.457/0.699)</sup> &minus; 10<sup>(0.509)</sup>]<sup>1/2</sup>",
+    display: "10<sup>+(0.791)</sup> + 10<sup>&minus;(0.211)</sup> + [10<sup>(<span class='frac'><span class='num'>0.457</span><span class='den'>0.699</span></span>)</sup> &minus; 10<sup>(0.509)</sup>]<sup>1/2</sup>",
     plain: "10^0.791 + 10^(-0.211) + [10^(0.457/0.699) - 10^0.509]^(1/2)",
     answerType: "standard", answer: 7.34, tolerance: 0.01, units: "",
     explanation: "10^0.791=6.180. 10^-0.211=0.6152. 0.457/0.699=0.6538. 10^0.6538=4.510. 10^0.509=3.228. 4.510-3.228=1.282. √1.282=1.133. Total=6.180+0.6152+1.133=7.928. Check."
@@ -293,19 +293,19 @@ const NUMERICAL_PROBLEMS = [
 
   // ── LOGARITHMS (6) ──
   { id: "n18", category: "numerical", topic: "Logarithms",
-    display: "Ln{(8290)(9840)(5650)} / (&minus;10700 + (&minus;4450) Ln(7250))",
+    display: "<span class='frac'><span class='num'>Ln{(8290)(9840)(5650)}</span><span class='den'>&minus;10700 + (&minus;4450) Ln(7250)</span></span>",
     plain: "Ln[(8290)(9840)(5650)] / (-10700 + (-4450)Ln(7250))",
     answerType: "standard", answer: -0.684, tolerance: 0.001, units: "",
     explanation: "(8290)(9840)(5650)=4.6085×10¹¹. Ln = 26.86. -4450×Ln(7250)=-4450×8.889=-39556. -10700-39556=-50256. 26.86/(-50256)=-5.35×10⁻⁴. Check."
   },
   { id: "n19", category: "numerical", topic: "Logarithms",
-    display: "(&minus;4.85) Log(5.07 &minus; 1.89) / (&minus;9.16)",
+    display: "<span class='frac'><span class='num'>(&minus;4.85) Log(5.07 &minus; 1.89)</span><span class='den'>&minus;9.16</span></span>",
     plain: "(-4.85)Log(5.07-1.89) / (-9.16)",
     answerType: "standard", answer: 0.265, tolerance: 0.001, units: "",
     explanation: "Log(3.18) = 0.5024. (-4.85)(0.5024)/(-9.16) = -2.4366/(-9.16) = 0.266 ≈ 0.266."
   },
   { id: "n20", category: "numerical", topic: "Logarithms",
-    display: "Ln[(6.21)² &minus; 2(6.21)(13.4) + (13.4)²] / (86)²",
+    display: "<span class='frac'><span class='num'>Ln[(6.21)² &minus; 2(6.21)(13.4) + (13.4)²]</span><span class='den'>(86)²</span></span>",
     plain: "Ln[(6.21)^2 - 2(6.21)(13.4) + (13.4)^2] / (86)^2",
     answerType: "standard", answer: 0.000374, tolerance: 0.000001, units: "",
     explanation: "(6.21-13.4)² = (-7.19)² = 51.70. Ln(51.70) = 3.945. /7396 = 5.33×10⁻⁴. Check."
@@ -337,7 +337,7 @@ const NUMERICAL_PROBLEMS = [
     explanation: "0.2436^(-1.342) = 1/(0.2436^1.342). 0.2436^1.342 = e^(1.342 × ln(0.2436)) = e^(1.342×(-1.4116)) = e^(-1.894) = 0.1506. 1/0.1506 = 6.64. Check."
   },
   { id: "n31", category: "numerical", topic: "Mixed Advanced",
-    display: "1 / (0.697)<sup>(&minus;0.134)</sup> + (0.912 + 0.488)<sup>(0.319 &minus; 0.19)</sup>",
+    display: "<span class='frac'><span class='num'>1</span><span class='den'>(0.697)<sup>(&minus;0.134)</sup></span></span> + (0.912 + 0.488)<sup>(0.319 &minus; 0.19)</sup>",
     plain: "1/(0.697)^(-0.134) + (0.912+0.488)^(0.319-0.19)",
     answerType: "standard", answer: 1.76, tolerance: 0.01, units: "",
     explanation: "(0.697)^(-0.134) = e^(-0.134×ln(0.697)) = e^(-0.134×(-0.3611)) = e^0.04839 = 1.0496. 1/1.0496=0.9527. (1.400)^0.129 = e^(0.129×ln(1.4)) = e^(0.129×0.3365) = e^0.04341 = 1.0444. Total = 0.9527+1.0444 = 1.997. Check."
@@ -373,7 +373,7 @@ const NUMERICAL_PROBLEMS = [
     explanation: "-79.6/(-46.4)=1.715. +π=4.857. 2720+5241.8-8994.4=-1032.6. Product: 4.857×(-1032.6) = -5015 ≈ -5020."
   },
   { id: "n54", category: "numerical", topic: "Mixed Advanced",
-    display: "(rad) <span class='frac'><span class='num'>(0.874)(1.3) &minus; Ln{(1.63) + (&minus;5.27)e<sup>&minus;2.79</sup>}</span><span class='den'>arcsin{(0.0196)/(0.0644 + 0.0294)}</span></span>",
+    display: "(rad) <span class='frac'><span class='num'>(0.874)(1.3) &minus; Ln{(1.63) + (&minus;5.27)e<sup>&minus;2.79</sup>}</span><span class='den'>arcsin{<span class='frac'><span class='num'>0.0196</span><span class='den'>0.0644 + 0.0294</span></span>}</span></span>",
     plain: "(rad) [(0.874)(1.3)-Ln(1.63+(-5.27)e^(-2.79))] / arcsin(0.0196/0.0938)",
     answerType: "standard", answer: 4.13, tolerance: 0.01, units: "",
     explanation: "(0.874)(1.3)=1.1362. (-5.27)e^(-2.79)=(-5.27)(0.06126)=-0.3228. 1.63+(-0.3228)=1.3072. Ln(1.3072)=0.2676. Numerator: 1.1362-0.2676=0.8686. 0.0196/0.0938=0.2089. arcsin(0.2089)=0.2106 rad. 0.8686/0.2106=4.124 ≈ 4.13."
@@ -417,31 +417,31 @@ const NUMERICAL_PROBLEMS = [
 
   // ── POWERS & ROOTS (14) ──
   { id: "n13", category: "numerical", topic: "Powers & Roots",
-    display: "[(0.978)(0.707) / 1.79 + 0.207]² + √0.0567",
+    display: "[<span class='frac'><span class='num'>(0.978)(0.707)</span><span class='den'>1.79</span></span> + 0.207]² + √0.0567",
     plain: "[(0.978)(0.707)/1.79 + 0.207]^2 + sqrt(0.0567)",
     answerType: "standard", answer: 0.443, tolerance: 0.001, units: "",
     explanation: "(0.978)(0.707)/1.79 = 0.3863. +0.207 = 0.5933. Squared = 0.3520. +√0.0567 = 0.3520 + 0.2381 = 0.590... Check: let me recalculate more carefully."
   },
   { id: "n14", category: "numerical", topic: "Powers & Roots",
-    display: "(492 + 906)<sup>1/3</sup> + 1/{(308)<sup>&minus;0.5</sup>}",
+    display: "(492 + 906)<sup>1/3</sup> + <span class='frac'><span class='num'>1</span><span class='den'>(308)<sup>&minus;0.5</sup></span></span>",
     plain: "(492+906)^(1/3) + 1/(308^(-0.5))",
     answerType: "standard", answer: 28.2, tolerance: 0.1, units: "",
     explanation: "(1398)^(1/3) = 11.18... 1/(308^-0.5) = 308^0.5 = 17.55... Total = 28.73... ≈ 28.7."
   },
   { id: "n15", category: "numerical", topic: "Powers & Roots",
-    display: "√(12.1 + 9.24 + (1150)/(77)) / (8.96 + 7.21)",
+    display: "<span class='frac'><span class='num'>√(12.1 + 9.24 + <span class='frac'><span class='num'>1150</span><span class='den'>77</span></span>)</span><span class='den'>8.96 + 7.21</span></span>",
     plain: "sqrt(12.1 + 9.24 + 1150/77) / (8.96 + 7.21)",
     answerType: "standard", answer: 0.368, tolerance: 0.001, units: "",
     explanation: "12.1 + 9.24 + 14.935 = 36.275. √36.275 = 6.023. / 16.17 = 0.3724 ≈ 0.372."
   },
   { id: "n16", category: "numerical", topic: "Powers & Roots",
-    display: "[&minus;31.2 + √862]² × [705 + 1650]² × √(0.0032/0.0324)",
+    display: "[&minus;31.2 + √862]² × [705 + 1650]² × √(<span class='frac'><span class='num'>0.0032</span><span class='den'>0.0324</span></span>)",
     plain: "[-31.2 + sqrt(862)]^2 × [705+1650]^2 × sqrt(0.0032/0.0324)",
     answerType: "standard", answer: 502000, tolerance: 1000, units: "",
     explanation: "√862=29.36, (-31.2+29.36)=-1.84, squared=3.386. (2355)²=5546025. √(0.09877)=0.3143. Total≈5.91×10⁶. Check calculations."
   },
   { id: "n17", category: "numerical", topic: "Powers & Roots",
-    display: "0.579 &minus; (0.579)² / 2 + (0.579)³ / 3 &minus; (0.579)⁴ / 4",
+    display: "0.579 &minus; <span class='frac'><span class='num'>(0.579)²</span><span class='den'>2</span></span> + <span class='frac'><span class='num'>(0.579)³</span><span class='den'>3</span></span> &minus; <span class='frac'><span class='num'>(0.579)⁴</span><span class='den'>4</span></span>",
     plain: "0.579 - 0.579^2/2 + 0.579^3/3 - 0.579^4/4",
     answerType: "standard", answer: 0.457, tolerance: 0.001, units: "",
     explanation: "This is a partial Taylor series for ln(1+x) at x=0.579. 0.579 - 0.16762 + 0.06461 - 0.02810 = 0.4479 ≈ 0.448."
@@ -453,13 +453,13 @@ const NUMERICAL_PROBLEMS = [
     explanation: "0.71 + 0.487 + 4.644 = 5.841. √5.841 = 2.417. ÷(-0.18) = -13.43. Wait, key says -6.82, let me recheck. √(0.71+0.487+(1.2/3.87))/(-0.18). 1.2/3.87=0.3101. Sum=1.497. √1.497=1.2237. /(-0.18)=-6.80 ≈ -6.82."
   },
   { id: "n44", category: "numerical", topic: "Powers & Roots",
-    display: "[&minus;31.2 + √862]<sup>2</sup> × [705 + 1650]<sup>2</sup> × √(0.0032 / 0.0324)",
+    display: "[&minus;31.2 + √862]<sup>2</sup> × [705 + 1650]<sup>2</sup> × √(<span class='frac'><span class='num'>0.0032</span><span class='den'>0.0324</span></span>)",
     plain: "[-31.2+sqrt(862)]^2 × [2355]^2 × sqrt(0.0032/0.0324)",
     answerType: "standard", answer: 5900000, tolerance: 100000, units: "",
     explanation: "√862=29.36. (-31.2+29.36)=-1.84. Squared=3.386. 2355²=5546025. √(0.09877)=0.3143. 3.386×5546025×0.3143 = 5.90×10⁶."
   },
   { id: "n45", category: "numerical", topic: "Powers & Roots",
-    display: "(π)(0.0158)√{(&minus;0.726)<sup>2</sup> / 0.958} + 1/√(20.1 + 36.3)",
+    display: "(π)(0.0158)√{<span class='frac'><span class='num'>(&minus;0.726)<sup>2</sup></span><span class='den'>0.958</span></span>} + <span class='frac'><span class='num'>1</span><span class='den'>√(20.1 + 36.3)</span></span>",
     plain: "π(0.0158)sqrt(0.726²/0.958) + 1/sqrt(56.4)",
     answerType: "standard", answer: 0.17, tolerance: 0.001, units: "",
     explanation: "0.726²=0.527076. /0.958=0.5502. √0.5502=0.7418. π(0.0158)(0.7418)=0.03680. 1/√56.4=1/7.510=0.1332. Total=0.170."
@@ -477,19 +477,19 @@ const NUMERICAL_PROBLEMS = [
     explanation: "√1.831=1.3531. /(-5.56)=-0.2434. (-1.58)/7.46=-0.2118. Sum=-0.4552. Squared=0.2072 ≈ 0.207."
   },
   { id: "n65", category: "numerical", topic: "Powers & Roots",
-    display: "[<span class='frac'><span class='num'>π + 0.604 + √(0.609/0.349)</span><span class='den'>&minus;13.5 + 22.2</span></span>]<sup>2</sup>",
+    display: "[<span class='frac'><span class='num'>π + 0.604 + √(<span class='frac'><span class='num'>0.609</span><span class='den'>0.349</span></span>)</span><span class='den'>&minus;13.5 + 22.2</span></span>]<sup>2</sup>",
     plain: "[π+0.604+sqrt(0.609/0.349)]/(−13.5+22.2)]^2",
     answerType: "standard", answer: 0.339, tolerance: 0.001, units: "",
     explanation: "π+0.604+√1.745 = 3.1416+0.604+1.321 = 5.067. /8.7=0.5824. Squared=0.3392 ≈ 0.339."
   },
   { id: "n66", category: "numerical", topic: "Powers & Roots",
-    display: "(0.399)(4.72) + √{(7.64)/(7.33)} + [(0.183)(5.61)]<sup>2</sup>",
+    display: "(0.399)(4.72) + √{<span class='frac'><span class='num'>7.64</span><span class='den'>7.33</span></span>} + [(0.183)(5.61)]<sup>2</sup>",
     plain: "(0.399)(4.72) + sqrt(7.64/7.33) + [(0.183)(5.61)]^2",
     answerType: "standard", answer: 3.96, tolerance: 0.01, units: "",
     explanation: "1.8833+√1.04228+1.05537 = 1.8833+1.02093+1.05537 = 3.960 ≈ 3.96."
   },
   { id: "n75", category: "numerical", topic: "Powers & Roots",
-    display: "(492 + 906)<sup>1/3</sup> + 1/{(308)<sup>&minus;0.5</sup>}",
+    display: "(492 + 906)<sup>1/3</sup> + <span class='frac'><span class='num'>1</span><span class='den'>(308)<sup>&minus;0.5</sup></span></span>",
     plain: "(1398)^(1/3) + 308^0.5",
     answerType: "standard", answer: 28.7, tolerance: 0.1, units: "",
     explanation: "1398^(1/3)=11.18. 1/(308^-0.5)=308^0.5=17.55. Total=28.73 ≈ 28.7."
@@ -515,13 +515,13 @@ const NUMERICAL_PROBLEMS = [
     explanation: "cos(1.056)=0.4981. cos(1.324)=0.2433. Difference=0.2548 ≈ 0.255."
   },
   { id: "n28", category: "numerical", topic: "Trigonometry",
-    display: "(rad) arctan{1.98 + (4.42)(0.232)} / arcsin{(0.0835 + 0.0368)/0.276}",
+    display: "(rad) <span class='frac'><span class='num'>arctan{1.98 + (4.42)(0.232)}</span><span class='den'>arcsin{<span class='frac'><span class='num'>0.0835 + 0.0368</span><span class='den'>0.276</span></span>}</span></span>",
     plain: "(rad) arctan(1.98+(4.42)(0.232)) / arcsin((0.0835+0.0368)/0.276)",
     answerType: "standard", answer: 2.88, tolerance: 0.01, units: "",
     explanation: "1.98 + 1.0254 = 3.0054. arctan(3.0054) = 1.2501 rad. (0.1203)/0.276=0.4359. arcsin(0.4359)=0.4510 rad. 1.2501/0.4510=2.772 ≈ 2.77."
   },
   { id: "n29", category: "numerical", topic: "Trigonometry",
-    display: "(deg) {cos²(89.9°) &minus; sin²(89.9°)} × tan(89.9°) / (1 &minus; tan²(89.9°))",
+    display: "(deg) {cos²(89.9°) &minus; sin²(89.9°)} × <span class='frac'><span class='num'>tan(89.9°)</span><span class='den'>1 &minus; tan²(89.9°)</span></span>",
     plain: "(deg) [cos^2(89.9°)-sin^2(89.9°)] × tan(89.9°)/(1-tan^2(89.9°))",
     answerType: "standard", answer: 0.5, tolerance: 0.001, units: "",
     explanation: "This equals cos(2×89.9°)×tan(89.9°)/... which simplifies. cos(179.8°)=-0.99999... Using trig identities, this equals sin(2×89.9°)/2 = sin(179.8°)/2 = 0.00175/2. Check identity carefully."
