@@ -4,6 +4,9 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 /* Inline code */
 code { font-family: 'Consolas', 'Monaco', 'Courier New', monospace; background: #2d3748; padding: 1px 5px; border-radius: 3px; font-size: 0.92em; color: #81e6d9; }
 
+/* Subscript base labels (e.g. 1011₂) */
+sub { font-size: 0.7em; color: #a0aec0; margin-left: 1px; }
+
 /* ── HEADER ── */
 .header { background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%); padding: 20px 20px 12px; text-align: center; position: relative; }
 .header h1 { font-size: 1.8rem; margin-bottom: 4px; }
