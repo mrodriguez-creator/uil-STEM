@@ -1,6 +1,5 @@
-// UIL CS Written Test Trainer – Main Application
+// UIL Computer Science Trainer – Main Application
 // Vanilla JS, single-page app with 5-choice multiple-choice (A–E)
-// UIL Scoring: +6 correct, -2 incorrect, 0 skipped
 
 const $ = id => document.getElementById(id);
 const app = document.getElementById('app');
@@ -14,19 +13,17 @@ const state = {
   idx: 0,                 // current question index
   selected: -1,           // selected choice index (-1 = none)
   answered: false,        // has current question been answered?
-  score: 0,               // correct count
-  uilScore: 0,            // UIL score (+6/-2/0)
-  results: [],            // { question, selected, correct, isCorrect, isSkipped }
+  score: 0,
+  results: [],            // { question, selected, correct, isCorrect }
   timeLeft: 0,
   timed: false,
   timerInterval: null,
   showModal: false,       // time picker modal
   hintVisible: false,     // hint toggle state
-  difficultyFilter: 0,    // 0 = all, 1-5 = specific difficulty
 };
 
 // ── PERSISTENCE ──
-const STORAGE_KEY = 'uil-cs-written-stats';
+const STORAGE_KEY = 'uil-cs-stats';
 
 function loadStats() {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultStats(); }
@@ -37,15 +34,11 @@ function saveStats(stats) { localStorage.setItem(STORAGE_KEY, JSON.stringify(sta
 
 function recordSession(mode, topic, results, timeTaken) {
   const stats = loadStats();
-  const correct = results.filter(r => r.isCorrect).length;
-  const wrong = results.filter(r => !r.isCorrect && !r.isSkipped).length;
-  const skipped = results.filter(r => r.isSkipped).length;
-  const uilScore = correct * 6 - wrong * 2;
   stats.sessions.push({
     date: new Date().toISOString(),
     mode, topic,
     total: results.length,
-    correct, wrong, skipped, uilScore,
+    correct: results.filter(r => r.isCorrect).length,
     timeTaken
   });
   results.forEach(r => {
@@ -93,44 +86,33 @@ function timerClass() {
   return 'urgent';
 }
 
-// ── DIFFICULTY HELPERS ──
-function difficultyStars(d) {
-  return '<span class="difficulty-stars">' + '★'.repeat(d) + '<span class="star-empty">' + '☆'.repeat(5 - d) + '</span></span>';
-}
-
-function filterByDifficulty(questions) {
-  if (state.difficultyFilter === 0) return questions;
-  return questions.filter(q => q.difficulty === state.difficultyFilter);
-}
-
 // ── START MODES ──
 function startSkills(topic) {
-  const questions = shuffleArray(filterByDifficulty(getQuestionsForTopic(topic)));
-  if (questions.length === 0) { alert('No questions match that difficulty level.'); return; }
+  const questions = shuffleArray(getQuestionsForTopic(topic));
+  if (questions.length === 0) return;
   setState({
     screen: 'test', mode: 'skills', topic,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, uilScore: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
+    score: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
 }
 
 function startDrill() {
-  const filtered = filterByDifficulty(getAllQuestions());
-  if (filtered.length === 0) { alert('No questions match that difficulty level.'); return; }
-  const questions = shuffleArray(filtered);
+  const questions = shuffleArray(getAllQuestions());
   setState({
     screen: 'test', mode: 'drill', topic: null,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, uilScore: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
+    score: 0, results: [], timed: false, timeLeft: 0, hintVisible: false
   });
 }
 
 function startPractice(seconds) {
-  const questions = shuffleArray(getAllQuestions()).slice(0, 40);
+  const all = shuffleArray(getAllQuestions());
+  const questions = all.slice(0, 40); // UIL CS written test is 40 questions
   setState({
     screen: 'test', mode: 'practice', topic: null,
     problems: questions, idx: 0, selected: -1, answered: false,
-    score: 0, uilScore: 0, results: [], showModal: false, hintVisible: false
+    score: 0, results: [], showModal: false, hintVisible: false
   });
   startTimer(seconds);
 }
@@ -151,12 +133,8 @@ function submitAnswer() {
   if (state.selected < 0 || state.answered) return;
   const q = state.problems[state.idx];
   const isCorrect = state.selected === q.answer;
-  state.results.push({ question: q, selected: state.selected, correct: q.answer, isCorrect, isSkipped: false });
-  setState({
-    answered: true,
-    score: state.score + (isCorrect ? 1 : 0),
-    uilScore: state.uilScore + (isCorrect ? 6 : -2)
-  });
+  state.results.push({ question: q, selected: state.selected, correct: q.answer, isCorrect });
+  setState({ answered: true, score: state.score + (isCorrect ? 1 : 0) });
 }
 
 function nextQuestion() {
@@ -169,20 +147,13 @@ function nextQuestion() {
 
 function skipQuestion() {
   const q = state.problems[state.idx];
-  state.results.push({ question: q, selected: -1, correct: q.answer, isCorrect: false, isSkipped: true });
+  state.results.push({ question: q, selected: -1, correct: q.answer, isCorrect: false });
   if (state.idx + 1 >= state.problems.length) { finishTest(); return; }
   setState({ idx: state.idx + 1, selected: -1, answered: false, hintVisible: false });
 }
 
 function finishTest() {
   clearTimer();
-  // In practice mode, mark remaining unanswered questions as skipped
-  if (state.mode === 'practice') {
-    for (let i = state.results.length; i < state.problems.length; i++) {
-      const q = state.problems[i];
-      state.results.push({ question: q, selected: -1, correct: q.answer, isCorrect: false, isSkipped: true });
-    }
-  }
   recordSession(state.mode, state.topic, state.results, 0);
   setState({ screen: 'results', timed: false });
 }
@@ -199,16 +170,15 @@ function render() {
 
 // ── TOPIC INFO ──
 const TOPIC_INFO = {
-  'Base Conversions': { icon: '🔢', desc: 'Binary, octal, decimal, hex conversions & two\'s complement' },
-  'Boolean Logic': { icon: '🔀', desc: 'Boolean algebra, De Morgan\'s law, truth tables, logic gates' },
-  'Data Types & Operators': { icon: '📦', desc: 'Primitives, casting, precedence, integer division, overflow' },
-  'String Methods': { icon: '🔤', desc: 'substring, indexOf, charAt, compareTo, equals, split' },
-  'Math Class': { icon: '🧮', desc: 'ceil, floor, round, pow, sqrt, abs, random' },
-  'Collections API': { icon: '📚', desc: 'ArrayList, HashMap, HashSet, Stack, Queue methods' },
-  'Big-O Analysis': { icon: '📊', desc: 'Time & space complexity, growth rates, algorithm analysis' },
-  'Sorting & Searching': { icon: '🔍', desc: 'Sort properties, binary search, stability, efficiency' },
-  'Data Structures': { icon: '🌳', desc: 'Stack, Queue, BST, Heap, Hash Table, traversals' },
-  'Polish Notation': { icon: '🧩', desc: 'Infix, prefix, postfix evaluation & conversion' },
+  'Base Conversions': { icon: '🔢', desc: 'Binary, hex, octal, two\'s complement, base arithmetic' },
+  'Java Basics': { icon: '☕', desc: 'Expressions, operators, data types, output, printf, casting' },
+  'Strings & Math': { icon: '📝', desc: 'String methods, parsing, Math class, Character operations' },
+  'Boolean Logic': { icon: '⚡', desc: 'Boolean operators, bitwise, De Morgan\'s, logic gates, Polish notation' },
+  'Control Flow': { icon: '🔄', desc: 'Conditionals, loops, break/continue, accumulation patterns' },
+  'Arrays & Collections': { icon: '📦', desc: 'Arrays, ArrayList, HashMap, Stack, Queue, sorting, searching' },
+  'OOP': { icon: '🏗️', desc: 'Classes, inheritance, polymorphism, interfaces, abstract classes' },
+  'Data Structures & Algorithms': { icon: '🌳', desc: 'Trees, graphs, Big-O, sorting algorithms, recursion' },
+  'Code Tracing': { icon: '🔍', desc: 'Multi-step output tracing, loops, arrays, recursion, OOP, mixed complexity' },
 };
 
 function topicIcon(topic) {
@@ -227,7 +197,7 @@ function renderMenu() {
     <div class="header">
       <a href="../index.html" class="back-home">&larr; CS Home</a>
       <h1>💻 UIL CS Written Test</h1>
-      <p>40 questions &middot; 45 minutes &middot; No calculators &middot; +6/&minus;2/0 scoring</p>
+      <p>40 multiple-choice questions &middot; 45 minutes &middot; Java-based</p>
     </div>
     ${state.showModal ? renderTimePicker() : ''}
     <div class="menu-body">
@@ -242,19 +212,13 @@ function renderMenu() {
         </div>
       ` : ''}
 
-      <div class="section-tag">Difficulty Filter</div>
-      <div class="diff-filter">
-        <button class="diff-btn ${state.difficultyFilter === 0 ? 'active' : ''}" onclick="setState({difficultyFilter:0})">All</button>
-        ${[1,2,3,4,5].map(d => `<button class="diff-btn ${state.difficultyFilter === d ? 'active' : ''}" onclick="setState({difficultyFilter:${d}})">${'★'.repeat(d)}</button>`).join('')}
-      </div>
-
       <div class="section-tag">Practice Modes</div>
       <div class="focus-card">
         <div class="fc-head">
           <div class="fc-icon">💻</div>
           <div>
-            <h2>CS Written Test</h2>
-            <p>UIL Computer Science Written Test covers Java concepts, data structures, algorithms, and computational thinking. 5-choice multiple choice (A–E) with penalty scoring.</p>
+            <h2>Computer Science</h2>
+            <p>UIL Computer Science covers Java programming, data structures, algorithms, Boolean logic, base conversions, and more. 5-choice multiple choice (A–E).</p>
           </div>
         </div>
         <div class="mode-row">
@@ -264,7 +228,7 @@ function renderMenu() {
           </button>
           <button class="mode-btn" onclick="setState({showModal:true})">
             <div class="mb-title">⏱ Practice Test</div>
-            <div class="mb-desc">Timed test simulating UIL competition. 40 questions with +6/−2/0 scoring.</div>
+            <div class="mb-desc">Timed test simulating UIL competition. 40 questions in 45 minutes.</div>
           </button>
         </div>
       </div>
@@ -274,11 +238,10 @@ function renderMenu() {
         ${topics.map(t => {
           const ts = stats.topicScores[t.topic];
           const pct = ts ? Math.round(ts.correct / ts.total * 100) + '%' : '';
-          const filteredCount = state.difficultyFilter === 0 ? t.count : getQuestionsForTopic(t.topic).filter(q => q.difficulty === state.difficultyFilter).length;
-          return `<button class="topic-btn" onclick="startSkills('${t.topic}')" ${filteredCount === 0 ? 'disabled style="opacity:0.4"' : ''}>
+          return `<button class="topic-btn" onclick="startSkills('${t.topic}')">
             <div class="tb-icon">${topicIcon(t.topic)}</div>
             <div class="tb-name">${t.topic}</div>
-            <div class="tb-sub">${filteredCount} Qs${pct ? ' · ' + pct : ''}</div>
+            <div class="tb-sub">${t.count} Qs${pct ? ' · ' + pct : ''}</div>
           </button>`;
         }).join('')}
       </div>
@@ -291,18 +254,18 @@ function renderTimePicker() {
     <div class="modal-overlay" onclick="setState({showModal:false})">
       <div class="modal-box" onclick="event.stopPropagation()">
         <h2>⏱ Practice Test</h2>
-        <p class="modal-sub">Choose a time limit. UIL CS Written is 45 minutes for 40 questions.</p>
-        <button class="time-btn" onclick="startPractice(900)">
-          <div class="tb-row"><span>15 Minutes</span><span class="tb-time">Quick Drill</span></div>
+        <p class="modal-sub">Choose a time limit. UIL Computer Science is 45 minutes for 40 questions.</p>
+        <button class="time-btn" onclick="startPractice(600)">
+          <div class="tb-row"><span>10 Minutes</span><span class="tb-time">Quick Drill</span></div>
           <div class="tb-note">Fast warmup session</div>
         </button>
-        <button class="time-btn" onclick="startPractice(1500)">
-          <div class="tb-row"><span>25 Minutes</span><span class="tb-time">Half Test</span></div>
+        <button class="time-btn" onclick="startPractice(1350)">
+          <div class="tb-row"><span>22 Minutes</span><span class="tb-time">Half Test</span></div>
           <div class="tb-note">Solid practice session</div>
         </button>
         <button class="time-btn" onclick="startPractice(2700)">
           <div class="tb-row"><span>45 Minutes</span><span class="tb-time">Full UIL Test</span></div>
-          <div class="tb-note">Official UIL CS Written time</div>
+          <div class="tb-note">Official UIL Computer Science time</div>
         </button>
         <button class="modal-close" onclick="setState({showModal:false})">Cancel</button>
       </div>
@@ -317,17 +280,12 @@ function renderTest() {
                     state.mode === 'drill' ? 'Drill Mode' : 'Practice Test';
   const letters = ['A', 'B', 'C', 'D', 'E'];
 
-  // Calculate current UIL score for display
-  const correct = state.results.filter(r => r.isCorrect).length;
-  const wrong = state.results.filter(r => !r.isCorrect && !r.isSkipped).length;
-  const currentUIL = correct * 6 - wrong * 2;
-
   let feedbackHTML = '';
   if (state.answered) {
     const isCorrect = state.selected === q.answer;
     feedbackHTML = `
       <div class="feedback-bar ${isCorrect ? 'correct' : 'wrong'}">
-        ${isCorrect ? '✓ Correct! (+6)' : `✕ Incorrect (−2) — Answer is ${letters[q.answer]}`}
+        ${isCorrect ? '✓ Correct!' : `✕ Incorrect — Answer is ${letters[q.answer]}`}
       </div>
       <div class="explanation-box">
         <div class="explanation-label">Solution</div>
@@ -342,17 +300,14 @@ function renderTest() {
         <span class="t-label">💻 ${modeLabel}</span>
         <span>Q ${state.idx + 1} of ${state.problems.length}</span>
         ${state.timed ? `<span class="t-timer ${timerClass()}">${formatTime(state.timeLeft)}</span>` : ''}
-        <span class="t-score">UIL: ${currentUIL}</span>
+        <span class="t-score">${state.score}/${state.results.length} correct</span>
       </div>
       <div class="prog-bar"><div class="prog-fill" style="width:${(state.idx + 1) / state.problems.length * 100}%"></div></div>
     </div>
     <div class="test-body">
       <div class="question-box">
         <div class="question-text">${q.question}</div>
-        <div class="question-meta">
-          <span class="question-tag">${q.topic}</span>
-          ${q.difficulty ? difficultyStars(q.difficulty) : ''}
-        </div>
+        <div class="question-tag">${q.topic}</div>
       </div>
       <div class="choices">
         ${q.choices.map((c, i) => {
@@ -385,7 +340,7 @@ function renderTest() {
       <div class="btn-row">
         ${!state.answered ? `
           <button class="btn btn-primary" onclick="submitAnswer()" ${state.selected < 0 ? 'disabled style="opacity:0.5;cursor:not-allowed"' : ''}>Submit</button>
-          <button class="btn btn-subtle" onclick="skipQuestion()">Skip (0 pts)</button>
+          <button class="btn btn-subtle" onclick="skipQuestion()">Skip</button>
         ` : `
           <button class="btn btn-primary" onclick="nextQuestion()">${state.idx + 1 >= state.problems.length ? 'View Results' : 'Next Question'}</button>
         `}
@@ -401,9 +356,6 @@ function renderTest() {
 function renderResults() {
   const total = state.results.length;
   const correct = state.results.filter(r => r.isCorrect).length;
-  const wrong = state.results.filter(r => !r.isCorrect && !r.isSkipped).length;
-  const skipped = state.results.filter(r => r.isSkipped).length;
-  const uilScore = correct * 6 - wrong * 2;
   const pct = total > 0 ? Math.round(correct / total * 100) : 0;
   const letters = ['A', 'B', 'C', 'D', 'E'];
 
@@ -412,37 +364,32 @@ function renderResults() {
       <h1>Results</h1>
       <div class="stats-grid">
         <div class="stat-card">
-          <div class="stat-val ${uilScore >= 0 ? 'positive' : 'negative'}">${uilScore}</div>
-          <div class="stat-label">UIL Score</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val positive">${correct}</div>
-          <div class="stat-label">Correct (+6)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val negative">${wrong}</div>
-          <div class="stat-label">Wrong (−2)</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-val">${skipped}</div>
-          <div class="stat-label">Skipped (0)</div>
-        </div>
-        <div class="stat-card">
           <div class="stat-val">${pct}%</div>
           <div class="stat-label">Accuracy</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">${correct}</div>
+          <div class="stat-label">Correct</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">${total - correct}</div>
+          <div class="stat-label">Incorrect</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-val">${total}</div>
+          <div class="stat-label">Total</div>
         </div>
       </div>
 
       <div class="review-title">Review Answers</div>
       <div class="review-box">
         ${state.results.map((r, i) => {
-          const cls = r.isCorrect ? 'correct' : r.isSkipped ? 'skipped' : 'wrong';
+          const cls = r.isCorrect ? 'correct' : 'wrong';
           const yourAns = r.selected >= 0 ? letters[r.selected] : '—';
-          const label = r.isCorrect ? '✓' : r.isSkipped ? 'Skip' : '✕';
           return `<div class="rev-item ${cls}">
             <span class="ri-num">#${i + 1}</span>
             <span class="ri-q">${truncate(r.question.question.replace(/<[^>]*>/g, ''), 50)}</span>
-            <span class="ri-a">${label} ${yourAns}${!r.isCorrect && !r.isSkipped ? ' → ' + letters[r.correct] : ''}</span>
+            <span class="ri-a">${r.isCorrect ? '✓' : '✕'} ${yourAns}${!r.isCorrect ? ' → ' + letters[r.correct] : ''}</span>
           </div>`;
         }).join('')}
       </div>
@@ -496,8 +443,6 @@ function renderStats() {
   const totalQ = sessions.reduce((s, x) => s + x.total, 0);
   const totalC = sessions.reduce((s, x) => s + x.correct, 0);
   const overallPct = Math.round(totalC / totalQ * 100);
-  const totalUIL = sessions.reduce((s, x) => s + (x.uilScore || 0), 0);
-  const avgUIL = Math.round(totalUIL / sessions.length);
 
   const topicBreakdowns = getTopics().map(t => {
     const ts = stats.topicScores[t.topic];
@@ -532,15 +477,15 @@ function renderStats() {
             <div class="stat-label">Accuracy</div>
           </div>
           <div class="stat-card">
-            <div class="stat-val ${avgUIL >= 0 ? 'positive' : 'negative'}">${avgUIL}</div>
-            <div class="stat-label">Avg UIL Score</div>
+            <div class="stat-val">${totalC}</div>
+            <div class="stat-label">Correct</div>
           </div>
         </div>
 
         <div class="section-tag" style="margin-top:24px;">Topic Breakdown</div>
         <div class="subject-breakdown">
           <div class="subject-stat-card">
-            <h3>💻 CS Written Topics</h3>
+            <h3>💻 Computer Science Topics</h3>
             ${topicBreakdowns.map(t => {
               const tp = t.total > 0 ? Math.round(t.correct / t.total * 100) : 0;
               const barColor = tp >= 70 ? '#48bb78' : tp >= 40 ? '#ed8936' : '#f56565';
@@ -561,7 +506,7 @@ function renderStats() {
             const dateStr = (d.getMonth()+1) + '/' + d.getDate() + ' ' + d.getHours() + ':' + (d.getMinutes()<10?'0':'') + d.getMinutes();
             return `<div class="history-item">
               <span class="hi-mode">💻 ${capitalize(s.mode)}${s.topic ? ': ' + s.topic : ''}</span>
-              <span class="hi-score">${s.correct}/${s.total} (${pct}%) · UIL: ${s.uilScore || 0}</span>
+              <span class="hi-score">${s.correct}/${s.total} (${pct}%)</span>
               <span class="hi-date">${dateStr}</span>
             </div>`;
           }).join('')}

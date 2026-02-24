@@ -1,38 +1,44 @@
-// UIL CS Written Test – Problem Bank Loader
-// Merges all topic arrays into one flat list and provides helpers.
+// UIL Computer Science – Problem Bank Loader
+// Merges all topic-specific problem files into CS_QUESTIONS
+//
+// Individual problem files (loaded before this via <script> tags):
+//   problems/base-conversions.js   → BASE_CONVERSION_PROBLEMS
+//   problems/java-basics.js        → JAVA_BASICS_PROBLEMS
+//   problems/strings-math.js       → STRINGS_MATH_PROBLEMS
+//   problems/boolean-logic.js      → BOOLEAN_LOGIC_PROBLEMS
+//   problems/control-flow.js       → CONTROL_FLOW_PROBLEMS
+//   problems/arrays-collections.js → ARRAYS_COLLECTIONS_PROBLEMS
+//   problems/oop.js                → OOP_PROBLEMS
+//   problems/data-structures.js    → DATA_STRUCTURES_PROBLEMS
+//   problems/code-tracing.js       → CODE_TRACING_PROBLEMS
 
 const CS_QUESTIONS = [
   ...BASE_CONVERSION_PROBLEMS,
+  ...JAVA_BASICS_PROBLEMS,
+  ...STRINGS_MATH_PROBLEMS,
   ...BOOLEAN_LOGIC_PROBLEMS,
-  ...DATA_TYPES_PROBLEMS,
-  ...STRING_METHODS_PROBLEMS,
-  ...MATH_CLASS_PROBLEMS,
-  ...COLLECTIONS_PROBLEMS,
-  ...BIG_O_PROBLEMS,
-  ...SORTING_SEARCHING_PROBLEMS,
+  ...CONTROL_FLOW_PROBLEMS,
+  ...ARRAYS_COLLECTIONS_PROBLEMS,
+  ...OOP_PROBLEMS,
   ...DATA_STRUCTURES_PROBLEMS,
-  ...POLISH_NOTATION_PROBLEMS,
+  ...CODE_TRACING_PROBLEMS,
 ];
 
-// Build topic index
+// ── TOPIC DEFINITIONS ──
 const TOPICS = {};
 CS_QUESTIONS.forEach(q => {
   if (!TOPICS[q.topic]) TOPICS[q.topic] = { topic: q.topic, count: 0 };
   TOPICS[q.topic].count++;
 });
 
-// Canonical topic order
-const TOPIC_ORDER = [
-  'Base Conversions', 'Boolean Logic', 'Data Types & Operators',
-  'String Methods', 'Math Class', 'Collections API',
-  'Big-O Analysis', 'Sorting & Searching', 'Data Structures',
-  'Polish Notation'
-];
-
+// ── HELPER FUNCTIONS ──
 function getTopics() {
-  return Object.values(TOPICS).sort((a, b) =>
-    TOPIC_ORDER.indexOf(a.topic) - TOPIC_ORDER.indexOf(b.topic)
-  );
+  const order = [
+    'Base Conversions', 'Java Basics', 'Strings & Math', 'Boolean Logic',
+    'Control Flow', 'Arrays & Collections', 'OOP', 'Data Structures & Algorithms',
+    'Code Tracing'
+  ];
+  return Object.values(TOPICS).sort((a, b) => order.indexOf(a.topic) - order.indexOf(b.topic));
 }
 
 function getQuestionsForTopic(topic) {
@@ -43,6 +49,7 @@ function getAllQuestions() {
   return [...CS_QUESTIONS];
 }
 
+// Utility: shuffle an array (Fisher-Yates)
 function shuffleArray(arr) {
   const a = [...arr];
   for (let i = a.length - 1; i > 0; i--) {
