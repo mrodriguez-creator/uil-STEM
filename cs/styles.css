@@ -1,0 +1,71 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f1419; color: #fff; min-height: 100vh; }
+
+/* Header */
+.header { background: linear-gradient(135deg, #38b2ac 0%, #2c7a7b 100%); padding: 20px 20px 12px; text-align: center; position: relative; }
+.header h1 { font-size: 1.8rem; margin-bottom: 4px; }
+.header p { color: #b2f5ea; font-size: 0.9rem; margin-bottom: 8px; }
+.back-home { position: absolute; top: 18px; left: 18px; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.85rem; font-weight: 600; }
+.back-home:hover { color: #fff; }
+
+/* Body */
+.cs-body { max-width: 720px; margin: 0 auto; padding: 28px 20px 60px; }
+.section-tag { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.6px; color: #38b2ac; font-weight: 700; margin-bottom: 14px; }
+
+/* Section Grid */
+.section-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+
+.section-card {
+  position: relative;
+  background: #1a1f2e;
+  border: 2px solid #2d3748;
+  border-radius: 16px;
+  padding: 28px 22px 20px;
+  text-decoration: none;
+  color: #fff;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  display: flex;
+  flex-direction: column;
+}
+.section-card.active:hover {
+  border-color: #38b2ac;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(56, 178, 172, 0.2);
+  cursor: pointer;
+}
+.section-card.coming-soon {
+  opacity: 0.55;
+  cursor: default;
+}
+
+/* Badge */
+.sc-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.sc-badge.live { background: #48bb78; color: #fff; }
+.sc-badge.soon { background: #4a5568; color: #a0aec0; }
+
+/* Card Content */
+.sc-icon { font-size: 2.6rem; margin-bottom: 12px; }
+.sc-name { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+.sc-desc { color: #a0aec0; font-size: 0.85rem; line-height: 1.55; flex: 1; }
+
+/* Card Footer */
+.sc-footer { margin-top: 16px; padding-top: 12px; border-top: 1px solid #2d3748; }
+.sc-link { color: #38b2ac; font-weight: 600; font-size: 0.88rem; }
+.section-card.active:hover .sc-link { text-decoration: underline; }
+.sc-status { color: #718096; font-size: 0.82rem; }
+
+/* Responsive */
+@media(max-width: 600px) {
+  .header h1 { font-size: 1.4rem; }
+  .section-grid { grid-template-columns: 1fr; }
+}
