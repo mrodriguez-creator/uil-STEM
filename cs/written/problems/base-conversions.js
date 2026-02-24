@@ -2,9 +2,9 @@
 const BASE_CONVERSION_PROBLEMS = [
 
   // ── BINARY TO DECIMAL ──
-  { id: "bc1", topic: "Base Conversions", difficulty: 1, question: "What is the decimal value of <code>0b1011</code>?", choices: ["9", "10", "11", "12", "13"], answer: 2, hint: "Evaluate each bit: 1×8 + 0×4 + 1×2 + 1×1", explanation: "1×8 + 0×4 + 1×2 + 1×1 = 8 + 2 + 1 = 11." },
-  { id: "bc2", topic: "Base Conversions", difficulty: 1, question: "What is <code>0b11001</code> in decimal?", choices: ["21", "23", "25", "27", "29"], answer: 2, hint: "1×16 + 1×8 + 0×4 + 0×2 + 1×1", explanation: "16 + 8 + 0 + 0 + 1 = 25." },
-  { id: "bc3", topic: "Base Conversions", difficulty: 2, question: "What is the decimal value of <code>0b10110101</code>?", choices: ["171", "177", "181", "185", "191"], answer: 2, hint: "128 + 0 + 32 + 16 + 0 + 4 + 0 + 1", explanation: "128 + 32 + 16 + 4 + 1 = 181." },
+  { id: "bc1", topic: "Base Conversions", difficulty: 1, question: "What is the decimal value of <code>1011</code> in binary?", choices: ["9", "10", "11", "12", "13"], answer: 2, hint: "Evaluate each bit: 1×8 + 0×4 + 1×2 + 1×1", explanation: "1×8 + 0×4 + 1×2 + 1×1 = 8 + 2 + 1 = 11." },
+  { id: "bc2", topic: "Base Conversions", difficulty: 1, question: "What is <code>11001</code> (binary) in decimal?", choices: ["21", "23", "25", "27", "29"], answer: 2, hint: "1×16 + 1×8 + 0×4 + 0×2 + 1×1", explanation: "16 + 8 + 0 + 0 + 1 = 25." },
+  { id: "bc3", topic: "Base Conversions", difficulty: 2, question: "What is the decimal value of <code>10110101</code> in binary?", choices: ["171", "177", "181", "185", "191"], answer: 2, hint: "128 + 0 + 32 + 16 + 0 + 4 + 0 + 1", explanation: "128 + 32 + 16 + 4 + 1 = 181." },
 
   // ── DECIMAL TO BINARY ──
   { id: "bc4", topic: "Base Conversions", difficulty: 1, question: "What is 13 in binary?", choices: ["<code>1011</code>", "<code>1100</code>", "<code>1101</code>", "<code>1110</code>", "<code>1111</code>"], answer: 2, hint: "13 = 8 + 4 + 1", explanation: "13 = 8 + 4 + 1 = 1101 in binary." },
@@ -20,8 +20,8 @@ const BASE_CONVERSION_PROBLEMS = [
   { id: "bc10", topic: "Base Conversions", difficulty: 2, question: "What is 75 in hexadecimal?", choices: ["<code>0x47</code>", "<code>0x4A</code>", "<code>0x4B</code>", "<code>0x4C</code>", "<code>0x4D</code>"], answer: 2, hint: "75 ÷ 16 = 4 remainder 11; B = 11", explanation: "75 = 4×16 + 11 = 4B in hex." },
 
   // ── BINARY TO HEXADECIMAL ──
-  { id: "bc11", topic: "Base Conversions", difficulty: 2, question: "Convert <code>0b11010110</code> to hexadecimal.", choices: ["<code>0xB6</code>", "<code>0xD6</code>", "<code>0xD8</code>", "<code>0xE6</code>", "<code>0x6D</code>"], answer: 1, hint: "Group into nibbles from the right: 1101 0110", explanation: "1101 = D, 0110 = 6. Result: 0xD6." },
-  { id: "bc12", topic: "Base Conversions", difficulty: 2, question: "Convert <code>0b10101111</code> to hexadecimal.", choices: ["<code>0xAE</code>", "<code>0xAF</code>", "<code>0xBF</code>", "<code>0xFA</code>", "<code>0x9F</code>"], answer: 1, hint: "Group: 1010 1111", explanation: "1010 = A, 1111 = F. Result: 0xAF." },
+  { id: "bc11", topic: "Base Conversions", difficulty: 2, question: "Convert <code>11010110</code> (binary) to hexadecimal.", choices: ["<code>0xB6</code>", "<code>0xD6</code>", "<code>0xD8</code>", "<code>0xE6</code>", "<code>0x6D</code>"], answer: 1, hint: "Group into nibbles from the right: 1101 0110", explanation: "1101 = D, 0110 = 6. Result: 0xD6." },
+  { id: "bc12", topic: "Base Conversions", difficulty: 2, question: "Convert <code>10101111</code> (binary) to hexadecimal.", choices: ["<code>0xAE</code>", "<code>0xAF</code>", "<code>0xBF</code>", "<code>0xFA</code>", "<code>0x9F</code>"], answer: 1, hint: "Group: 1010 1111", explanation: "1010 = A, 1111 = F. Result: 0xAF." },
 
   // ── HEXADECIMAL TO BINARY ──
   { id: "bc13", topic: "Base Conversions", difficulty: 2, question: "Convert <code>0x3C</code> to binary.", choices: ["<code>00110100</code>", "<code>00111100</code>", "<code>01001100</code>", "<code>00111000</code>", "<code>01011100</code>"], answer: 1, hint: "3 = 0011, C = 1100", explanation: "3 = 0011, C = 1100. Result: 00111100." },
@@ -31,8 +31,8 @@ const BASE_CONVERSION_PROBLEMS = [
   { id: "bc15", topic: "Base Conversions", difficulty: 2, question: "What is 100 in octal?", choices: ["<code>140</code>", "<code>142</code>", "<code>144</code>", "<code>146</code>", "<code>150</code>"], answer: 2, hint: "100 ÷ 8 = 12 remainder 4; 12 ÷ 8 = 1 remainder 4", explanation: "100 = 1×64 + 4×8 + 4 = 144 in octal." },
 
   // ── BINARY ARITHMETIC ──
-  { id: "bc16", topic: "Base Conversions", difficulty: 2, question: "What is <code>0b1011 + 0b0110</code> in binary?", choices: ["<code>10000</code>", "<code>10001</code>", "<code>10010</code>", "<code>10011</code>", "<code>10100</code>"], answer: 1, hint: "11 + 6 = 17 in decimal", explanation: "1011 + 0110 = 10001 (11 + 6 = 17 = 10001₂)." },
-  { id: "bc17", topic: "Base Conversions", difficulty: 3, question: "What is <code>0b11011 + 0b10110</code> in binary?", choices: ["<code>101111</code>", "<code>110000</code>", "<code>110001</code>", "<code>110010</code>", "<code>110011</code>"], answer: 2, hint: "27 + 22 = 49 in decimal", explanation: "11011 + 10110 = 110001 (27 + 22 = 49 = 110001₂)." },
+  { id: "bc16", topic: "Base Conversions", difficulty: 2, question: "What is <code>1011 + 0110</code> in binary?", choices: ["<code>10000</code>", "<code>10001</code>", "<code>10010</code>", "<code>10011</code>", "<code>10100</code>"], answer: 1, hint: "11 + 6 = 17 in decimal", explanation: "1011 + 0110 = 10001 (11 + 6 = 17 = 10001₂)." },
+  { id: "bc17", topic: "Base Conversions", difficulty: 3, question: "What is <code>11011 + 10110</code> in binary?", choices: ["<code>101111</code>", "<code>110000</code>", "<code>110001</code>", "<code>110010</code>", "<code>110011</code>"], answer: 2, hint: "27 + 22 = 49 in decimal", explanation: "11011 + 10110 = 110001 (27 + 22 = 49 = 110001₂)." },
 
   // ── TWO'S COMPLEMENT ──
   { id: "bc18", topic: "Base Conversions", difficulty: 3, question: "In 8-bit two's complement, what decimal value does <code>11111110</code> represent?", choices: ["&minus;1", "&minus;2", "&minus;126", "254", "126"], answer: 1, hint: "Flip the bits and add 1 to find the magnitude", explanation: "Flip: 00000001, add 1: 00000010 = 2. Since the sign bit is 1, the value is −2." },
