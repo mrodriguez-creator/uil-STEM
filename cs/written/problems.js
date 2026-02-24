@@ -2,15 +2,20 @@
 // Merges all topic-specific problem files into CS_QUESTIONS
 //
 // Individual problem files (loaded before this via <script> tags):
-//   problems/base-conversions.js   → BASE_CONVERSION_PROBLEMS
-//   problems/java-basics.js        → JAVA_BASICS_PROBLEMS
-//   problems/strings-math.js       → STRINGS_MATH_PROBLEMS
-//   problems/boolean-logic.js      → BOOLEAN_LOGIC_PROBLEMS
-//   problems/control-flow.js       → CONTROL_FLOW_PROBLEMS
-//   problems/arrays-collections.js → ARRAYS_COLLECTIONS_PROBLEMS
-//   problems/oop.js                → OOP_PROBLEMS
-//   problems/data-structures.js    → DATA_STRUCTURES_PROBLEMS
-//   problems/code-tracing.js       → CODE_TRACING_PROBLEMS
+//   problems/base-conversions.js     → BASE_CONVERSION_PROBLEMS
+//   problems/java-basics.js          → JAVA_BASICS_PROBLEMS
+//   problems/strings-math.js         → STRINGS_MATH_PROBLEMS
+//   problems/boolean-logic.js        → BOOLEAN_LOGIC_PROBLEMS
+//   problems/control-flow.js         → CONTROL_FLOW_PROBLEMS
+//   problems/arrays-collections.js   → ARRAYS_COLLECTIONS_PROBLEMS
+//   problems/oop.js                  → OOP_PROBLEMS
+//   problems/data-structures.js      → DATA_STRUCTURES_PROBLEMS
+//   problems/code-tracing.js         → CODE_TRACING_PROBLEMS
+//   problems/digital-electronics.js  → DIGITAL_ELECTRONICS_PROBLEMS
+//   problems/advanced-oop.js         → ADVANCED_OOP_PROBLEMS
+//   problems/streams-functional.js   → STREAMS_FUNCTIONAL_PROBLEMS
+//   problems/graph-problems.js       → GRAPH_PROBLEMS
+//   problems/free-response.js        → FREE_RESPONSE_PROBLEMS
 
 const CS_QUESTIONS = [
   ...BASE_CONVERSION_PROBLEMS,
@@ -22,6 +27,11 @@ const CS_QUESTIONS = [
   ...OOP_PROBLEMS,
   ...DATA_STRUCTURES_PROBLEMS,
   ...CODE_TRACING_PROBLEMS,
+  ...DIGITAL_ELECTRONICS_PROBLEMS,
+  ...ADVANCED_OOP_PROBLEMS,
+  ...STREAMS_FUNCTIONAL_PROBLEMS,
+  ...GRAPH_PROBLEMS,
+  ...FREE_RESPONSE_PROBLEMS,
 ];
 
 // ── TOPIC DEFINITIONS ──
@@ -35,8 +45,9 @@ CS_QUESTIONS.forEach(q => {
 function getTopics() {
   const order = [
     'Base Conversions', 'Java Basics', 'Strings & Math', 'Boolean Logic',
-    'Control Flow', 'Arrays & Collections', 'OOP', 'Data Structures & Algorithms',
-    'Code Tracing'
+    'Control Flow', 'Arrays & Collections', 'OOP', 'Advanced OOP',
+    'Data Structures & Algorithms', 'Code Tracing', 'Digital Electronics',
+    'Streams & Functional', 'Graph Algorithms', 'Free Response'
   ];
   return Object.values(TOPICS).sort((a, b) => order.indexOf(a.topic) - order.indexOf(b.topic));
 }

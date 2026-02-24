@@ -53,4 +53,24 @@ const BOOLEAN_LOGIC_PROBLEMS = [
   // ── COMPILE ERROR TRAPS ──
 
   { id: "bl20", topic: "Boolean Logic", question: "What is output by the code to the right?<pre><code>int num1 = 5, num2 = 6;\nint num3 = (num1 & num2) >> 2;\nboolean a = (boolean) num3;\nout.println(a);</code></pre>", choices: ["true", "false", "1", "0", "There is no output due to a compile error."], answer: 4, hint: "Can you cast an int to boolean in Java?", explanation: "Java does not allow casting int to boolean. (boolean) num3 is a compile error." },
+
+  // ── 3-VARIABLE TRUTH TABLES (UIL Q29 style with 3 vars) ──
+
+  { id: "bl21", topic: "Boolean Logic", question: "Which of the following boolean expressions, when evaluated over all permutations of <code>true</code> and <code>false</code>, is equivalent to the truth table to the right?<pre><code> A | B | C | Output\n F | F | F |   F\n F | F | T |   T\n F | T | F |   F\n F | T | T |   T\n T | F | F |   F\n T | F | T |   T\n T | T | F |   T\n T | T | T |   T</code></pre>", choices: ["(A && B) || C", "A || B || C", "A && (B || C)", "(A && B) || (C && !A)", "(!A && C) || (A && B) || (A && C)"], answer: 0, hint: "Check row by row. Output is T when: C is true (rows 2,4,6,8) OR when A and B are both true (row 7). This is (A && B) || C", explanation: "Checking (A&&B)||C: FFF→F✓, FFT→T✓, FTF→F✓, FTT→T✓, TFF→F✓, TFT→T✓, TTF→T✓, TTT→T✓. All 8 rows match." },
+
+  { id: "bl22", topic: "Boolean Logic", question: "Which of the following boolean expressions, when evaluated over all permutations of <code>true</code> and <code>false</code>, is equivalent to the truth table to the right?<pre><code> A | B | C | Output\n F | F | F |   F\n F | F | T |   F\n F | T | F |   F\n F | T | T |   F\n T | F | F |   F\n T | F | T |   T\n T | T | F |   F\n T | T | T |   T</code></pre>", choices: ["A || C", "A && C", "A && B && C", "B && C", "(A || B) && C"], answer: 1, hint: "Output is true only when both A and C are true (rows 6 and 8)", explanation: "A&&C: FFF→F, FFT→F, FTF→F, FTT→F, TFF→F, TFT→T, TTF→F, TTT→T. All 8 rows match. Output is true exactly when A=T and C=T." },
+
+  { id: "bl23", topic: "Boolean Logic", question: "Which of the following boolean expressions, when evaluated over all permutations of <code>true</code> and <code>false</code>, is equivalent to the truth table to the right?<pre><code> A | B | C | Output\n F | F | F |   F\n F | F | T |   T\n F | T | F |   T\n F | T | T |   F\n T | F | F |   T\n T | F | T |   F\n T | T | F |   F\n T | T | T |   T</code></pre>", choices: ["A ^ B ^ C", "A && B && C", "(A || B) && C", "!(A && B) || C", "A ^ (B || C)"], answer: 0, hint: "Output is true when an ODD number of inputs are true. This is 3-way XOR", explanation: "A^B^C is true when an odd number of variables are true. FFF(0)→F, FFT(1)→T, FTF(1)→T, FTT(2)→F, TFF(1)→T, TFT(2)→F, TTF(2)→F, TTT(3)→T. All match." },
+
+  // ── BOOLEAN ALGEBRAIC NOTATION (UIL D25 Q22 style) ──
+
+  { id: "bl24", topic: "Boolean Logic", question: "Using boolean algebra notation where · means AND, + means OR, and a bar over a variable means NOT, which of the following is equivalent to the expression:<pre><code>A̅ · B + A · B̅</code></pre>", choices: ["A ^ B (XOR)", "A && B (AND)", "A || B (OR)", "!(A && B) (NAND)", "!(A || B) (NOR)"], answer: 0, hint: "A̅·B means (NOT A) AND B. A·B̅ means A AND (NOT B). When is this OR expression true?", explanation: "A̅·B + A·B̅ = (!A && B) || (A && !B). This is true exactly when A and B differ — the definition of XOR." },
+
+  { id: "bl25", topic: "Boolean Logic", question: "Using De Morgan's Law, which of the following is equivalent to:<pre><code>!(A || B || C)</code></pre>", choices: ["!A || !B || !C", "!A && !B && !C", "!(A && B && C)", "!A || !B && !C", "A && B && C"], answer: 1, hint: "De Morgan's: negate the OR, flip to AND, negate each variable", explanation: "De Morgan's Law: !(A || B || C) = !A && !B && !C. Negate the operation (OR→AND) and negate each operand." },
+
+  { id: "bl26", topic: "Boolean Logic", question: "Using De Morgan's Law, which of the following is equivalent to:<pre><code>!(A && B) || C</code></pre>", choices: ["!A || !B || C", "(!A && !B) || C", "!(A || B || C)", "!A || !B && C", "A && B && !C"], answer: 0, hint: "Apply De Morgan's only to !(A && B): this becomes !A || !B. Then OR with C", explanation: "!(A && B) = !A || !B (De Morgan's). Then: !A || !B || C." },
+
+  // ── UNSIGNED RIGHT SHIFT (>>>) ──
+
+  { id: "bl27", topic: "Boolean Logic", question: "What is output by the code to the right?<pre><code>out.println(-16 >>> 28);</code></pre>", choices: ["15", "-1", "16", "0", "There is no output due to a compile error."], answer: 0, hint: ">>> is unsigned right shift. -16 in 32-bit binary has leading 1s. Shifting right 28 positions fills with 0s from the left", explanation: "-16 in 32 bits = 11111111111111111111111111110000. >>> 28 shifts right 28 and fills with 0s: 00000000000000000000000000001111 = 15." },
 ];
