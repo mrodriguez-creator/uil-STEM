@@ -11,23 +11,23 @@ const BASE_CONVERSION_PROBLEMS = [
   { id: "bc5", topic: "Base Conversions", difficulty: 2, question: "What is 200 in binary?", choices: ["<code>11000100</code>", "<code>11001000</code>", "<code>11010000</code>", "<code>11001100</code>", "<code>11000000</code>"], answer: 1, hint: "200 = 128 + 64 + 8", explanation: "200 = 128 + 64 + 8 = 11001000 in binary." },
 
   // ── HEXADECIMAL TO DECIMAL ──
-  { id: "bc6", topic: "Base Conversions", difficulty: 1, question: "What is <code>0x1F</code> in decimal?", choices: ["15", "25", "31", "33", "47"], answer: 2, hint: "1×16 + F×1, where F = 15", explanation: "1×16 + 15×1 = 16 + 15 = 31." },
-  { id: "bc7", topic: "Base Conversions", difficulty: 2, question: "What is <code>0xAB</code> in decimal?", choices: ["161", "167", "171", "175", "181"], answer: 2, hint: "A = 10, B = 11; compute 10×16 + 11×1", explanation: "10×16 + 11 = 160 + 11 = 171." },
-  { id: "bc8", topic: "Base Conversions", difficulty: 2, question: "What is <code>0xFF</code> in decimal?", choices: ["240", "245", "250", "255", "256"], answer: 3, hint: "F = 15; compute 15×16 + 15", explanation: "15×16 + 15 = 240 + 15 = 255." },
+  { id: "bc6", topic: "Base Conversions", difficulty: 1, question: "What is hexadecimal <code>1F</code> in decimal?", choices: ["15", "25", "31", "33", "47"], answer: 2, hint: "1×16 + F×1, where F = 15", explanation: "1×16 + 15×1 = 16 + 15 = 31." },
+  { id: "bc7", topic: "Base Conversions", difficulty: 2, question: "What is hexadecimal <code>AB</code> in decimal?", choices: ["161", "167", "171", "175", "181"], answer: 2, hint: "A = 10, B = 11; compute 10×16 + 11×1", explanation: "10×16 + 11 = 160 + 11 = 171." },
+  { id: "bc8", topic: "Base Conversions", difficulty: 2, question: "What is hexadecimal <code>FF</code> in decimal?", choices: ["240", "245", "250", "255", "256"], answer: 3, hint: "F = 15; compute 15×16 + 15", explanation: "15×16 + 15 = 240 + 15 = 255." },
 
   // ── DECIMAL TO HEXADECIMAL ──
-  { id: "bc9", topic: "Base Conversions", difficulty: 2, question: "What is 254 in hexadecimal?", choices: ["<code>0xEF</code>", "<code>0xFE</code>", "<code>0xEE</code>", "<code>0xDF</code>", "<code>0xFC</code>"], answer: 1, hint: "254 ÷ 16 = 15 remainder 14; F = 15, E = 14", explanation: "254 = 15×16 + 14 = FE in hex." },
-  { id: "bc10", topic: "Base Conversions", difficulty: 2, question: "What is 75 in hexadecimal?", choices: ["<code>0x47</code>", "<code>0x4A</code>", "<code>0x4B</code>", "<code>0x4C</code>", "<code>0x4D</code>"], answer: 2, hint: "75 ÷ 16 = 4 remainder 11; B = 11", explanation: "75 = 4×16 + 11 = 4B in hex." },
+  { id: "bc9", topic: "Base Conversions", difficulty: 2, question: "What is 254 in hexadecimal?", choices: ["<code>EF</code>", "<code>FE</code>", "<code>EE</code>", "<code>DF</code>", "<code>FC</code>"], answer: 1, hint: "254 ÷ 16 = 15 remainder 14; F = 15, E = 14", explanation: "254 = 15×16 + 14 = FE in hex." },
+  { id: "bc10", topic: "Base Conversions", difficulty: 2, question: "What is 75 in hexadecimal?", choices: ["<code>47</code>", "<code>4A</code>", "<code>4B</code>", "<code>4C</code>", "<code>4D</code>"], answer: 2, hint: "75 ÷ 16 = 4 remainder 11; B = 11", explanation: "75 = 4×16 + 11 = 4B in hex." },
 
   // ── BINARY TO HEXADECIMAL ──
-  { id: "bc11", topic: "Base Conversions", difficulty: 2, question: "Convert <code>11010110</code> (binary) to hexadecimal.", choices: ["<code>0xB6</code>", "<code>0xD6</code>", "<code>0xD8</code>", "<code>0xE6</code>", "<code>0x6D</code>"], answer: 1, hint: "Group into nibbles from the right: 1101 0110", explanation: "1101 = D, 0110 = 6. Result: 0xD6." },
-  { id: "bc12", topic: "Base Conversions", difficulty: 2, question: "Convert <code>10101111</code> (binary) to hexadecimal.", choices: ["<code>0xAE</code>", "<code>0xAF</code>", "<code>0xBF</code>", "<code>0xFA</code>", "<code>0x9F</code>"], answer: 1, hint: "Group: 1010 1111", explanation: "1010 = A, 1111 = F. Result: 0xAF." },
+  { id: "bc11", topic: "Base Conversions", difficulty: 2, question: "Convert <code>11010110</code> (binary) to hexadecimal.", choices: ["<code>B6</code>", "<code>D6</code>", "<code>D8</code>", "<code>E6</code>", "<code>6D</code>"], answer: 1, hint: "Group into nibbles from the right: 1101 0110", explanation: "1101 = D, 0110 = 6. Result: D6." },
+  { id: "bc12", topic: "Base Conversions", difficulty: 2, question: "Convert <code>10101111</code> (binary) to hexadecimal.", choices: ["<code>AE</code>", "<code>AF</code>", "<code>BF</code>", "<code>FA</code>", "<code>9F</code>"], answer: 1, hint: "Group: 1010 1111", explanation: "1010 = A, 1111 = F. Result: AF." },
 
   // ── HEXADECIMAL TO BINARY ──
-  { id: "bc13", topic: "Base Conversions", difficulty: 2, question: "Convert <code>0x3C</code> to binary.", choices: ["<code>00110100</code>", "<code>00111100</code>", "<code>01001100</code>", "<code>00111000</code>", "<code>01011100</code>"], answer: 1, hint: "3 = 0011, C = 1100", explanation: "3 = 0011, C = 1100. Result: 00111100." },
+  { id: "bc13", topic: "Base Conversions", difficulty: 2, question: "Convert hexadecimal <code>3C</code> to binary.", choices: ["<code>00110100</code>", "<code>00111100</code>", "<code>01001100</code>", "<code>00111000</code>", "<code>01011100</code>"], answer: 1, hint: "3 = 0011, C = 1100", explanation: "3 = 0011, C = 1100. Result: 00111100." },
 
   // ── OCTAL CONVERSIONS ──
-  { id: "bc14", topic: "Base Conversions", difficulty: 2, question: "What is octal <code>075</code> in decimal?", choices: ["57", "59", "61", "63", "75"], answer: 2, hint: "7×8 + 5×1", explanation: "7×8 + 5 = 56 + 5 = 61." },
+  { id: "bc14", topic: "Base Conversions", difficulty: 2, question: "What is octal <code>75</code> in decimal?", choices: ["57", "59", "61", "63", "75"], answer: 2, hint: "7×8 + 5×1", explanation: "7×8 + 5 = 56 + 5 = 61." },
   { id: "bc15", topic: "Base Conversions", difficulty: 2, question: "What is 100 in octal?", choices: ["<code>140</code>", "<code>142</code>", "<code>144</code>", "<code>146</code>", "<code>150</code>"], answer: 2, hint: "100 ÷ 8 = 12 remainder 4; 12 ÷ 8 = 1 remainder 4", explanation: "100 = 1×64 + 4×8 + 4 = 144 in octal." },
 
   // ── BINARY ARITHMETIC ──
