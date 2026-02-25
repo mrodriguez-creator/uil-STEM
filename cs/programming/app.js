@@ -34,7 +34,7 @@ function loadStats() {
   catch { return defaultStats(); }
 }
 function defaultStats() {
-  return { totalRuns: 0, totalSubmissions: 0, solvedByDiff: { easy: 0, medium: 0, hard: 0, advanced: 0 }, history: [] };
+  return { totalRuns: 0, totalSubmissions: 0, solvedByDiff: { starter: 0, easy: 0, medium: 0, hard: 0, advanced: 0 }, history: [] };
 }
 function saveStats(s) { localStorage.setItem(STATS_KEY, JSON.stringify(s)); }
 
@@ -284,7 +284,7 @@ function render() {
 // ── MENU SCREEN ──
 function renderMenu() {
   const solved = loadSolved();
-  const difficulties = ['easy', 'medium', 'hard', 'advanced'];
+  const difficulties = ['starter', 'easy', 'medium', 'hard', 'advanced'];
   const grouped = {};
   difficulties.forEach(d => grouped[d] = []);
   PROBLEMS.forEach(p => {
@@ -535,7 +535,7 @@ function retryProblem() {
 function renderStats() {
   const stats = loadStats();
   const solved = loadSolved();
-  const difficulties = ['easy', 'medium', 'hard', 'advanced'];
+  const difficulties = ['starter', 'easy', 'medium', 'hard', 'advanced'];
 
   const countByDiff = {};
   difficulties.forEach(d => countByDiff[d] = PROBLEMS.filter(p => p.difficulty.toLowerCase() === d).length);
