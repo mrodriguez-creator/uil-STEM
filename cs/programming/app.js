@@ -1,5 +1,5 @@
 // UIL CS Programming Trainer – Main Application
-// Vanilla JS SPA: Monaco Editor + Piston API (free, no key required)
+// Vanilla JS SPA: Monaco Editor + Judge0 CE API (free, no key required)
 
 const app = document.getElementById('app');
 
@@ -111,21 +111,22 @@ function createEditor(containerId, initialCode) {
   }
 }
 
-// ── PISTON API (free, no key required) ──
-const PISTON_URL = 'https://emkc.org/api/v2/piston/execute';
+// ── JUDGE0 CE API (free, no key required, Java 17) ──
+const JUDGE0_URL = 'https://ce.judge0.com/submissions/?base64_encoded=false&wait=true';
 
 async function runCode(code, stdin) {
+  // Judge0 always uses Main.java, so rewrite the class name to Main
+  const originalClass = extractClassName(code);
+  const submissionCode = code.replace('public class ' + originalClass, 'public class Main');
+
   try {
-    const resp = await fetch(PISTON_URL, {
+    const resp = await fetch(JUDGE0_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        language: 'java',
-        version: '15.0.2',
-        files: [{ name: extractClassName(code) + '.java', content: code }],
+        source_code: submissionCode,
+        language_id: 91,  // Java (JDK 17.0.6)
         stdin: stdin || '',
-        compile_timeout: 15000,
-        run_timeout: 10000,
       })
     });
 
@@ -135,23 +136,26 @@ async function runCode(code, stdin) {
 
     const data = await resp.json();
 
-    // Piston returns { run: { stdout, stderr, code, signal, output }, compile: { ... } }
-    if (data.compile && data.compile.stderr) {
-      return { error: data.compile.stderr };
+    // Judge0 status IDs: 3=Accepted, 4=Wrong Answer, 5=TLE, 6=Compilation Error, etc.
+    if (data.status && data.status.id === 6) {
+      // Compilation error — translate "Main" back to original class name in error messages
+      let errMsg = data.compile_output || 'Compilation error';
+      errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
+      return { error: errMsg };
     }
 
-    if (data.run) {
-      if (data.run.stderr) {
-        return { error: data.run.stderr };
-      }
-      return { output: data.run.stdout || data.run.output || '' };
+    if (data.status && data.status.id >= 7) {
+      // Runtime error
+      let errMsg = data.stderr || data.compile_output || data.status.description;
+      errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
+      return { error: errMsg };
     }
 
-    if (data.message) {
-      return { error: data.message };
+    if (data.status && data.status.id === 5) {
+      return { error: 'Time Limit Exceeded — your code took too long to run.' };
     }
 
-    return { output: '' };
+    return { output: data.stdout || '' };
   } catch (e) {
     return { error: `Network error: ${e.message}` };
   }
