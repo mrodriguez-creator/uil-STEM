@@ -1,5 +1,5 @@
 // UIL CS Programming Trainer – Main Application
-// Vanilla JS SPA: Monaco Editor + JDoodle Compiler API
+// Vanilla JS SPA: Monaco Editor + Piston API (free, no key required)
 
 const app = document.getElementById('app');
 
@@ -14,22 +14,14 @@ const state = {
   testResults: [],         // [{name, input, expected, actual, passed}]
   consoleTab: 'output',    // output | testcases
   hintVisible: false,
-  showSettings: false,
   editorReady: false,
 };
 
 let editor = null;  // Monaco editor instance
 
 // ── PERSISTENCE ──
-const CREDS_KEY = 'uil-prog-creds';
 const STATS_KEY = 'uil-prog-stats';
 const SOLVED_KEY = 'uil-prog-solved';
-
-function loadCreds() {
-  try { return JSON.parse(localStorage.getItem(CREDS_KEY)) || { clientId: '', clientSecret: '' }; }
-  catch { return { clientId: '', clientSecret: '' }; }
-}
-function saveCreds(c) { localStorage.setItem(CREDS_KEY, JSON.stringify(c)); }
 
 function loadSolved() {
   try { return new Set(JSON.parse(localStorage.getItem(SOLVED_KEY)) || []); }
@@ -119,24 +111,21 @@ function createEditor(containerId, initialCode) {
   }
 }
 
-// ── JDOODLE API ──
-async function runCode(code, stdin) {
-  const creds = loadCreds();
-  if (!creds.clientId || !creds.clientSecret) {
-    return { error: 'NO_CREDS' };
-  }
+// ── PISTON API (free, no key required) ──
+const PISTON_URL = 'https://emkc.org/api/v2/piston/execute';
 
+async function runCode(code, stdin) {
   try {
-    const resp = await fetch('https://api.jdoodle.com/v1/execute', {
+    const resp = await fetch(PISTON_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        clientId: creds.clientId,
-        clientSecret: creds.clientSecret,
-        script: code,
-        stdin: stdin || '',
         language: 'java',
-        versionIndex: '5', // Java 17.0.1
+        version: '15.0.2',
+        files: [{ name: extractClassName(code) + '.java', content: code }],
+        stdin: stdin || '',
+        compile_timeout: 15000,
+        run_timeout: 10000,
       })
     });
 
@@ -146,15 +135,23 @@ async function runCode(code, stdin) {
 
     const data = await resp.json();
 
-    if (data.error) {
-      // JDoodle returns compilation/runtime errors in the output field
-      if (data.statusCode === 200 && data.output) {
-        return { output: data.output, cpuTime: data.cpuTime, memory: data.memory };
-      }
-      return { error: data.error };
+    // Piston returns { run: { stdout, stderr, code, signal, output }, compile: { ... } }
+    if (data.compile && data.compile.stderr) {
+      return { error: data.compile.stderr };
     }
 
-    return { output: data.output || '', cpuTime: data.cpuTime, memory: data.memory };
+    if (data.run) {
+      if (data.run.stderr) {
+        return { error: data.run.stderr };
+      }
+      return { output: data.run.stdout || data.run.output || '' };
+    }
+
+    if (data.message) {
+      return { error: data.message };
+    }
+
+    return { output: '' };
   } catch (e) {
     return { error: `Network error: ${e.message}` };
   }
@@ -172,32 +169,16 @@ async function handleRun() {
 
   const result = await runCode(code, stdin);
 
-  if (result.error === 'NO_CREDS') {
-    setState({
-      running: false,
-      compileError: null,
-      output: '',
-      consoleTab: 'output',
-      showSettings: true,
-    });
-    return;
-  }
-
   if (result.error) {
     setState({ running: false, compileError: result.error, output: '' });
     return;
   }
 
-  // Check if output contains compilation error markers
   const out = result.output || '';
-  if (out.includes('error:') && (out.includes('.java:') || out.includes('Exception'))) {
-    setState({ running: false, compileError: out, output: '' });
-  } else {
-    const stats = loadStats();
-    stats.totalRuns++;
-    saveStats(stats);
-    setState({ running: false, output: out, compileError: null });
-  }
+  const stats = loadStats();
+  stats.totalRuns++;
+  saveStats(stats);
+  setState({ running: false, output: out, compileError: null });
 }
 
 async function handleSubmit() {
@@ -213,11 +194,6 @@ async function handleSubmit() {
   for (let i = 0; i < prob.testCases.length; i++) {
     const tc = prob.testCases[i];
     const result = await runCode(code, tc.input);
-
-    if (result.error === 'NO_CREDS') {
-      setState({ running: false, showSettings: true });
-      return;
-    }
 
     if (result.error) {
       results.push({
@@ -320,7 +296,6 @@ function renderMenu() {
       <a href="../index.html" class="back-link">&larr; CS Home</a>
       <h1>⌨️ Programming Trainer</h1>
       <p>${totalSolved}/${totalProblems} problems solved</p>
-      <button class="settings-btn" onclick="setState({showSettings:true})">⚙️ API Key</button>
     </div>
     <div class="menu-wrap">
       <div class="menu-header">
@@ -344,7 +319,6 @@ function renderMenu() {
         </div>
       `).join('')}
     </div>
-    ${state.showSettings ? renderSettingsModal() : ''}
   `;
 }
 
@@ -376,7 +350,6 @@ function renderProblem() {
     <div class="header" style="padding: 10px 20px 8px;">
       <a href="../index.html" class="back-link">&larr; CS Home</a>
       <h1 style="font-size:1.2rem;">⌨️ Programming Trainer</h1>
-      <button class="settings-btn" onclick="setState({showSettings:true})">⚙️</button>
     </div>
     <div class="problem-screen">
       <div class="prob-bar">
@@ -438,7 +411,6 @@ function renderProblem() {
         </div>
       </div>
     </div>
-    ${state.showSettings ? renderSettingsModal() : ''}
   `;
 
   // Re-mount editor if it was already created (render causes DOM rebuild)
@@ -569,7 +541,6 @@ function renderStats() {
       <a href="../index.html" class="back-link">&larr; CS Home</a>
       <h1>⌨️ Programming Trainer</h1>
       <p>Your Statistics</p>
-      <button class="settings-btn" onclick="setState({showSettings:true})">⚙️</button>
     </div>
     <div class="stats-wrap">
       <button class="btn-outline" onclick="setState({screen:'menu'})" style="margin-bottom:20px;">&larr; Back to Problems</button>
@@ -642,52 +613,12 @@ function clearAllStats() {
   render();
 }
 
-// ── SETTINGS MODAL ──
-function renderSettingsModal() {
-  const creds = loadCreds();
-  return `
-    <div class="modal-overlay" onclick="closeSettings(event)">
-      <div class="modal" onclick="event.stopPropagation()">
-        <h3>⚙️ JDoodle API Setup</h3>
-        <p>To compile and run Java code, you need a free JDoodle account.</p>
-
-        <label>Client ID</label>
-        <input type="text" id="inp-clientId" value="${escapeHtml(creds.clientId)}" placeholder="Paste your Client ID here">
-
-        <label>Client Secret</label>
-        <input type="password" id="inp-clientSecret" value="${escapeHtml(creds.clientSecret)}" placeholder="Paste your Client Secret here">
-
-        <div class="help-text" style="margin-top: 12px;">
-          <strong>How to get your free API key:</strong><br>
-          1. Go to <a href="https://www.jdoodle.com/compiler-api/" target="_blank">jdoodle.com/compiler-api</a><br>
-          2. Sign up for a free account<br>
-          3. Copy your Client ID and Client Secret from My Account → API<br>
-          4. Free tier: 200 code executions per day
-        </div>
-
-        <div class="modal-actions">
-          <button class="btn-outline" onclick="setState({showSettings:false})">Cancel</button>
-          <button class="btn-primary" onclick="saveSettingsFromForm()">Save</button>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-function closeSettings(e) {
-  if (e.target.classList.contains('modal-overlay')) {
-    setState({ showSettings: false });
-  }
-}
-
-function saveSettingsFromForm() {
-  const clientId = document.getElementById('inp-clientId').value.trim();
-  const clientSecret = document.getElementById('inp-clientSecret').value.trim();
-  saveCreds({ clientId, clientSecret });
-  setState({ showSettings: false });
-}
-
 // ── HELPERS ──
+function extractClassName(code) {
+  const match = code.match(/public\s+class\s+(\w+)/);
+  return match ? match[1] : 'Main';
+}
+
 function escapeHtml(s) {
   if (!s) return '';
   return s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
