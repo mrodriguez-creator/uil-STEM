@@ -1,0 +1,410 @@
+/* UIL CS Programming Trainer – Styles */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0f1419;
+  color: #e2e8f0;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.header {
+  background: linear-gradient(135deg, #805ad5 0%, #553c9a 100%);
+  padding: 16px 20px 12px;
+  text-align: center;
+  position: relative;
+}
+.header h1 { font-size: 1.6rem; margin-bottom: 2px; color: #fff; }
+.header p { color: #d6bcfa; font-size: 0.85rem; }
+.back-link {
+  position: absolute; top: 16px; left: 18px;
+  color: rgba(255,255,255,0.8); text-decoration: none;
+  font-size: 0.85rem; font-weight: 600;
+}
+.back-link:hover { color: #fff; }
+.settings-btn {
+  position: absolute; top: 14px; right: 18px;
+  background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+  color: #fff; padding: 5px 12px; border-radius: 8px; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; transition: background .2s;
+}
+.settings-btn:hover { background: rgba(255,255,255,0.25); }
+
+/* ── MENU SCREEN ── */
+.menu-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+.menu-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.menu-header h2 { font-size: 1.2rem; color: #e2e8f0; }
+.stats-link {
+  color: #b794f4; font-size: 0.85rem; font-weight: 600;
+  text-decoration: none; cursor: pointer;
+}
+.stats-link:hover { text-decoration: underline; }
+
+.diff-section { margin-bottom: 28px; }
+.diff-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
+  font-weight: 700; margin-bottom: 10px; padding-left: 2px;
+}
+.diff-label.easy { color: #48bb78; }
+.diff-label.medium { color: #ecc94b; }
+.diff-label.hard { color: #f6ad55; }
+.diff-label.advanced { color: #fc8181; }
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+.problem-card {
+  background: #1a1f2e;
+  border: 2px solid #2d3748;
+  border-radius: 12px;
+  padding: 16px 18px;
+  cursor: pointer;
+  transition: border-color .2s, transform .15s, box-shadow .2s;
+  display: flex; flex-direction: column;
+}
+.problem-card:hover {
+  border-color: #805ad5;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(128, 90, 213, 0.15);
+}
+.problem-card.solved { border-color: #48bb78; }
+.problem-card.solved:hover { border-color: #68d391; box-shadow: 0 6px 20px rgba(72, 187, 120, 0.15); }
+
+.pc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
+.pc-name { font-size: 1rem; font-weight: 700; }
+.pc-badge {
+  font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px;
+}
+.pc-badge.solved { background: #48bb78; color: #fff; }
+.pc-badge.new { background: #4a5568; color: #a0aec0; }
+.pc-concepts { color: #718096; font-size: 0.78rem; margin-top: 4px; }
+
+/* ── PROBLEM SCREEN ── */
+.problem-screen { display: flex; flex-direction: column; height: calc(100vh - 56px); }
+
+/* Top bar */
+.prob-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 16px;
+  background: #151a24;
+  border-bottom: 1px solid #2d3748;
+  flex-shrink: 0;
+}
+.prob-bar-left { display: flex; align-items: center; gap: 12px; }
+.prob-back {
+  background: none; border: 1px solid #4a5568; color: #a0aec0;
+  padding: 4px 12px; border-radius: 6px; cursor: pointer;
+  font-size: 0.82rem; font-weight: 600; transition: all .2s;
+}
+.prob-back:hover { border-color: #805ad5; color: #e2e8f0; }
+.prob-title { font-size: 1rem; font-weight: 700; }
+.prob-diff {
+  font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;
+  padding: 2px 8px; border-radius: 10px; font-weight: 700;
+}
+.prob-diff.easy { background: #276749; color: #9ae6b4; }
+.prob-diff.medium { background: #744210; color: #fefcbf; }
+.prob-diff.hard { background: #7b341e; color: #fbd38d; }
+.prob-diff.advanced { background: #742a2a; color: #feb2b2; }
+
+.prob-bar-right { display: flex; gap: 8px; }
+.btn {
+  padding: 6px 16px; border-radius: 8px; font-size: 0.85rem;
+  font-weight: 600; cursor: pointer; border: none; transition: all .2s;
+}
+.btn-run { background: #48bb78; color: #fff; }
+.btn-run:hover { background: #38a169; }
+.btn-run:disabled { background: #2d3748; color: #718096; cursor: not-allowed; }
+.btn-submit { background: #805ad5; color: #fff; }
+.btn-submit:hover { background: #6b46c1; }
+.btn-submit:disabled { background: #2d3748; color: #718096; cursor: not-allowed; }
+.btn-reset { background: none; border: 1px solid #4a5568; color: #a0aec0; }
+.btn-reset:hover { border-color: #fc8181; color: #fc8181; }
+
+/* Split pane */
+.split-pane { display: flex; flex: 1; overflow: hidden; }
+
+/* Left panel - problem description */
+.left-panel {
+  width: 40%;
+  min-width: 300px;
+  border-right: 2px solid #2d3748;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background: #141821;
+}
+.prob-desc {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  line-height: 1.65;
+}
+.prob-desc h3 {
+  font-size: 1rem; color: #b794f4;
+  margin: 18px 0 8px; font-weight: 700;
+}
+.prob-desc h3:first-child { margin-top: 0; }
+.prob-desc p { margin-bottom: 10px; color: #cbd5e0; font-size: 0.9rem; }
+.prob-desc ul, .prob-desc ol {
+  margin: 8px 0 12px 20px; color: #cbd5e0; font-size: 0.9rem;
+}
+.prob-desc li { margin-bottom: 4px; }
+
+.sample-box {
+  background: #1a202c;
+  border: 1px solid #2d3748;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 8px 0 12px;
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+  font-size: 0.82rem;
+  white-space: pre-wrap;
+  color: #e2e8f0;
+  line-height: 1.5;
+}
+.sample-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
+  color: #805ad5; font-weight: 700; margin-bottom: 4px;
+}
+
+.hint-toggle {
+  background: none; border: 1px solid #4a5568; color: #b794f4;
+  padding: 4px 12px; border-radius: 6px; cursor: pointer;
+  font-size: 0.78rem; font-weight: 600; margin-top: 4px; transition: all .2s;
+}
+.hint-toggle:hover { border-color: #805ad5; }
+.hint-box {
+  background: #1c2333; border: 1px solid #805ad5;
+  border-radius: 8px; padding: 12px 14px; margin-top: 8px;
+  color: #d6bcfa; font-size: 0.85rem; line-height: 1.5;
+}
+
+.contest-note {
+  background: #1c2333; border: 1px solid #2d3748;
+  border-radius: 8px; padding: 10px 14px; margin-top: 12px;
+  font-size: 0.78rem; color: #718096; line-height: 1.45;
+}
+.contest-note strong { color: #a0aec0; }
+
+/* Right panel - editor + console */
+.right-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 0;
+}
+
+.editor-container {
+  flex: 1;
+  min-height: 200px;
+  overflow: hidden;
+}
+
+/* Console / Output area */
+.console-area {
+  height: 200px;
+  border-top: 2px solid #2d3748;
+  display: flex;
+  flex-direction: column;
+  background: #0d1117;
+}
+.console-tabs {
+  display: flex;
+  background: #151a24;
+  border-bottom: 1px solid #2d3748;
+}
+.console-tab {
+  padding: 6px 16px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #718096;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  background: none;
+  border-top: none; border-left: none; border-right: none;
+  transition: all .2s;
+}
+.console-tab:hover { color: #a0aec0; }
+.console-tab.active {
+  color: #b794f4;
+  border-bottom-color: #805ad5;
+}
+.console-output {
+  flex: 1;
+  padding: 10px 14px;
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+  font-size: 0.82rem;
+  color: #e2e8f0;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  line-height: 1.5;
+}
+.console-output .error { color: #fc8181; }
+.console-output .success { color: #48bb78; }
+.console-output .info { color: #805ad5; }
+.console-output .muted { color: #4a5568; }
+
+/* Running spinner */
+.spinner {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border: 2px solid rgba(255,255,255,0.2);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── RESULTS SCREEN ── */
+.results-wrap { max-width: 800px; margin: 0 auto; padding: 28px 20px 60px; }
+.results-wrap h2 { font-size: 1.3rem; margin-bottom: 4px; }
+.results-summary {
+  display: flex; gap: 16px; margin: 16px 0 24px; flex-wrap: wrap;
+}
+.res-stat {
+  background: #1a1f2e; border: 1px solid #2d3748;
+  border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 120px;
+}
+.res-stat .val { font-size: 1.5rem; font-weight: 700; }
+.res-stat .lbl { font-size: 0.72rem; color: #718096; text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+.res-stat .val.pass { color: #48bb78; }
+.res-stat .val.fail { color: #fc8181; }
+
+.tc-list { display: flex; flex-direction: column; gap: 10px; }
+.tc-card {
+  background: #1a1f2e; border: 2px solid #2d3748;
+  border-radius: 10px; padding: 14px 16px;
+}
+.tc-card.pass { border-color: #276749; }
+.tc-card.fail { border-color: #742a2a; }
+.tc-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+.tc-label { font-weight: 700; font-size: 0.9rem; }
+.tc-status { font-size: 0.75rem; font-weight: 700; padding: 2px 8px; border-radius: 8px; }
+.tc-status.pass { background: #276749; color: #9ae6b4; }
+.tc-status.fail { background: #742a2a; color: #feb2b2; }
+.tc-diff {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+.tc-col label {
+  display: block; font-size: 0.68rem; text-transform: uppercase;
+  letter-spacing: 1px; color: #718096; margin-bottom: 4px; font-weight: 700;
+}
+.tc-col pre {
+  background: #0d1117; border: 1px solid #2d3748;
+  border-radius: 6px; padding: 8px 10px;
+  font-family: "Cascadia Code", "Fira Code", "Consolas", monospace;
+  font-size: 0.8rem; white-space: pre-wrap;
+  color: #e2e8f0; min-height: 32px; max-height: 200px; overflow-y: auto;
+}
+.tc-col pre.fail-text { border-color: #742a2a; }
+
+.results-actions { margin-top: 20px; display: flex; gap: 10px; }
+.btn-outline {
+  background: none; border: 2px solid #4a5568; color: #e2e8f0;
+  padding: 8px 20px; border-radius: 8px; font-size: 0.9rem;
+  font-weight: 600; cursor: pointer; transition: all .2s;
+}
+.btn-outline:hover { border-color: #805ad5; color: #b794f4; }
+.btn-primary {
+  background: #805ad5; border: none; color: #fff;
+  padding: 8px 20px; border-radius: 8px; font-size: 0.9rem;
+  font-weight: 600; cursor: pointer; transition: all .2s;
+}
+.btn-primary:hover { background: #6b46c1; }
+
+/* ── STATS SCREEN ── */
+.stats-wrap { max-width: 800px; margin: 0 auto; padding: 28px 20px 60px; }
+.stats-wrap h2 { font-size: 1.3rem; margin-bottom: 16px; }
+
+.stat-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px; margin-bottom: 28px;
+}
+.stat-card {
+  background: #1a1f2e; border: 1px solid #2d3748;
+  border-radius: 10px; padding: 16px; text-align: center;
+}
+.stat-card .val { font-size: 1.8rem; font-weight: 800; color: #b794f4; }
+.stat-card .lbl {
+  font-size: 0.7rem; color: #718096; text-transform: uppercase;
+  letter-spacing: 1px; margin-top: 4px;
+}
+
+.diff-stats { margin-bottom: 20px; }
+.diff-stats h3 { font-size: 0.95rem; margin-bottom: 10px; }
+.diff-bar {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 8px;
+}
+.diff-bar-label {
+  width: 80px; font-size: 0.8rem; font-weight: 600;
+  text-transform: capitalize;
+}
+.diff-bar-track {
+  flex: 1; height: 8px; background: #2d3748;
+  border-radius: 4px; overflow: hidden;
+}
+.diff-bar-fill {
+  height: 100%; border-radius: 4px;
+  transition: width 0.4s ease;
+}
+.diff-bar-fill.easy { background: #48bb78; }
+.diff-bar-fill.medium { background: #ecc94b; }
+.diff-bar-fill.hard { background: #f6ad55; }
+.diff-bar-fill.advanced { background: #fc8181; }
+.diff-bar-pct { width: 40px; font-size: 0.8rem; color: #a0aec0; text-align: right; }
+
+/* ── SETTINGS MODAL ── */
+.modal-overlay {
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.7); display: flex;
+  align-items: center; justify-content: center; z-index: 1000;
+}
+.modal {
+  background: #1a1f2e; border: 2px solid #2d3748;
+  border-radius: 16px; padding: 28px; width: 90%; max-width: 440px;
+}
+.modal h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.modal p { color: #718096; font-size: 0.85rem; margin-bottom: 16px; }
+.modal label {
+  display: block; font-size: 0.78rem; font-weight: 600;
+  color: #a0aec0; margin-bottom: 4px; margin-top: 12px;
+}
+.modal input {
+  width: 100%; padding: 8px 12px; background: #0d1117;
+  border: 1px solid #4a5568; border-radius: 8px;
+  color: #e2e8f0; font-size: 0.9rem; font-family: monospace;
+}
+.modal input:focus { outline: none; border-color: #805ad5; }
+.modal-actions { display: flex; gap: 10px; margin-top: 20px; justify-content: flex-end; }
+.modal .help-text {
+  font-size: 0.75rem; color: #4a5568; margin-top: 4px; line-height: 1.4;
+}
+.modal a { color: #b794f4; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .split-pane { flex-direction: column; }
+  .left-panel { width: 100%; min-width: unset; max-height: 40vh; border-right: none; border-bottom: 2px solid #2d3748; }
+  .right-panel { min-height: 50vh; }
+  .prob-bar { flex-wrap: wrap; gap: 8px; }
+  .prob-bar-right { width: 100%; justify-content: flex-end; }
+  .tc-diff { grid-template-columns: 1fr; }
+  .menu-wrap { padding: 20px 12px 40px; }
+  .problem-grid { grid-template-columns: 1fr; }
+}
+
+/* ── SCROLLBAR STYLING ── */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #4a5568; }
