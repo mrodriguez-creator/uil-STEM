@@ -3,8 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const dir = path.join(__dirname, 'problems');
-const files = ['starter.js', 'easy.js', 'medium.js', 'hard.js', 'advanced.js'];
-const constants = ['STARTER_PROBLEMS', 'EASY_PROBLEMS', 'MEDIUM_PROBLEMS', 'HARD_PROBLEMS', 'ADVANCED_PROBLEMS'];
+const files = ['starter.js', 'basics.js', 'easy.js', 'medium.js', 'hard.js', 'advanced.js'];
+const constants = ['STARTER_PROBLEMS', 'BASICS_PROBLEMS', 'EASY_PROBLEMS', 'MEDIUM_PROBLEMS', 'HARD_PROBLEMS', 'ADVANCED_PROBLEMS'];
 
 let allProblems = [];
 let errors = 0;

@@ -46,6 +46,7 @@ body {
   font-weight: 700; margin-bottom: 10px; padding-left: 2px;
 }
 .diff-label.starter { color: #63b3ed; }
+.diff-label.basics { color: #b794f4; }
 .diff-label.easy { color: #48bb78; }
 .diff-label.medium { color: #ecc94b; }
 .diff-label.hard { color: #f6ad55; }
@@ -107,6 +108,7 @@ body {
   padding: 2px 8px; border-radius: 10px; font-weight: 700;
 }
 .prob-diff.starter { background: #2a4365; color: #90cdf4; }
+.prob-diff.basics { background: #44337a; color: #d6bcfa; }
 .prob-diff.easy { background: #276749; color: #9ae6b4; }
 .prob-diff.medium { background: #744210; color: #fefcbf; }
 .prob-diff.hard { background: #7b341e; color: #fbd38d; }
@@ -360,6 +362,7 @@ body {
   transition: width 0.4s ease;
 }
 .diff-bar-fill.starter { background: #63b3ed; }
+.diff-bar-fill.basics { background: #b794f4; }
 .diff-bar-fill.easy { background: #48bb78; }
 .diff-bar-fill.medium { background: #ecc94b; }
 .diff-bar-fill.hard { background: #f6ad55; }

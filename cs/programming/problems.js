@@ -3,6 +3,7 @@
 
 const PROBLEMS = [
   ...STARTER_PROBLEMS,
+  ...BASICS_PROBLEMS,
   ...EASY_PROBLEMS,
   ...MEDIUM_PROBLEMS,
   ...HARD_PROBLEMS,
@@ -12,6 +13,7 @@ const PROBLEMS = [
 // Validate on load
 console.log(`[UIL Programming] Loaded ${PROBLEMS.length} problems:`);
 console.log(`  Starter: ${STARTER_PROBLEMS.length}`);
+console.log(`  Basics: ${BASICS_PROBLEMS.length}`);
 console.log(`  Easy: ${EASY_PROBLEMS.length}`);
 console.log(`  Medium: ${MEDIUM_PROBLEMS.length}`);
 console.log(`  Hard: ${HARD_PROBLEMS.length}`);
