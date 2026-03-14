@@ -5,7 +5,9 @@ const PROBLEMS = [
   ...STARTER_PROBLEMS,
   ...BASICS_PROBLEMS,
   ...EASY_PROBLEMS,
+  ...INTERMEDIATE_PROBLEMS,
   ...MEDIUM_PROBLEMS,
+  ...PREHARD_PROBLEMS,
   ...HARD_PROBLEMS,
   ...ADVANCED_PROBLEMS,
 ];
@@ -15,7 +17,9 @@ console.log(`[UIL Programming] Loaded ${PROBLEMS.length} problems:`);
 console.log(`  Starter: ${STARTER_PROBLEMS.length}`);
 console.log(`  Basics: ${BASICS_PROBLEMS.length}`);
 console.log(`  Easy: ${EASY_PROBLEMS.length}`);
+console.log(`  Intermediate: ${INTERMEDIATE_PROBLEMS.length}`);
 console.log(`  Medium: ${MEDIUM_PROBLEMS.length}`);
+console.log(`  Pre-Hard: ${PREHARD_PROBLEMS.length}`);
 console.log(`  Hard: ${HARD_PROBLEMS.length}`);
 console.log(`  Advanced: ${ADVANCED_PROBLEMS.length}`);
 

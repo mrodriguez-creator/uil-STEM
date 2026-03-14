@@ -48,8 +48,10 @@ body {
 .diff-label.starter { color: #63b3ed; }
 .diff-label.basics { color: #b794f4; }
 .diff-label.easy { color: #48bb78; }
+.diff-label.intermediate { color: #68d391; }
 .diff-label.medium { color: #ecc94b; }
-.diff-label.hard { color: #f6ad55; }
+.diff-label.pre-hard { color: #f6ad55; }
+.diff-label.hard { color: #ed8936; }
 .diff-label.advanced { color: #fc8181; }
 
 .problem-grid {
@@ -110,8 +112,10 @@ body {
 .prob-diff.starter { background: #2a4365; color: #90cdf4; }
 .prob-diff.basics { background: #44337a; color: #d6bcfa; }
 .prob-diff.easy { background: #276749; color: #9ae6b4; }
+.prob-diff.intermediate { background: #22543d; color: #c6f6d5; }
 .prob-diff.medium { background: #744210; color: #fefcbf; }
-.prob-diff.hard { background: #7b341e; color: #fbd38d; }
+.prob-diff.pre-hard { background: #7b341e; color: #fbd38d; }
+.prob-diff.hard { background: #652b19; color: #fbd38d; }
 .prob-diff.advanced { background: #742a2a; color: #feb2b2; }
 
 .prob-bar-right { display: flex; gap: 8px; }
@@ -364,8 +368,10 @@ body {
 .diff-bar-fill.starter { background: #63b3ed; }
 .diff-bar-fill.basics { background: #b794f4; }
 .diff-bar-fill.easy { background: #48bb78; }
+.diff-bar-fill.intermediate { background: #68d391; }
 .diff-bar-fill.medium { background: #ecc94b; }
-.diff-bar-fill.hard { background: #f6ad55; }
+.diff-bar-fill.pre-hard { background: #f6ad55; }
+.diff-bar-fill.hard { background: #ed8936; }
 .diff-bar-fill.advanced { background: #fc8181; }
 .diff-bar-pct { width: 40px; font-size: 0.8rem; color: #a0aec0; text-align: right; }
 
