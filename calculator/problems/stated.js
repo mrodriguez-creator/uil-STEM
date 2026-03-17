@@ -64,7 +64,7 @@ const STATED_PROBLEMS = [
   },
 
   // ── CONVERSION (1) ──
-  { id: "s7", category: "stated", topic: "Conversion",
+  { id: "s7", category: "stated", topic: "Unit Conversion",
     display: "A large truck holds 8500 7-in long cantaloupes. How many trucks would be needed to hold 12,000 15-in long watermelons?",
     plain: "Volume ratio: (15/7)^3 × 12000/8500 trucks",
     answerType: "integer", answer: 14, tolerance: 0, units: "",

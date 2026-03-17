@@ -457,7 +457,7 @@ function topicIcon(topic) {
     'Logarithms': '📊', 'Exponentials': '📈', 'Trigonometry': '📐',
     'Mixed Advanced': '🧩',
     'Unit Conversion': '🔄', 'Rate': '⏱', 'Percent': '💯',
-    'Geometry Word': '📏', 'Conversion': '🔄', 'Dollar': '💵',
+    'Geometry Word': '📏', 'Dollar': '💵',
     'Statistics': '📊', 'Integer': '🔢', 'SD': '🎯',
     'Optimization': '⚡', 'Calculus': '∫', 'Matrix': '🔲',
     'Semicircle': '🌙', 'Trapezoid': '⬡', 'Right Triangle': '📐',

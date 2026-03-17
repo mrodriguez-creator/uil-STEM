@@ -55,7 +55,6 @@ const TOPIC_ORDER = {
   'stated|Integer':                 { sort: 3, page: 'Pg 1' },
   // Page 2-3: Medium General (unit conversion, rate, percent, geometry word)
   'stated|Unit Conversion':         { sort: 4, page: 'Pg 2' },
-  'stated|Conversion':              { sort: 5, page: 'Pg 2' },
   'stated|Rate':                    { sort: 6, page: 'Pg 2-3' },
   'stated|Percent':                 { sort: 7, page: 'Pg 2-3' },
   'stated|Geometry Word':           { sort: 8, page: 'Pg 2-3' },
