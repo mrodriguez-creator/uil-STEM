@@ -498,5 +498,296 @@ public class Putting_It_Together {
     hint: "Use an array to store all scores (you need them twice \u2014 once for the sum, once to count above average). Cast to double before dividing for the average. Use <code>printf(\"%.1f %d\\n\", avg, above)</code> for the output.",
     concepts: ["arrays", "accumulator", "type casting", "printf", "multi-step problem"],
     dataFile: "together.dat"
+  },
+
+  // ==================== I9: Array Search ====================
+  {
+    id: "i9",
+    name: "Array Search",
+    difficulty: "Intermediate",
+    description:
+      "Given an array of integers and a target value, find the <b>index</b> of the first occurrence of the target. If not found, print <code>-1</code>.<br><br>" +
+      "This is called a <b>linear search</b> — you check each element one by one.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>" +
+      "For each test case: the first line contains <b>N</b> and <b>target</b>. The next line contains <b>N</b> integers.",
+    outputFormat:
+      "For each test case, print the 0-based index of the first occurrence of target, or <code>-1</code> if not found.",
+    constraints: "1 &le; T &le; 50<br>1 &le; N &le; 100",
+    sampleInput: "3\n5 30\n10 20 30 40 50\n4 99\n1 2 3 4\n6 5\n5 5 5 5 5 5",
+    sampleOutput: "2\n-1\n0",
+    testCases: [
+      { input: "3\n5 30\n10 20 30 40 50\n4 99\n1 2 3 4\n6 5\n5 5 5 5 5 5", expected: "2\n-1\n0\n" },
+      { input: "3\n3 3\n1 2 3\n1 1\n1\n5 7\n8 6 4 2 0", expected: "2\n0\n-1\n" },
+      { input: "2\n4 -5\n-5 0 5 -5\n3 0\n1 2 3", expected: "0\n-1\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Array_Search {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            int N = sc.nextInt();
+            int target = sc.nextInt();
+            int[] arr = new int[N];
+            for (int i = 0; i < N; i++) {
+                arr[i] = sc.nextInt();
+            }
+
+            // Find the index of the first occurrence of target
+            // Hint: loop through the array, check if arr[i] == target
+            // If found, print i and break. If not found, print -1.
+
+        }
+    }
+}`,
+    hint: "Use a variable <code>int index = -1;</code> before the loop. Inside the loop, if <code>arr[i] == target</code>, set <code>index = i;</code> and <code>break;</code>. After the loop, print <code>index</code>.",
+    concepts: ["linear search", "arrays", "break", "sentinel value"],
+    dataFile: "arraysearch.dat"
+  },
+
+  // ==================== I10: Circle Math ====================
+  {
+    id: "i10",
+    name: "Circle Math",
+    difficulty: "Intermediate",
+    description:
+      "Given the radius of a circle, compute its <b>area</b> and <b>circumference</b>.<br><br>" +
+      "Formulas:<br>" +
+      "<code>area = π × r²</code><br>" +
+      "<code>circumference = 2 × π × r</code><br><br>" +
+      "In Java, use <code>Math.PI</code> for π and <code>Math.pow(r, 2)</code> or <code>r * r</code> for r².<br>" +
+      "Print both values formatted to <b>2 decimal places</b>.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains a decimal number <b>r</b> (the radius).",
+    outputFormat:
+      "For each test case, print <code>[area] [circumference]</code> with both formatted to 2 decimal places.",
+    constraints: "1 &le; T &le; 50<br>0.01 &le; r &le; 1000.0",
+    sampleInput: "3\n1.0\n5.0\n2.5",
+    sampleOutput: "3.14 6.28\n78.54 31.42\n19.63 15.71",
+    testCases: [
+      { input: "3\n1.0\n5.0\n2.5", expected: "3.14 6.28\n78.54 31.42\n19.63 15.71\n" },
+      { input: "3\n10.0\n0.5\n100.0", expected: "314.16 62.83\n0.79 3.14\n31415.93 628.32\n" },
+      { input: "2\n3.0\n7.5", expected: "28.27 18.85\n176.71 47.12\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Circle_Math {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            double r = sc.nextDouble();
+
+            // Calculate area and circumference using Math.PI
+            // double area = Math.PI * r * r;
+            // double circ = 2 * Math.PI * r;
+
+            // Print both to 2 decimal places
+            // System.out.printf("%.2f %.2f\\n", area, circ);
+        }
+    }
+}`,
+    hint: "Use <code>Math.PI * r * r</code> for area and <code>2 * Math.PI * r</code> for circumference. Format with <code>printf(\"%.2f %.2f\\n\", area, circ)</code>.",
+    concepts: ["Math.PI", "Math.pow", "printf", "formulas"],
+    dataFile: "circlemath.dat"
+  },
+
+  // ==================== I11: Word Uppercase ====================
+  {
+    id: "i11",
+    name: "Word Uppercase",
+    difficulty: "Intermediate",
+    description:
+      "Given a sentence, capitalize the <b>first letter</b> of every word and make all other letters lowercase.<br><br>" +
+      "<b>Useful methods:</b><br>" +
+      "<code>Character.toUpperCase('a')</code> → <code>'A'</code><br>" +
+      "<code>Character.toLowerCase('B')</code> → <code>'b'</code><br>" +
+      "<code>str.substring(0, 1)</code> → first character as a String<br>" +
+      "<code>str.substring(1)</code> → everything after the first character",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains a sentence of words separated by spaces.",
+    outputFormat:
+      "For each test case, print the sentence with each word capitalized (first letter uppercase, rest lowercase).",
+    constraints: "1 &le; T &le; 50<br>Each line has at least 1 word.",
+    sampleInput: "3\nhello world\nUIL COMPUTER SCIENCE\njava programming",
+    sampleOutput: "Hello World\nUil Computer Science\nJava Programming",
+    testCases: [
+      { input: "3\nhello world\nUIL COMPUTER SCIENCE\njava programming", expected: "Hello World\nUil Computer Science\nJava Programming\n" },
+      { input: "3\na b c\nALREADY Good\nONE", expected: "A B C\nAlready Good\nOne\n" },
+      { input: "2\nthe quick brown fox\nmIxEd CaSe WoRdS", expected: "The Quick Brown Fox\nMixed Case Words\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Word_Uppercase {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = Integer.parseInt(sc.nextLine().trim());
+        for (int t = 0; t < T; t++) {
+            String line = sc.nextLine();
+            String[] words = line.split(" ");
+
+            // For each word:
+            //   - Make the first letter uppercase
+            //   - Make the rest lowercase
+            //   - Join them back with spaces
+
+        }
+    }
+}`,
+    hint: "For each word: <code>word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase()</code>. Join words with spaces using a StringBuilder or by printing with <code>System.out.print()</code>.",
+    concepts: ["String.split()", "substring()", "toUpperCase()", "toLowerCase()"],
+    dataFile: "wordupper.dat"
+  },
+
+  // ==================== I12: Frequency Count ====================
+  {
+    id: "i12",
+    name: "Frequency Count",
+    difficulty: "Intermediate",
+    description:
+      "Given <b>N</b> integers (each between 1 and 10), count how many times each number appears and print the counts.<br><br>" +
+      "<b>Technique: use an array as a frequency counter.</b><br>" +
+      "<pre>int[] freq = new int[11]; // indices 0-10, all start at 0\nfor (int i = 0; i &lt; N; i++) {\n    int x = sc.nextInt();\n    freq[x]++;  // increment the counter for value x\n}\n// Now freq[3] = how many times 3 appeared</pre>" +
+      "This technique is used in many UIL problems (character frequency, histogram, etc.).",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>For each test case: the first line contains <b>N</b>. The next line has <b>N</b> integers (each 1-10).",
+    outputFormat:
+      "For each test case, print only the values that appeared at least once, in the format <code>[value]:[count]</code> separated by spaces, in order from 1 to 10.",
+    constraints: "1 &le; T &le; 50<br>1 &le; N &le; 100<br>Each value is between 1 and 10.",
+    sampleInput: "3\n5\n3 1 3 2 1\n3\n5 5 5\n10\n1 2 3 4 5 6 7 8 9 10",
+    sampleOutput: "1:2 2:1 3:2\n5:3\n1:1 2:1 3:1 4:1 5:1 6:1 7:1 8:1 9:1 10:1",
+    testCases: [
+      { input: "3\n5\n3 1 3 2 1\n3\n5 5 5\n10\n1 2 3 4 5 6 7 8 9 10", expected: "1:2 2:1 3:2\n5:3\n1:1 2:1 3:1 4:1 5:1 6:1 7:1 8:1 9:1 10:1\n" },
+      { input: "2\n6\n1 1 1 1 1 1\n4\n10 10 1 1", expected: "1:6\n1:2 10:2\n" },
+      { input: "1\n8\n7 7 3 3 7 3 7 3", expected: "3:4 7:4\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Frequency_Count {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            int N = sc.nextInt();
+
+            // Step 1: Create a frequency array of size 11 (for values 1-10)
+            int[] freq = new int[11];
+
+            // Step 2: Read N numbers and count them
+            for (int i = 0; i < N; i++) {
+                int x = sc.nextInt();
+                freq[x]++;
+            }
+
+            // Step 3: Print values that appeared at least once
+            // Loop from 1 to 10, skip values with freq[i] == 0
+
+        }
+    }
+}`,
+    hint: "After counting, loop from 1 to 10. For each <code>i</code> where <code>freq[i] > 0</code>, print <code>i + \":\" + freq[i]</code>. Use a StringBuilder or track whether to print a leading space.",
+    concepts: ["frequency array", "counting", "array as map", "histogram"],
+    dataFile: "freqcount.dat"
+  },
+
+  // ==================== I13: Number Swap ====================
+  {
+    id: "i13",
+    name: "Swap Sort",
+    difficulty: "Intermediate",
+    description:
+      "Given 3 integers, print them in <b>ascending order</b> (smallest to largest).<br><br>" +
+      "<b>Technique: sorting with swaps.</b> You can sort 3 numbers by comparing pairs and swapping when out of order:<br>" +
+      "<pre>if (a > b) { int temp = a; a = b; b = temp; }  // swap a,b\nif (a > c) { int temp = a; a = c; c = temp; }  // swap a,c\nif (b > c) { int temp = b; b = c; c = temp; }  // swap b,c\n// Now a <= b <= c</pre>" +
+      "Or use <code>Arrays.sort()</code>:<br>" +
+      "<pre>int[] nums = {a, b, c};\nArrays.sort(nums);  // sorts in ascending order</pre>",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains three space-separated integers.",
+    outputFormat:
+      "For each test case, print the three numbers in ascending order separated by spaces.",
+    constraints: "1 &le; T &le; 50<br>-10000 &le; each number &le; 10000",
+    sampleInput: "3\n3 1 2\n5 5 5\n-1 0 1",
+    sampleOutput: "1 2 3\n5 5 5\n-1 0 1",
+    testCases: [
+      { input: "3\n3 1 2\n5 5 5\n-1 0 1", expected: "1 2 3\n5 5 5\n-1 0 1\n" },
+      { input: "4\n100 -100 0\n9 8 7\n1 1 2\n-5 -10 -1", expected: "-100 0 100\n7 8 9\n1 1 2\n-10 -5 -1\n" },
+      { input: "2\n42 42 41\n0 0 0", expected: "41 42 42\n0 0 0\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Swap_Sort {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            int c = sc.nextInt();
+
+            // Option 1: Manual swaps
+            // if (a > b) { int temp = a; a = b; b = temp; }
+            // if (a > c) { int temp = a; a = c; c = temp; }
+            // if (b > c) { int temp = b; b = c; c = temp; }
+
+            // Option 2: Arrays.sort
+            // int[] nums = {a, b, c};
+            // Arrays.sort(nums);
+            // a = nums[0]; b = nums[1]; c = nums[2];
+
+            // System.out.println(a + " " + b + " " + c);
+        }
+    }
+}`,
+    hint: "Either do 3 comparisons with swaps (if a>b swap, if a>c swap, if b>c swap), or put them in an array and use <code>Arrays.sort()</code>.",
+    concepts: ["sorting", "swap pattern", "Arrays.sort()", "comparison"],
+    dataFile: "swapsort.dat"
+  },
+
+  // ==================== I14: Double Input ====================
+  {
+    id: "i14",
+    name: "Mixed Input",
+    difficulty: "Intermediate",
+    description:
+      "Practice reading <b>mixed types</b> on the same line: integers, doubles, and strings.<br><br>" +
+      "A store item has a name (one word), a quantity (integer), and a price (decimal). Compute the <b>total cost</b> for each item and format it as currency (2 decimal places).<br><br>" +
+      "<b>Reading mixed types:</b><br>" +
+      "<pre>String name = sc.next();       // reads one word\nint qty = sc.nextInt();         // reads integer\ndouble price = sc.nextDouble(); // reads decimal</pre>" +
+      "Scanner automatically skips whitespace between values, so these all work even when on the same line.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains a name (one word), a quantity (integer), and a unit price (decimal).",
+    outputFormat:
+      "For each test case, print <code>[name]: $[total]</code> where total is quantity × price formatted to 2 decimal places.",
+    constraints: "1 &le; T &le; 50<br>1 &le; quantity &le; 1000<br>0.01 &le; price &le; 10000.00",
+    sampleInput: "3\nPencil 12 0.50\nNotebook 3 4.99\nCalculator 1 115.00",
+    sampleOutput: "Pencil: $6.00\nNotebook: $14.97\nCalculator: $115.00",
+    testCases: [
+      { input: "3\nPencil 12 0.50\nNotebook 3 4.99\nCalculator 1 115.00", expected: "Pencil: $6.00\nNotebook: $14.97\nCalculator: $115.00\n" },
+      { input: "2\nApple 100 1.25\nWater 1 0.01", expected: "Apple: $125.00\nWater: $0.01\n" },
+      { input: "4\nA 1 1.00\nB 2 2.50\nC 10 0.99\nD 5 3.33", expected: "A: $1.00\nB: $5.00\nC: $9.90\nD: $16.65\n" }
+    ],
+    starterCode: `import java.util.*;
+
+public class Mixed_Input {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            // Read a String, int, and double from the same line
+            String name = sc.next();
+            int qty = sc.nextInt();
+            double price = sc.nextDouble();
+
+            // Compute total and print formatted
+            // double total = qty * price;
+            // System.out.printf("%s: $%.2f\\n", name, total);
+        }
+    }
+}`,
+    hint: "Multiply <code>qty * price</code> (Java auto-casts qty to double). Use <code>printf(\"%s: $%.2f\\n\", name, total)</code> for the output.",
+    concepts: ["mixed type input", "sc.next()", "sc.nextDouble()", "printf"],
+    dataFile: "mixedinput.dat"
   }
 ];
