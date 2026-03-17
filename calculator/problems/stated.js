@@ -1,5 +1,5 @@
 // UIL Calculator Applications – Stated Problems
-// 60 problems
+// 93 problems
 //
 const STATED_PROBLEMS = [
 
@@ -439,17 +439,264 @@ const STATED_PROBLEMS = [
     hint: "<b>Cost per item</b> (= total &divide; count). Type: 1.29 &divide; 104"
   },
   { id: "s42", category: "stated", topic: "Unit Conversion",
-    display: "Convert 4.38 miles to kilometers. (1 mile = 1.609 km)",
+    display: "Convert 4.38 miles to kilometers.",
     plain: "4.38 miles to km",
     answerType: "standard", answer: 7.05, tolerance: 0.01, units: "km",
     explanation: "4.38 × 1.609 = 7.047 ≈ 7.05 km.",
     hint: "<b>Convert</b> (= &times; conversion factor). 1 mile = 1.609 km. Type: 4.38 &times; 1.609"
   },
   { id: "s43", category: "stated", topic: "Unit Conversion",
-    display: "Convert 156 pounds to kilograms. (1 kg = 2.205 lb)",
+    display: "Convert 156 pounds to kilograms.",
     plain: "156 lb to kg",
     answerType: "standard", answer: 70.7, tolerance: 0.1, units: "kg",
     explanation: "156 / 2.205 = 70.75 ≈ 70.7 kg.",
     hint: "<b>Convert</b> (= &divide; conversion factor when going to bigger unit). 1 kg = 2.205 lb. Type: 156 &divide; 2.205"
+  },
+
+  // ── NEW PAGE 1 – TRANSLATION (5 more) ──
+  { id: "s61", category: "stated", topic: "Translation",
+    display: "What is the quotient of 847.3 divided by the square root of 19.6?",
+    plain: "847.3 / √19.6",
+    answerType: "standard", answer: 191, tolerance: 1, units: "",
+    explanation: "√19.6 = 4.427. 847.3 / 4.427 = 191.4 ≈ 191.",
+    hint: "<b>Quotient</b> (= &divide;), <b>square root</b> (= &radic;). Type: 847.3 &divide; &radic;19.6"
+  },
+  { id: "s62", category: "stated", topic: "Translation",
+    display: "What is the sum of the squares of 7.4 and 5.9?",
+    plain: "7.4² + 5.9²",
+    answerType: "standard", answer: 89.6, tolerance: 0.1, units: "",
+    explanation: "7.4² = 54.76. 5.9² = 34.81. Sum = 89.57 ≈ 89.6.",
+    hint: "<b>Sum</b> (= add), <b>squares</b> (= raise to 2nd power). Type: 7.4<sup>2</sup> + 5.9<sup>2</sup>"
+  },
+  { id: "s63", category: "stated", topic: "Translation",
+    display: "What is 12.5% of the difference between 436 and 289?",
+    plain: "0.125 × (436 - 289)",
+    answerType: "standard", answer: 18.4, tolerance: 0.1, units: "",
+    explanation: "Difference = 436 - 289 = 147. 12.5% of 147 = 0.125 × 147 = 18.375 ≈ 18.4.",
+    hint: "<b>Difference</b> (= subtract), <b>of</b> (= &times;). Type: 0.125 &times; (436 &minus; 289)"
+  },
+  { id: "s64", category: "stated", topic: "Translation",
+    display: "What is the cube root of 4913 divided by the fourth root of 625?",
+    plain: "∛4913 / ⁴√625",
+    answerType: "standard", answer: 3.4, tolerance: 0.01, units: "",
+    explanation: "∛4913 = 17. ⁴√625 = 5. 17/5 = 3.40.",
+    hint: "<b>Cube root</b> (= raise to 1/3 power), <b>fourth root</b> (= raise to 1/4 power). Type: 4913<sup>(1/3)</sup> &divide; 625<sup>(1/4)</sup>"
+  },
+  { id: "s65", category: "stated", topic: "Translation",
+    display: "Evaluate: 3.72<sup>2</sup> &minus; 4(2.15)(1.08).",
+    plain: "3.72² - 4(2.15)(1.08)",
+    answerType: "standard", answer: 4.55, tolerance: 0.01, units: "",
+    explanation: "3.72² = 13.8384. 4(2.15)(1.08) = 9.288. 13.8384 - 9.288 = 4.550 ≈ 4.55.",
+    hint: "<b>Evaluate</b> (= calculate step by step). This is the discriminant form b<sup>2</sup> &minus; 4ac. Type: 3.72<sup>2</sup> &minus; 4 &times; 2.15 &times; 1.08"
+  },
+
+  // ── NEW PAGE 1 – DOLLAR (4 more) ──
+  { id: "s66", category: "stated", topic: "Dollar",
+    display: "A family buys 3 movie tickets at $12.50 each, 2 large popcorns at $8.75 each, and 4 drinks at $5.25 each. What is the total cost?",
+    plain: "3×12.50 + 2×8.75 + 4×5.25",
+    answerType: "dollar", answer: 76, tolerance: 0.01, units: "$",
+    explanation: "3(12.50) + 2(8.75) + 4(5.25) = 37.50 + 17.50 + 21.00 = $76.00.",
+    hint: "<b>Total cost</b> (= add each qty &times; price). Type: 3 &times; 12.50 + 2 &times; 8.75 + 4 &times; 5.25"
+  },
+  { id: "s67", category: "stated", topic: "Dollar",
+    display: "Jared earns $15.75/hr for the first 40 hours and time-and-a-half for overtime. If he works 47 hours, what is his gross pay?",
+    plain: "40×15.75 + 7×(15.75×1.5)",
+    answerType: "dollar", answer: 795.38, tolerance: 0.01, units: "$",
+    explanation: "Regular = 40 × 15.75 = $630.00. OT rate = 15.75 × 1.5 = $23.625. OT pay = 7 × 23.625 = $165.375. Total = $795.38.",
+    hint: "<b>Time-and-a-half</b> (= 1.5 &times; regular rate). Step 1: regular = 40 &times; 15.75. Step 2: OT = 7 &times; 15.75 &times; 1.5. Type: 40 &times; 15.75 + 7 &times; 15.75 &times; 1.5"
+  },
+  { id: "s68", category: "stated", topic: "Dollar",
+    display: "A store offers a buy-2-get-1-free deal on shirts costing $24.99 each. How much does a customer pay for 5 shirts before tax?",
+    plain: "5 shirts, 1 free per 2 bought: pay for 4",
+    answerType: "dollar", answer: 99.96, tolerance: 0.01, units: "$",
+    explanation: "Buy 2 get 1 free: for every 3 shirts, pay for 2. 5 shirts = 3+2. First 3: pay for 2. Next 2: pay for 2. Total = 4 × $24.99 = $99.96.",
+    hint: "<b>Buy-2-get-1-free</b>: for every 3 shirts, pay for 2. With 5 shirts: 1 free shirt. Pay for 4. Type: 4 &times; 24.99"
+  },
+  { id: "s69", category: "stated", topic: "Dollar",
+    display: "Maria invests $2500 in a savings account. After one year she earned $87.50 in interest. What was the annual interest rate?",
+    plain: "87.50 / 2500 × 100",
+    answerType: "standard", answer: 3.5, tolerance: 0.01, units: "%",
+    explanation: "Rate = 87.50 / 2500 × 100 = 3.50%.",
+    hint: "<b>Interest rate</b> (= interest &divide; principal &times; 100). Type: 87.50 &divide; 2500 &times; 100"
+  },
+
+  // ── NEW PAGE 1 – INTEGER (4 more) ──
+  { id: "s70", category: "stated", topic: "Integer",
+    display: "A parking garage has 6 levels. Each level has 4 more spaces than the one below it. If the ground level has 30 spaces, how many total spaces are in the garage?",
+    plain: "30 + 34 + 38 + 42 + 46 + 50",
+    answerType: "integer", answer: 240, tolerance: 0, units: "",
+    explanation: "Levels: 30, 34, 38, 42, 46, 50. Sum = 6/2 × (30+50) = 3 × 80 = 240.",
+    hint: "<b>Arithmetic series</b>. First = 30, last = 30 + 5 &times; 4 = 50, n = 6. Type: 6 &times; (30 + 50) &divide; 2"
+  },
+  { id: "s71", category: "stated", topic: "Integer",
+    display: "Three consecutive even integers have a sum of 162. What is the largest of the three?",
+    plain: "n + (n+2) + (n+4) = 162",
+    answerType: "integer", answer: 56, tolerance: 0, units: "",
+    explanation: "3n + 6 = 162. 3n = 156. n = 52. Largest = 52 + 4 = 56.",
+    hint: "Let n = smallest. n + (n+2) + (n+4) = 162. Type: (162 &minus; 6) &divide; 3 + 4"
+  },
+  { id: "s72", category: "stated", topic: "Integer",
+    display: "A classroom has 28 students. Each student shakes hands with every other student exactly once. How many handshakes occur?",
+    plain: "28 choose 2 = 28×27/2",
+    answerType: "integer", answer: 378, tolerance: 0, units: "",
+    explanation: "C(28,2) = 28 × 27 / 2 = 378.",
+    hint: "<b>Combinations</b> (= n! &divide; (r!(n&minus;r)!)). Each pair shakes once: C(28,2). Type: 28 &times; 27 &divide; 2"
+  },
+  { id: "s73", category: "stated", topic: "Integer",
+    display: "A clock chimes once at 1:00, twice at 2:00, and so on up to 12 times at 12:00. How many total chimes does the clock make in a 12-hour period?",
+    plain: "1 + 2 + 3 + ... + 12",
+    answerType: "integer", answer: 78, tolerance: 0, units: "",
+    explanation: "Sum = 12 × 13 / 2 = 78.",
+    hint: "<b>Sum of 1 to n</b> (= n(n+1)/2). Type: 12 &times; 13 &divide; 2"
+  },
+
+  // ── NEW PAGE 2 – UNIT CONVERSION (5 more, no conversion factor in question) ──
+  { id: "s74", category: "stated", topic: "Unit Conversion",
+    display: "A swimming pool holds 15,000 gallons of water. How many liters is that?",
+    plain: "15000 gallons to liters",
+    answerType: "standard", answer: 56800, tolerance: 100, units: "L",
+    explanation: "15000 × 3.785 = 56775 ≈ 56800 L.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 gallon = 3.785 liters. Type: 15000 &times; 3.785"
+  },
+  { id: "s75", category: "stated", topic: "Unit Conversion",
+    display: "A race is 10 kilometers long. What is the distance in miles?",
+    plain: "10 km to miles",
+    answerType: "standard", answer: 6.21, tolerance: 0.01, units: "mi",
+    explanation: "10 / 1.609 = 6.214 ≈ 6.21 miles.",
+    hint: "<b>Convert</b> (= &divide; conversion factor). 1 mile = 1.609 km. Type: 10 &divide; 1.609"
+  },
+  { id: "s76", category: "stated", topic: "Unit Conversion",
+    display: "An astronaut weighs 185 pounds on Earth. What is the astronaut's mass in kilograms?",
+    plain: "185 lb to kg",
+    answerType: "standard", answer: 83.9, tolerance: 0.1, units: "kg",
+    explanation: "185 / 2.205 = 83.90 ≈ 83.9 kg.",
+    hint: "<b>Convert</b> (= &divide; conversion factor). 1 kg = 2.205 lb. Type: 185 &divide; 2.205"
+  },
+  { id: "s77", category: "stated", topic: "Unit Conversion",
+    display: "A room is 14 feet wide. What is the width in meters?",
+    plain: "14 ft to meters",
+    answerType: "standard", answer: 4.27, tolerance: 0.01, units: "m",
+    explanation: "14 × 0.3048 = 4.267 ≈ 4.27 m.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 foot = 0.3048 meters. Type: 14 &times; 0.3048"
+  },
+  { id: "s78", category: "stated", topic: "Unit Conversion",
+    display: "A tank holds 250 liters of fuel. How many gallons is that?",
+    plain: "250 liters to gallons",
+    answerType: "standard", answer: 66.0, tolerance: 0.1, units: "gal",
+    explanation: "250 / 3.785 = 66.05 ≈ 66.0 gallons.",
+    hint: "<b>Convert</b> (= &divide; conversion factor). 1 gallon = 3.785 liters. Type: 250 &divide; 3.785"
+  },
+
+  // ── NEW PAGE 2-3 – PERCENT (4 more) ──
+  { id: "s79", category: "stated", topic: "Percent",
+    display: "A house was bought for $185,000 and sold for $221,500. What is the percent profit?",
+    plain: "(221500 - 185000) / 185000 × 100",
+    answerType: "standard", answer: 19.7, tolerance: 0.1, units: "%",
+    explanation: "Profit = 221500 - 185000 = 36500. % = 36500/185000 × 100 = 19.73 ≈ 19.7%.",
+    hint: "<b>Percent profit</b> (= (sell &minus; buy) &divide; buy &times; 100). Type: (221500 &minus; 185000) &divide; 185000 &times; 100"
+  },
+  { id: "s80", category: "stated", topic: "Percent",
+    display: "After a 20% discount and then an additional 10% off, a laptop originally priced at $899 costs how much?",
+    plain: "899 × 0.80 × 0.90",
+    answerType: "dollar", answer: 647.28, tolerance: 0.01, units: "$",
+    explanation: "After 20%: 899 × 0.80 = 719.20. After 10%: 719.20 × 0.90 = $647.28.",
+    hint: "<b>Successive discounts</b> (= multiply each factor). Type: 899 &times; 0.80 &times; 0.90"
+  },
+  { id: "s81", category: "stated", topic: "Percent",
+    display: "A solution is 15% salt by weight. How many grams of salt are in 750 grams of solution?",
+    plain: "750 × 0.15",
+    answerType: "standard", answer: 112.5, tolerance: 0.1, units: "g",
+    explanation: "750 × 0.15 = 112.5 g.",
+    hint: "<b>Percent of</b> (= &times; rate). Type: 750 &times; 0.15"
+  },
+  { id: "s82", category: "stated", topic: "Percent",
+    display: "A salesperson earns a base of $400/week plus 6.5% commission on sales. If she sold $8,450 last week, what was her total pay?",
+    plain: "400 + 0.065 × 8450",
+    answerType: "dollar", answer: 949.25, tolerance: 0.01, units: "$",
+    explanation: "Commission = 0.065 × 8450 = 549.25. Total = 400 + 549.25 = $949.25.",
+    hint: "<b>Commission</b> (= sales &times; rate). Total = base + commission. Type: 400 + 0.065 &times; 8450"
+  },
+
+  // ── NEW PAGE 2-3 – GEOMETRY WORD (4 more) ──
+  { id: "s83", category: "stated", topic: "Geometry Word",
+    display: "A cone-shaped paper cup has a diameter of 3.5 inches and a height of 4.25 inches. What is its volume in cubic inches?",
+    plain: "V = (1/3)πr²h, r=1.75, h=4.25",
+    answerType: "standard", answer: 13.6, tolerance: 0.1, units: "in³",
+    explanation: "V = (1/3)π(1.75)²(4.25) = (1/3)π(3.0625)(4.25) = (1/3)π(13.016) = 13.63 ≈ 13.6 in³.",
+    hint: "<b>Volume of cone</b> (= &frac13;&pi;r<sup>2</sup>h). r = 3.5 &divide; 2 = 1.75. Type: &pi; &times; 1.75<sup>2</sup> &times; 4.25 &divide; 3"
+  },
+  { id: "s84", category: "stated", topic: "Geometry Word",
+    display: "A spherical water tank has a radius of 8.0 feet. How many cubic feet of water can it hold?",
+    plain: "V = (4/3)πr³, r=8.0",
+    answerType: "standard", answer: 2140, tolerance: 10, units: "ft³",
+    explanation: "V = (4/3)π(8.0)³ = (4/3)π(512) = 2144.66 ≈ 2140 ft³.",
+    hint: "<b>Volume of sphere</b> (= &frac43;&pi;r<sup>3</sup>). Type: 4 &divide; 3 &times; &pi; &times; 8.0<sup>3</sup>"
+  },
+  { id: "s85", category: "stated", topic: "Geometry Word",
+    display: "A rectangular garden measures 18.5 ft by 24.0 ft. A walkway 2.5 ft wide surrounds it. What is the area of the walkway alone?",
+    plain: "Outer area - inner area",
+    answerType: "standard", answer: 237.5, tolerance: 1, units: "ft²",
+    explanation: "Outer: (18.5+2×2.5)(24.0+2×2.5) = 23.5 × 29.0 = 681.5. Inner: 18.5 × 24.0 = 444.0. Walkway = 681.5 - 444.0 = 237.5 ft².",
+    hint: "<b>Walkway area</b> (= outer &minus; inner). Outer dims: add 2 &times; walkway width to each side. Type: (18.5 + 5) &times; (24.0 + 5) &minus; 18.5 &times; 24.0"
+  },
+  { id: "s86", category: "stated", topic: "Geometry Word",
+    display: "A triangular plot of land has sides of 150 ft, 200 ft, and 250 ft. What is its area?",
+    plain: "Heron's formula: s=300, A=√(s(s-a)(s-b)(s-c))",
+    answerType: "standard", answer: 15000, tolerance: 100, units: "ft²",
+    explanation: "s = (150+200+250)/2 = 300. A = √(300×150×100×50) = √(225000000) = 15000 ft². (This is a 3-4-5 right triangle scaled by 50.)",
+    hint: "<b>Heron's formula</b>: s = (a+b+c)/2, A = &radic;(s(s&minus;a)(s&minus;b)(s&minus;c)). s = 300. Type: &radic;(300 &times; 150 &times; 100 &times; 50)"
+  },
+
+  // ── NEW PAGE 3 – SD (4 more) ──
+  { id: "s87", category: "stated", topic: "SD",
+    display: "(3 SD) A metal rod is <u>2.54</u> cm in diameter and <u>18.0</u> cm long. What is its volume in cubic centimeters?",
+    plain: "V = π(1.27)²(18.0), round to 3 SD",
+    answerType: "sd", answer: 91.2, tolerance: 0.1, units: "cm³",
+    explanation: "r = 1.27 cm. V = π(1.27)²(18.0) = π(1.6129)(18.0) = π(29.0322) = 91.21. 3 SD: 91.2 cm³.",
+    hint: "<b>Volume of cylinder</b> (= &pi;r<sup>2</sup>h). r = 2.54 &divide; 2 = 1.27. <b>3 SD</b>: round to 3 significant digits. Type: &pi; &times; 1.27<sup>2</sup> &times; 18.0"
+  },
+  { id: "s88", category: "stated", topic: "SD",
+    display: "A rectangular tank is <u>3.25</u> ft &times; <u>2.10</u> ft &times; <u>1.875</u> ft. What is its volume?",
+    plain: "3.25 × 2.10 × 1.875",
+    answerType: "sd", answer: 12.8, tolerance: 0.1, units: "ft³",
+    explanation: "V = 3.25 × 2.10 × 1.875 = 12.796875. Least sig figs = 3 (from 2.10 and 3.25). Round to 3 SD: 12.8 ft³.",
+    hint: "<b>Volume</b> (= l &times; w &times; h). Round to <b>least sig figs</b> in given data (3 SD from 2.10 and 3.25). Type: 3.25 &times; 2.10 &times; 1.875"
+  },
+  { id: "s89", category: "stated", topic: "SD",
+    display: "A sphere has a diameter of <u>6.50</u> inches. What is its surface area?",
+    plain: "SA = 4πr², r = 3.25",
+    answerType: "sd", answer: 133, tolerance: 0.5, units: "in²",
+    explanation: "r = 3.25 in. SA = 4π(3.25)² = 4π(10.5625) = 132.73. Least sig figs = 3 (from 6.50). Round to 3 SD: 133 in².",
+    hint: "<b>Surface area of sphere</b> (= 4&pi;r<sup>2</sup>). r = 6.50 &divide; 2 = 3.25. Round to 3 SD. Type: 4 &times; &pi; &times; 3.25<sup>2</sup>"
+  },
+  { id: "s90", category: "stated", topic: "SD",
+    display: "(4 SD) What is <u>45.78</u> divided by <u>3.142</u>?",
+    plain: "45.78 / 3.142, round to 4 SD",
+    answerType: "sd", answer: 14.57, tolerance: 0.01, units: "",
+    explanation: "45.78 / 3.142 = 14.5703. 4 SD: 14.57.",
+    hint: "<b>Division</b>: round to <b>least sig figs</b> in given data (4 SD from 45.78). Type: 45.78 &divide; 3.142"
+  },
+
+  // ── NEW PAGE 3 – COMPOUND INTEREST (3 more) ──
+  { id: "s91", category: "stated", topic: "Compound Interest",
+    display: "A college fund starts with $10,000 at 5.2% annual interest compounded quarterly. What is the balance after 6 years?",
+    plain: "A = 10000(1 + 0.052/4)^(24)",
+    answerType: "dollar", answer: 13634, tolerance: 1, units: "$",
+    explanation: "A = 10000(1.013)^24 = 10000(1.3634) = $13,634.",
+    hint: "<b>Compounded quarterly</b> (n = 4). A = P(1 + r/n)<sup>nt</sup>. Type: 10000 &times; (1 + 0.052 &divide; 4)<sup>24</sup>"
+  },
+  { id: "s92", category: "stated", topic: "Compound Interest",
+    display: "A car depreciates at 12% per year. If it was purchased for $28,500, what is its value after 4 years?",
+    plain: "28500 × (1 - 0.12)^4",
+    answerType: "dollar", answer: 17091, tolerance: 5, units: "$",
+    explanation: "V = 28500 × (0.88)^4 = 28500 × 0.5997 = $17,091.",
+    hint: "<b>Depreciates</b> (= &times; (1 &minus; rate) per year). V = P(1 &minus; r)<sup>t</sup>. Type: 28500 &times; 0.88<sup>4</sup>"
+  },
+  { id: "s93", category: "stated", topic: "Compound Interest",
+    display: "How long (in years) will it take $5000 to double at 7.5% annual interest compounded annually?",
+    plain: "Solve 5000(1.075)^t = 10000",
+    answerType: "standard", answer: 9.58, tolerance: 0.01, units: "yr",
+    explanation: "1.075^t = 2. t = ln(2)/ln(1.075) = 0.6931/0.07232 = 9.584 ≈ 9.58 years.",
+    hint: "<b>Double</b> (= &times;2). Solve (1 + r)<sup>t</sup> = 2: t = ln(2) &divide; ln(1 + r). Type: ln(2) &divide; ln(1.075)"
   },
 ];
