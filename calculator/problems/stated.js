@@ -1,5 +1,5 @@
 // UIL Calculator Applications – Stated Problems
-// 93 problems
+// 105 problems
 //
 const STATED_PROBLEMS = [
 
@@ -698,5 +698,91 @@ const STATED_PROBLEMS = [
     answerType: "standard", answer: 9.58, tolerance: 0.01, units: "yr",
     explanation: "1.075^t = 2. t = ln(2)/ln(1.075) = 0.6931/0.07232 = 9.584 ≈ 9.58 years.",
     hint: "<b>Double</b> (= &times;2). Solve (1 + r)<sup>t</sup> = 2: t = ln(2) &divide; ln(1 + r). Type: ln(2) &divide; ln(1.075)"
+  },
+
+  // ── UNIT CONVERSION – NO FACTOR IN QUESTION ──
+  { id: "s94", category: "stated", topic: "Unit Conversion",
+    display: "A TV screen measures 55 inches diagonally. What is that in centimeters?",
+    plain: "55 inches to cm",
+    answerType: "standard", answer: 139.7, tolerance: 0.1, units: "cm",
+    explanation: "55 × 2.54 = 139.70 cm.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 inch = 2.54 cm. Type: 55 &times; 2.54"
+  },
+  { id: "s95", category: "stated", topic: "Unit Conversion",
+    display: "A bookshelf is 182 centimeters tall. What is its height in inches?",
+    plain: "182 cm to inches",
+    answerType: "standard", answer: 71.7, tolerance: 0.1, units: "in",
+    explanation: "182 / 2.54 = 71.65 ≈ 71.7 inches.",
+    hint: "<b>Convert</b> (= &divide; conversion factor). 1 inch = 2.54 cm. Type: 182 &divide; 2.54"
+  },
+  { id: "s96", category: "stated", topic: "Unit Conversion",
+    display: "The temperature outside is 98.6°F. What is that in degrees Celsius?",
+    plain: "98.6°F to °C",
+    answerType: "standard", answer: 37.0, tolerance: 0.1, units: "°C",
+    explanation: "(98.6 - 32) × 5/9 = 66.6 × 5/9 = 37.0°C.",
+    hint: "<b>°F to °C</b>: subtract 32, then multiply by 5/9. Type: (98.6 &minus; 32) &times; 5 &divide; 9"
+  },
+  { id: "s97", category: "stated", topic: "Unit Conversion",
+    display: "A freezer is set to &minus;18°C. What is that temperature in degrees Fahrenheit?",
+    plain: "-18°C to °F",
+    answerType: "standard", answer: -0.4, tolerance: 0.1, units: "°F",
+    explanation: "(-18 × 9/5) + 32 = -32.4 + 32 = -0.4°F.",
+    hint: "<b>°C to °F</b>: multiply by 9/5, then add 32. Type: &minus;18 &times; 9 &divide; 5 + 32"
+  },
+  { id: "s98", category: "stated", topic: "Unit Conversion",
+    display: "A football field is 100 yards long. What is that in meters?",
+    plain: "100 yards to meters",
+    answerType: "standard", answer: 91.4, tolerance: 0.1, units: "m",
+    explanation: "100 × 0.9144 = 91.44 ≈ 91.4 m.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 yard = 0.9144 meters. Type: 100 &times; 0.9144"
+  },
+  { id: "s99", category: "stated", topic: "Unit Conversion",
+    display: "A steak weighs 12 ounces. What is its weight in grams?",
+    plain: "12 oz to grams",
+    answerType: "standard", answer: 340, tolerance: 1, units: "g",
+    explanation: "12 × 28.35 = 340.2 ≈ 340 g.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 ounce = 28.35 grams. Type: 12 &times; 28.35"
+  },
+  { id: "s100", category: "stated", topic: "Unit Conversion",
+    display: "A living room is 225 square feet. What is that in square meters?",
+    plain: "225 sq ft to sq m",
+    answerType: "standard", answer: 20.9, tolerance: 0.1, units: "m²",
+    explanation: "225 × 0.0929 = 20.90 ≈ 20.9 m².",
+    hint: "<b>Convert area</b> (= &times; conversion factor). 1 sq ft = 0.0929 m². Type: 225 &times; 0.0929"
+  },
+  { id: "s101", category: "stated", topic: "Unit Conversion",
+    display: "A car is traveling at 75 miles per hour. What is its speed in kilometers per hour?",
+    plain: "75 mph to km/h",
+    answerType: "standard", answer: 120.7, tolerance: 0.1, units: "km/h",
+    explanation: "75 × 1.609 = 120.68 ≈ 120.7 km/h.",
+    hint: "<b>Convert speed</b> (= &times; conversion factor). 1 mile = 1.609 km. Type: 75 &times; 1.609"
+  },
+  { id: "s102", category: "stated", topic: "Unit Conversion",
+    display: "A European speed limit sign reads 130 km/h. What is that in miles per hour?",
+    plain: "130 km/h to mph",
+    answerType: "standard", answer: 80.8, tolerance: 0.1, units: "mph",
+    explanation: "130 / 1.609 = 80.80 ≈ 80.8 mph.",
+    hint: "<b>Convert speed</b> (= &divide; conversion factor). 1 mile = 1.609 km. Type: 130 &divide; 1.609"
+  },
+  { id: "s103", category: "stated", topic: "Unit Conversion",
+    display: "A water bottle holds 16.9 fluid ounces. How many milliliters is that?",
+    plain: "16.9 fl oz to mL",
+    answerType: "standard", answer: 500, tolerance: 1, units: "mL",
+    explanation: "16.9 × 29.574 = 499.80 ≈ 500 mL.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 fluid ounce = 29.574 mL. Type: 16.9 &times; 29.574"
+  },
+  { id: "s104", category: "stated", topic: "Unit Conversion",
+    display: "A pickup truck can haul 1.5 short tons. What is that in kilograms?",
+    plain: "1.5 short tons to kg",
+    answerType: "standard", answer: 1361, tolerance: 1, units: "kg",
+    explanation: "1.5 × 907.185 = 1360.78 ≈ 1361 kg.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 short ton = 907.185 kg. Type: 1.5 &times; 907.185"
+  },
+  { id: "s105", category: "stated", topic: "Unit Conversion",
+    display: "A ranch covers 640 acres. How many hectares is that?",
+    plain: "640 acres to hectares",
+    answerType: "standard", answer: 259, tolerance: 1, units: "ha",
+    explanation: "640 × 0.4047 = 259.01 ≈ 259 hectares.",
+    hint: "<b>Convert</b> (= &times; conversion factor). 1 acre = 0.4047 hectares. Type: 640 &times; 0.4047"
   },
 ];
