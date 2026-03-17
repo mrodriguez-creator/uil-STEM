@@ -600,5 +600,160 @@ public class Vince {
     hint: "Use an int array of size 26 to count letter frequencies. Convert each character to lowercase. Track the max count and the corresponding letter (prefer earlier alphabet on ties).",
     concepts: ["character frequency", "arrays", "case conversion", "HashMap alternative"],
     dataFile: "vince.dat"
+  },
+
+  // ─── M13: Wade ── Investment Goal (Becker-style) ─────────────────────────
+  {
+    id: "m13",
+    name: "Wade",
+    difficulty: "Medium",
+    description:
+      "Wade wants to know the <b>minimum initial investment</b> (principal) needed to reach a goal amount using compound interest.<br><br>" +
+      "The compound interest formula is:<br>" +
+      "<code>A = P × (1 + r/n)<sup>n×t</sup></code><br><br>" +
+      "Where:<br>" +
+      "<ul>" +
+      "<li><b>A</b> = Amount goal</li>" +
+      "<li><b>P</b> = Principal (what you're solving for)</li>" +
+      "<li><b>r</b> = annual interest rate <i>as a decimal</i> (input is a percent!)</li>" +
+      "<li><b>n</b> = times compounded per year</li>" +
+      "<li><b>t</b> = years</li>" +
+      "</ul><br>" +
+      "Rearranging: <code>P = A / (1 + r/n)<sup>n×t</sup></code><br><br>" +
+      "⚠️ <b>Two common traps:</b><br>" +
+      "1. The rate is given as a <b>percent</b> (like 5), not a decimal (0.05). You must divide by <code>100.0</code> — not <code>100</code>! Integer division <code>5/100 = 0</code>.<br>" +
+      "2. Round <b>up</b> to the nearest whole dollar using <code>Math.ceil()</code> — you need <i>at least</i> enough to reach the goal.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains four integers: <b>A</b> (goal), <b>r</b> (rate as percent), <b>n</b> (compounds per year), <b>t</b> (years).",
+    outputFormat:
+      "For each test case, print the minimum whole-dollar principal needed.",
+    constraints: "1 ≤ T ≤ 10<br>1 ≤ A ≤ 10<sup>12</sup><br>1 ≤ r ≤ 100<br>1 ≤ n ≤ 52<br>1 ≤ t ≤ 100",
+    sampleInput: "2\n1000 4 12 1\n766777 10 12 30",
+    sampleOutput: "961\n38654",
+    testCases: [
+      { input: "2\n1000 4 12 1\n766777 10 12 30", expected: "961\n38654\n" },
+      { input: "3\n10000 5 4 10\n1000000 8 12 20\n500 100 1 1", expected: "6085\n202972\n250\n" },
+      { input: "2\n100 1 1 1\n50000 12 12 5", expected: "100\n27523\n" }
+    ],
+    starterCode:
+`import java.util.*;
+
+public class Wade {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            long A = sc.nextLong();
+            // CAREFUL: r is a percent! Divide by 100.0, NOT 100
+            double r = sc.nextInt() / 100.0;
+            int n = sc.nextInt();
+            int years = sc.nextInt();
+
+            // Calculate (1 + r/n)^(n*years) using Math.pow
+            // Then P = A / that value
+            // Round UP with Math.ceil() and cast to long
+
+        }
+    }
+}`,
+    hint: "The key line is:<br><code>double dem = Math.pow(1 + r / n, n * years);</code><br><code>long P = (long) Math.ceil(A / dem);</code><br>Make sure <code>r</code> is a <code>double</code> from <code>sc.nextInt() / 100.0</code>.",
+    concepts: ["compound interest", "Math.pow", "Math.ceil", "integer division pitfall"],
+    dataFile: "wade.dat"
+  },
+
+  // ─── M14: Xena ── Rounding Methods ──────────────────────────────────────
+  {
+    id: "m14",
+    name: "Xena",
+    difficulty: "Medium",
+    description:
+      "Xena is learning about Java's three rounding methods. Given a decimal number, print the result of all three:<br><br>" +
+      "<table style='border-collapse:collapse; margin:10px 0;'>" +
+      "<tr><td style='padding:4px 12px; border:1px solid #4a5568;'><code>Math.floor(x)</code></td><td style='padding:4px 12px; border:1px solid #4a5568;'>Round <b>down</b> (toward negative infinity)</td></tr>" +
+      "<tr><td style='padding:4px 12px; border:1px solid #4a5568;'><code>Math.ceil(x)</code></td><td style='padding:4px 12px; border:1px solid #4a5568;'>Round <b>up</b> (toward positive infinity)</td></tr>" +
+      "<tr><td style='padding:4px 12px; border:1px solid #4a5568;'><code>Math.round(x)</code></td><td style='padding:4px 12px; border:1px solid #4a5568;'>Round to <b>nearest</b> (0.5 rounds up)</td></tr>" +
+      "</table>" +
+      "⚠️ Be careful with <b>negative</b> numbers! <code>Math.floor(-2.3)</code> is <code>-3</code>, not <code>-2</code>.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains a decimal number <b>X</b>.",
+    outputFormat:
+      "For each test case, print <code>floor ceil round</code> separated by spaces.",
+    constraints: "1 ≤ T ≤ 100<br>-10000.0 ≤ X ≤ 10000.0",
+    sampleInput: "4\n3.7\n3.2\n-2.3\n4.5",
+    sampleOutput: "3 4 4\n3 4 3\n-3 -2 -2\n4 5 5",
+    testCases: [
+      { input: "4\n3.7\n3.2\n-2.3\n4.5", expected: "3 4 4\n3 4 3\n-3 -2 -2\n4 5 5\n" },
+      { input: "5\n0.0\n1.0\n-1.0\n0.5\n-0.5", expected: "0 0 0\n1 1 1\n-1 -1 -1\n0 1 1\n-1 0 0\n" },
+      { input: "3\n99.99\n-99.99\n0.1", expected: "99 100 100\n-100 -99 -100\n0 1 0\n" }
+    ],
+    starterCode:
+`import java.util.*;
+
+public class Xena {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            double X = sc.nextDouble();
+
+            // Use Math.floor(), Math.ceil(), Math.round()
+            // Cast floor and ceil to long (they return double)
+            // Math.round() already returns long
+
+        }
+    }
+}`,
+    hint: "<code>Math.floor()</code> and <code>Math.ceil()</code> return <code>double</code>, so cast to <code>long</code>:<br><code>long f = (long) Math.floor(X);</code><br><code>long c = (long) Math.ceil(X);</code><br><code>long r = Math.round(X);</code>",
+    concepts: ["Math.floor", "Math.ceil", "Math.round", "rounding", "negative numbers"],
+    dataFile: "xena.dat"
+  },
+
+  // ─── M15: Yuri ── Percent to Decimal ────────────────────────────────────
+  {
+    id: "m15",
+    name: "Yuri",
+    difficulty: "Medium",
+    description:
+      "Yuri is computing sale prices. Given an item's original price (integer) and a discount percent (integer), calculate the sale price.<br><br>" +
+      "Formula: <code>salePrice = price × (1 - discount / 100.0)</code><br><br>" +
+      "⚠️ <b>The #1 bug students hit:</b> <code>discount / 100</code> does integer division and gives <b>0</b> for any discount less than 100! You must write <code>discount / 100.0</code> to get a decimal.<br><br>" +
+      "Print the result rounded to the nearest cent (2 decimal places) using <code>printf</code>.",
+    inputFormat:
+      "The first line contains <b>T</b>.<br>Each of the next <b>T</b> lines contains two integers: <b>price</b> and <b>discount</b> (percent off).",
+    outputFormat:
+      "For each test case, print the sale price formatted to exactly 2 decimal places.",
+    constraints: "1 ≤ T ≤ 100<br>1 ≤ price ≤ 100000<br>0 ≤ discount ≤ 100",
+    sampleInput: "3\n100 25\n50 10\n200 0",
+    sampleOutput: "75.00\n45.00\n200.00",
+    testCases: [
+      { input: "3\n100 25\n50 10\n200 0", expected: "75.00\n45.00\n200.00\n" },
+      { input: "4\n99 50\n1 99\n100000 100\n77 33", expected: "49.50\n0.01\n0.00\n51.59\n" },
+      { input: "3\n10 1\n500 15\n1234 7", expected: "9.90\n425.00\n1147.62\n" }
+    ],
+    starterCode:
+`import java.util.*;
+
+public class Yuri {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for (int t = 0; t < T; t++) {
+            int price = sc.nextInt();
+            int discount = sc.nextInt();
+
+            // WRONG: discount / 100  → integer division = 0!
+            // RIGHT: discount / 100.0 → gives decimal like 0.25
+
+            // Calculate sale price
+            // double sale = price * (1 - discount / 100.0);
+
+            // Print with 2 decimal places
+            // System.out.printf("%.2f\\n", sale);
+        }
+    }
+}`,
+    hint: "The key is <code>discount / 100.0</code> — the <code>.0</code> forces decimal division. Then use <code>printf(\"%.2f\\n\", sale)</code> for 2 decimal places.",
+    concepts: ["integer division pitfall", "percent to decimal", "printf", "%.2f"],
+    dataFile: "yuri.dat"
   }
 ];
