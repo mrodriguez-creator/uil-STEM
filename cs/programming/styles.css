@@ -73,8 +73,23 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(128, 90, 213, 0.15);
 }
-.problem-card.solved { border-color: #48bb78; }
-.problem-card.solved:hover { border-color: #68d391; box-shadow: 0 6px 20px rgba(72, 187, 120, 0.15); }
+/* Solved card border matches tier color */
+.problem-card.solved.starter { border-color: #63b3ed; }
+.problem-card.solved.starter:hover { border-color: #90cdf4; box-shadow: 0 6px 20px rgba(99, 179, 237, 0.15); }
+.problem-card.solved.basics { border-color: #b794f4; }
+.problem-card.solved.basics:hover { border-color: #d6bcfa; box-shadow: 0 6px 20px rgba(183, 148, 244, 0.15); }
+.problem-card.solved.easy { border-color: #48bb78; }
+.problem-card.solved.easy:hover { border-color: #68d391; box-shadow: 0 6px 20px rgba(72, 187, 120, 0.15); }
+.problem-card.solved.intermediate { border-color: #68d391; }
+.problem-card.solved.intermediate:hover { border-color: #9ae6b4; box-shadow: 0 6px 20px rgba(104, 211, 145, 0.15); }
+.problem-card.solved.medium { border-color: #ecc94b; }
+.problem-card.solved.medium:hover { border-color: #fefcbf; box-shadow: 0 6px 20px rgba(236, 201, 75, 0.15); }
+.problem-card.solved.pre-hard { border-color: #f6ad55; }
+.problem-card.solved.pre-hard:hover { border-color: #fbd38d; box-shadow: 0 6px 20px rgba(246, 173, 85, 0.15); }
+.problem-card.solved.hard { border-color: #ed8936; }
+.problem-card.solved.hard:hover { border-color: #fbd38d; box-shadow: 0 6px 20px rgba(237, 137, 54, 0.15); }
+.problem-card.solved.advanced { border-color: #fc8181; }
+.problem-card.solved.advanced:hover { border-color: #feb2b2; box-shadow: 0 6px 20px rgba(252, 129, 129, 0.15); }
 
 .pc-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px; }
 .pc-name { font-size: 1rem; font-weight: 700; }
@@ -82,7 +97,15 @@ body {
   font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
   padding: 2px 8px; border-radius: 10px; letter-spacing: 0.5px;
 }
-.pc-badge.solved { background: #48bb78; color: #fff; }
+/* Solved badge matches tier color */
+.pc-badge.solved.starter { background: #63b3ed; color: #fff; }
+.pc-badge.solved.basics { background: #b794f4; color: #fff; }
+.pc-badge.solved.easy { background: #48bb78; color: #fff; }
+.pc-badge.solved.intermediate { background: #68d391; color: #fff; }
+.pc-badge.solved.medium { background: #ecc94b; color: #1a202c; }
+.pc-badge.solved.pre-hard { background: #f6ad55; color: #1a202c; }
+.pc-badge.solved.hard { background: #ed8936; color: #fff; }
+.pc-badge.solved.advanced { background: #fc8181; color: #fff; }
 .pc-badge.new { background: #4a5568; color: #a0aec0; }
 .pc-concepts { color: #718096; font-size: 0.78rem; margin-top: 4px; }
 

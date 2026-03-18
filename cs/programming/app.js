@@ -311,10 +311,10 @@ function renderMenu() {
           <div class="diff-label ${d}">${d} (${grouped[d].filter(p => solved.has(p.id)).length}/${grouped[d].length})</div>
           <div class="problem-grid">
             ${grouped[d].map(p => `
-              <div class="problem-card ${solved.has(p.id) ? 'solved' : ''}" onclick="openProblem('${p.id}')">
+              <div class="problem-card ${solved.has(p.id) ? 'solved' : ''} ${d}" onclick="openProblem('${p.id}')">
                 <div class="pc-top">
                   <span class="pc-name">${p.name}</span>
-                  <span class="pc-badge ${solved.has(p.id) ? 'solved' : 'new'}">${solved.has(p.id) ? '✓ Solved' : 'New'}</span>
+                  <span class="pc-badge ${solved.has(p.id) ? 'solved' : 'new'} ${d}">${solved.has(p.id) ? '✓ Solved' : 'New'}</span>
                 </div>
                 <div class="pc-concepts">${p.concepts.join(' · ')}</div>
               </div>
