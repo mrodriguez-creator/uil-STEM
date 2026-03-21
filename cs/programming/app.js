@@ -112,53 +112,109 @@ function createEditor(containerId, initialCode) {
 }
 
 // ── JUDGE0 CE API (free, no key required, Java 17) ──
-const JUDGE0_URL = 'https://ce.judge0.com/submissions/?base64_encoded=false&wait=true';
+// Multiple endpoints for fallback when primary is down
+const JUDGE0_ENDPOINTS = [
+  'https://ce.judge0.com',
+  'https://judge0-ce.p.sulu.sh',
+];
+
+async function submitToEndpoint(baseUrl, submissionCode, stdin) {
+  // Try synchronous (wait=true) first
+  const syncUrl = `${baseUrl}/submissions/?base64_encoded=false&wait=true`;
+  const resp = await fetch(syncUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source_code: submissionCode,
+      language_id: 91,  // Java (JDK 17.0.6)
+      stdin: stdin || '',
+    })
+  });
+
+  if (!resp.ok) {
+    // If sync fails with 502/503, try async polling approach
+    if (resp.status === 502 || resp.status === 503) {
+      return await submitAsync(baseUrl, submissionCode, stdin);
+    }
+    throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+  }
+
+  const text = await resp.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    // Got HTML error page instead of JSON — try async
+    return await submitAsync(baseUrl, submissionCode, stdin);
+  }
+}
+
+async function submitAsync(baseUrl, submissionCode, stdin) {
+  // Submit without wait, then poll for result
+  const asyncUrl = `${baseUrl}/submissions/?base64_encoded=false`;
+  const resp = await fetch(asyncUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      source_code: submissionCode,
+      language_id: 91,
+      stdin: stdin || '',
+    })
+  });
+
+  if (!resp.ok) throw new Error(`HTTP ${resp.status}: ${resp.statusText}`);
+  const { token } = await resp.json();
+  if (!token) throw new Error('No submission token received');
+
+  // Poll every 1.5s, up to 30s
+  for (let i = 0; i < 20; i++) {
+    await new Promise(r => setTimeout(r, 1500));
+    const pollResp = await fetch(`${baseUrl}/submissions/${token}?base64_encoded=false`);
+    if (!pollResp.ok) continue;
+    const data = await pollResp.json();
+    // status 1=In Queue, 2=Processing — keep polling
+    if (data.status && data.status.id <= 2) continue;
+    return data;
+  }
+  throw new Error('Submission timed out after 30 seconds');
+}
 
 async function runCode(code, stdin) {
   // Judge0 always uses Main.java, so rewrite the class name to Main
   const originalClass = extractClassName(code);
   const submissionCode = code.replace('public class ' + originalClass, 'public class Main');
 
-  try {
-    const resp = await fetch(JUDGE0_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        source_code: submissionCode,
-        language_id: 91,  // Java (JDK 17.0.6)
-        stdin: stdin || '',
-      })
-    });
+  let lastError = null;
 
-    if (!resp.ok) {
-      return { error: `HTTP ${resp.status}: ${resp.statusText}` };
+  for (const baseUrl of JUDGE0_ENDPOINTS) {
+    try {
+      const data = await submitToEndpoint(baseUrl, submissionCode, stdin);
+
+      // Judge0 status IDs: 3=Accepted, 4=Wrong Answer, 5=TLE, 6=Compilation Error, etc.
+      if (data.status && data.status.id === 6) {
+        let errMsg = data.compile_output || 'Compilation error';
+        errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
+        return { error: errMsg };
+      }
+
+      if (data.status && data.status.id >= 7) {
+        let errMsg = data.stderr || data.compile_output || data.status.description;
+        errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
+        return { error: errMsg };
+      }
+
+      if (data.status && data.status.id === 5) {
+        return { error: 'Time Limit Exceeded — your code took too long to run.' };
+      }
+
+      return { output: data.stdout || '' };
+    } catch (e) {
+      lastError = e;
+      console.warn(`Judge0 endpoint ${baseUrl} failed: ${e.message}, trying next...`);
+      continue;  // Try next endpoint
     }
-
-    const data = await resp.json();
-
-    // Judge0 status IDs: 3=Accepted, 4=Wrong Answer, 5=TLE, 6=Compilation Error, etc.
-    if (data.status && data.status.id === 6) {
-      // Compilation error — translate "Main" back to original class name in error messages
-      let errMsg = data.compile_output || 'Compilation error';
-      errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
-      return { error: errMsg };
-    }
-
-    if (data.status && data.status.id >= 7) {
-      // Runtime error
-      let errMsg = data.stderr || data.compile_output || data.status.description;
-      errMsg = errMsg.replace(/Main\.java/g, originalClass + '.java');
-      return { error: errMsg };
-    }
-
-    if (data.status && data.status.id === 5) {
-      return { error: 'Time Limit Exceeded — your code took too long to run.' };
-    }
-
-    return { output: data.stdout || '' };
-  } catch (e) {
-    return { error: `Network error: ${e.message}` };
   }
+
+  return { error: `All Judge0 servers are currently down. Please try again in a few minutes.\n(${lastError?.message || 'Unknown error'})` };
 }
 
 // ── PROBLEM ACTIONS ──
