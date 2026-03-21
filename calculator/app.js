@@ -345,6 +345,36 @@ function handleAnswerKeydown(e) {
   }
 }
 
+// ── 10-KEY PAD ──
+function keypadPress(val) {
+  if (state.answered) return;
+  state.userAnswer += val;
+  const inp = document.getElementById('answer-input');
+  if (inp) inp.value = state.userAnswer;
+}
+
+function keypadBackspace() {
+  if (state.answered) return;
+  state.userAnswer = state.userAnswer.slice(0, -1);
+  const inp = document.getElementById('answer-input');
+  if (inp) inp.value = state.userAnswer;
+}
+
+function keypadClear() {
+  if (state.answered) return;
+  state.userAnswer = '';
+  const inp = document.getElementById('answer-input');
+  if (inp) inp.value = '';
+}
+
+function keypadEnter() {
+  if (state.answered) {
+    nextQuestion();
+  } else {
+    submitAnswer();
+  }
+}
+
 function toggleHint() {
   state.hintVisible = !state.hintVisible;
   render();
@@ -588,21 +618,38 @@ function renderTest() {
             onkeydown="handleAnswerKeydown(event)"
             ${state.answered ? 'disabled' : ''}
             autocomplete="off"
+            inputmode="none"
             spellcheck="false"
           />
           ${p.units && p.units !== '$' ? `<span class="answer-units">${p.units}</span>` : ''}
         </div>
       </div>
 
+      <div class="keypad ${state.answered ? 'keypad-disabled' : ''}">
+        <button class="key" onclick="keypadPress('7')">7</button>
+        <button class="key" onclick="keypadPress('8')">8</button>
+        <button class="key" onclick="keypadPress('9')">9</button>
+        <button class="key key-op" onclick="keypadBackspace()">⌫</button>
+        <button class="key" onclick="keypadPress('4')">4</button>
+        <button class="key" onclick="keypadPress('5')">5</button>
+        <button class="key" onclick="keypadPress('6')">6</button>
+        <button class="key key-op" onclick="keypadClear()">C</button>
+        <button class="key" onclick="keypadPress('1')">1</button>
+        <button class="key" onclick="keypadPress('2')">2</button>
+        <button class="key" onclick="keypadPress('3')">3</button>
+        <button class="key key-neg" onclick="keypadPress('-')">−</button>
+        <button class="key" onclick="keypadPress('0')">0</button>
+        <button class="key" onclick="keypadPress('.')">.</button>
+        <button class="key key-exp" onclick="keypadPress('x10^')">×10^</button>
+        <button class="key key-enter" onclick="keypadEnter()">${state.answered ? (state.idx + 1 >= state.problems.length ? '✓' : '→') : '⏎'}</button>
+      </div>
+
       ${feedbackHTML}
 
       <div class="btn-row">
         ${!state.answered ? `
-          <button class="btn btn-primary" onclick="submitAnswer()">Submit (Enter)</button>
           <button class="btn btn-subtle" onclick="skipQuestion()">Skip</button>
-        ` : `
-          <button class="btn btn-primary" onclick="nextQuestion()">${state.idx + 1 >= state.problems.length ? 'View Results' : 'Next (Enter)'}</button>
-        `}
+        ` : ''}
       </div>
       <div style="text-align:center;margin-top:10px;">
         <button class="btn btn-subtle" onclick="if(confirm('End this session?')) finishTest()" style="width:auto;display:inline-block;">End Session</button>

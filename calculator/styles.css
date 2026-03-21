@@ -111,6 +111,56 @@ body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-
 .answer-input.partial { border-color: #ed8936; background: #2e2a1a; }
 .answer-units { color: #a0aec0; font-weight: 600; font-size: 1rem; min-width: 40px; }
 
+/* ── 10-KEY PAD ── */
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  max-width: 340px;
+  margin: 12px auto 16px;
+}
+.key {
+  background: #1e2536;
+  border: 2px solid #3a4560;
+  border-radius: 10px;
+  color: #e2e8f0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 14px 0;
+  cursor: pointer;
+  transition: background .1s, border-color .1s, transform .08s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Consolas", "Monaco", "Courier New", monospace;
+}
+.key:active { transform: scale(0.95); background: #2a3450; }
+.key:hover { border-color: #667eea; }
+.key-op { background: #2a2030; border-color: #6b4e7e; color: #d6bcfa; }
+.key-op:active { background: #3a2840; }
+.key-neg { background: #2a2030; border-color: #6b4e7e; color: #d6bcfa; }
+.key-neg:active { background: #3a2840; }
+.key-exp { background: #1e2a3a; border-color: #4a7eaa; color: #90cdf4; font-size: 0.95rem; }
+.key-exp:active { background: #2a3a4a; }
+.key-enter {
+  background: #2b4c3f;
+  border-color: #48bb78;
+  color: #68d391;
+  font-size: 1.5rem;
+}
+.key-enter:active { background: #1a3a2e; }
+.key-enter:hover { border-color: #68d391; }
+.keypad-disabled .key {
+  opacity: 0.4;
+  pointer-events: none;
+}
+.keypad-disabled .key-enter {
+  opacity: 1;
+  pointer-events: auto;
+  background: #1a365d;
+  border-color: #667eea;
+  color: #90cdf4;
+}
+
 /* ── FEEDBACK ── */
 .feedback-bar { min-height: 28px; display: flex; align-items: center; justify-content: center; font-size: 0.88rem; font-weight: 600; margin-bottom: 8px; border-radius: 6px; padding: 8px 12px; text-align: center; line-height: 1.4; }
 .feedback-bar.correct { background: #2f5349; color: #68d391; }
