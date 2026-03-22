@@ -184,7 +184,7 @@ public class Mia {
       },
       {
         input: "2\na\nHello World from UIL CS Contest 2024",
-        expected: "1 words, 1 chars\n6 words, 31 chars"
+        expected: "1 words, 1 chars\n7 words, 30 chars"
       }
     ],
     starterCode:
