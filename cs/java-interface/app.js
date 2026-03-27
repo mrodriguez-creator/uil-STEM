@@ -12,10 +12,27 @@ public class Main {
     }
 }`;
 
+// ── PERSISTENCE ──
+const SAVE_KEY = 'uil-java-interface';
+
+function loadSaved() {
+  try {
+    return JSON.parse(localStorage.getItem(SAVE_KEY)) || {};
+  } catch { return {}; }
+}
+
+function saveWork() {
+  localStorage.setItem(SAVE_KEY, JSON.stringify({
+    code: state.code,
+    customInput: state.customInput,
+  }));
+}
+
 // ── STATE ──
+const saved = loadSaved();
 const state = {
-  code: DEFAULT_CODE,
-  customInput: '',
+  code: saved.code || DEFAULT_CODE,
+  customInput: saved.customInput || '',
   output: '',
   compileError: null,
   running: false,
@@ -82,6 +99,7 @@ function createEditor(containerId, initialCode) {
 
     editor.onDidChangeModelContent(() => {
       state.code = editor.getValue();
+      saveWork();
     });
 
     state.code = initialCode;
@@ -199,6 +217,7 @@ async function handleRun() {
 
 function handleReset() {
   if (editor) editor.setValue(DEFAULT_CODE);
+  localStorage.removeItem(SAVE_KEY);
   setState({ code: DEFAULT_CODE, customInput: '', output: '', compileError: null });
   // Clear the custom input textarea after render
   setTimeout(() => {
@@ -234,7 +253,7 @@ function render() {
             <div class="panel-label">Custom Input</div>
             <textarea id="custom-input" class="io-textarea"
               placeholder="Enter your stdin input here..."
-              oninput="state.customInput = this.value"
+              oninput="state.customInput = this.value; saveWork()"
             >${escapeHtml(savedInput)}</textarea>
           </div>
           <div class="io-section output-section">
@@ -280,4 +299,4 @@ function escapeHtml(s) {
 // ── INIT ──
 initMonaco();
 render();
-setTimeout(() => createEditor('editor-container', DEFAULT_CODE), 50);
+setTimeout(() => createEditor('editor-container', state.code), 50);
