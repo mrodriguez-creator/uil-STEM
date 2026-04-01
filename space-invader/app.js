@@ -1016,6 +1016,7 @@ function renderMenu() {
     <div class="menu-screen">
       <div class="menu-title">NUMBER SENSE<br>SPACE INVADER</div>
       <div class="menu-subtitle">Destroy aliens with mental math!</div>
+      <div class="menu-subtitle" style="font-size:11px;margin-top:-12px;color:#667eea">Number Sense Practice</div>
       ${hs > 0 ? `<div class="menu-highscore">High Score: ${hs.toLocaleString()}</div>` : ''}
       <button class="menu-btn play" id="btn-play">PLAY</button>
       <button class="menu-btn leaderboard" id="btn-lb">LEADERBOARD</button>
@@ -1317,7 +1318,7 @@ function renderGameOver() {
   const isHigh = Leaderboard.isHighScore(state.score);
   overlay.innerHTML = `
     <div class="gameover-screen">
-      <div class="gameover-title">GAME OVER</div>
+      <div class="gameover-title">TIME'S UP</div>
       <dl class="gameover-stats">
         <dt>Score</dt><dd>${state.score.toLocaleString()}</dd>
         <dt>Level</dt><dd>${state.level}</dd>
@@ -1329,7 +1330,7 @@ function renderGameOver() {
         <input class="gameover-name-input" id="name-input" type="text" placeholder="Enter name" maxlength="16" autocomplete="off">
         <button class="menu-btn play" id="btn-save">SAVE SCORE</button>
       ` : ''}
-      <button class="menu-btn play" id="btn-retry">PLAY AGAIN</button>
+      <button class="menu-btn play" id="btn-retry">TRY AGAIN</button>
       <button class="menu-btn leaderboard" id="btn-lb">LEADERBOARD</button>
       <button class="menu-btn back-home" id="btn-menu">MAIN MENU</button>
     </div>

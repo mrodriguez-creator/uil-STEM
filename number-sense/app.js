@@ -565,7 +565,7 @@ function renderSetup() {
     </div>
 
     <button class="start-btn" ${canStart ? '' : 'disabled'} onclick="startGame()">
-      START GAME
+      START
     </button>
     ${canStart ? '' : '<p style="color:var(--muted);font-size:.85rem">Add at least 1 player to each team</p>'}
   </div>`;
@@ -695,7 +695,7 @@ function renderWin() {
 
     <div class="win-buttons">
       <button class="win-btn primary" onclick="rematch()">REMATCH</button>
-      <button class="win-btn" onclick="newGame()">NEW GAME</button>
+      <button class="win-btn" onclick="newGame()">NEW MATCH</button>
     </div>
   </div>`;
 }
