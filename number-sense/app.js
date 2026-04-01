@@ -528,6 +528,7 @@ function renderSetup() {
 
   return `
   <div class="setup-screen">
+    <a href="../extra-credit/index.html" class="back-link">&larr; Extra Credit</a>
     <h1 class="setup-title">TOWER BATTLE</h1>
     <p class="setup-subtitle">Number Sense Challenge</p>
 
