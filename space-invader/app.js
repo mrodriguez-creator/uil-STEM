@@ -821,9 +821,12 @@ function submitAnswer() {
       triggerFlash('correct');
     }
   } else {
-    // Wrong answer
+    // Wrong answer: deduct points, no life loss
     state.levelWrong++;
-    loseLife();
+    state.score = Math.max(0, state.score - 5);
+    state.combo = 0;
+    AudioManager.play('wrong');
+    triggerFlash('wrong');
     state.inputWrong = true;
     setTimeout(() => { state.inputWrong = false; renderInput(); }, 300);
   }
@@ -866,8 +869,12 @@ function submitBossAnswer(numVal) {
       state.responseStart = performance.now();
     }
   } else {
+    // Wrong answer on boss: deduct points, no life loss
     state.levelWrong++;
-    loseLife();
+    state.score = Math.max(0, state.score - 10);
+    state.combo = 0;
+    AudioManager.play('wrong');
+    triggerFlash('wrong');
     state.inputWrong = true;
     setTimeout(() => { state.inputWrong = false; renderInput(); }, 300);
   }
