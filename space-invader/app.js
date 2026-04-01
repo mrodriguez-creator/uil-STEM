@@ -499,10 +499,18 @@ function drawPowerUpDrops(time) {
 // §11  GAME AREA MEASUREMENTS
 // ═══════════════════════════════════════════════════════════
 function getGameBottom() {
-  // In portrait: canvas fills whole screen, game area is above problem bar
-  // We need to know where UI elements start
+  // In landscape: problem bar is in the right column, use game spacer bottom instead
+  const spacer = document.getElementById('game-touch-area');
+  if (spacer) {
+    const rect = spacer.getBoundingClientRect();
+    if (rect.height > 0) return rect.bottom;
+  }
+  // In portrait: game area is above problem bar
   const el = document.querySelector('.problem-bar');
-  if (el) return el.getBoundingClientRect().top;
+  if (el) {
+    const top = el.getBoundingClientRect().top;
+    if (top > 50) return top; // sanity check: must be reasonable
+  }
   return canvasH * 0.58;
 }
 
