@@ -531,7 +531,7 @@ function spawnAlien() {
   const available = ALIEN_TYPES.filter(t => t.minLevel <= lvl);
   const typeData = randPick(available);
   const diff = difficultyForLevel(lvl);
-  const problem = generateSpaceProblem(diff);
+  const problem = generateSpaceProblem(diff, { level: state.level });
   const gameTop = getGameTop();
   const padding = 40;
 
@@ -659,7 +659,7 @@ function update(dt) {
       AudioManager.play('hit');
       boss.attackTimer = Math.max(BOSS_ATTACK_MIN, BOSS_ATTACK_BASE - state.level * 500);
       // New problem on attack
-      boss.problem = generateSpaceProblem(Math.min(5, difficultyForLevel(state.level) + 1));
+      boss.problem = generateSpaceProblem(Math.min(5, difficultyForLevel(state.level) + 1), { level: state.level });
       state.responseStart = performance.now();
     }
 
@@ -860,7 +860,7 @@ function submitBossAnswer(numVal) {
       const diff = boss.def.mechanic === 'hard'
         ? Math.min(5, difficultyForLevel(state.level) + 2)
         : Math.min(5, difficultyForLevel(state.level) + 1);
-      boss.problem = generateSpaceProblem(diff);
+      boss.problem = generateSpaceProblem(diff, { level: state.level });
       boss.attackTimer = Math.max(BOSS_ATTACK_MIN, BOSS_ATTACK_BASE - state.level * 500);
       if (boss.def.mechanic === 'scramble') boss.scrambleTimer = 1200;
       state.responseStart = performance.now();
@@ -946,7 +946,7 @@ function startBoss() {
     def,
     hp: def.baseHp + state.level,
     maxHp: def.baseHp + state.level,
-    problem: generateSpaceProblem(diff),
+    problem: generateSpaceProblem(diff, { level: state.level }),
     attackTimer: Math.max(BOSS_ATTACK_MIN, BOSS_ATTACK_BASE - state.level * 500),
     scrambleTimer: def.mechanic === 'scramble' ? 1200 : 0,
     miniSpawnTimer: 6000,
