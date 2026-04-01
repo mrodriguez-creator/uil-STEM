@@ -126,6 +126,7 @@ function resizeCanvas() {
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   canvasW = window.innerWidth;
   canvasH = window.innerHeight;
+  measureGameArea();
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -308,10 +309,8 @@ function drawSelectedRing(alien, time) {
 // §7  SHIP
 // ═══════════════════════════════════════════════════════════
 function drawShip(time) {
-  const sx = canvasW / 2;
-  // Compute game area bottom: just above the problem bar
-  const gameBottom = getGameBottom();
-  const sy = gameBottom - 20;
+  const sx = (_gameLeft + _gameRight) / 2;
+  const sy = _gameBottom - 20;
 
   ctx.save();
   ctx.translate(sx, sy);
@@ -498,27 +497,34 @@ function drawPowerUpDrops(time) {
 // ═══════════════════════════════════════════════════════════
 // §11  GAME AREA MEASUREMENTS
 // ═══════════════════════════════════════════════════════════
-function getGameBottom() {
-  // In landscape: problem bar is in the right column, use game spacer bottom instead
+// Cached game area bounds, recalculated when UI renders
+let _gameTop = 42, _gameBottom = 400, _gameLeft = 0, _gameRight = 800;
+
+function measureGameArea() {
   const spacer = document.getElementById('game-touch-area');
   if (spacer) {
     const rect = spacer.getBoundingClientRect();
-    if (rect.height > 0) return rect.bottom;
+    if (rect.height > 50 && rect.width > 50) {
+      _gameTop = rect.top + 10;
+      _gameBottom = rect.bottom - 5;
+      _gameLeft = rect.left + 20;
+      _gameRight = rect.right - 20;
+      return;
+    }
   }
-  // In portrait: game area is above problem bar
-  const el = document.querySelector('.problem-bar');
-  if (el) {
-    const top = el.getBoundingClientRect().top;
-    if (top > 50) return top; // sanity check: must be reasonable
-  }
-  return canvasH * 0.58;
+  // Fallback: measure from HUD and problem bar
+  const hud = document.querySelector('.hud');
+  const problemBar = document.querySelector('.problem-bar');
+  _gameTop = hud ? hud.getBoundingClientRect().bottom + 5 : 45;
+  _gameBottom = problemBar ? Math.max(problemBar.getBoundingClientRect().top - 5, _gameTop + 100) : canvasH * 0.55;
+  _gameLeft = 20;
+  _gameRight = canvasW - 20;
 }
 
-function getGameTop() {
-  const el = document.querySelector('.hud');
-  if (el) return el.getBoundingClientRect().bottom;
-  return 42;
-}
+function getGameBottom() { return _gameBottom; }
+function getGameTop() { return _gameTop; }
+function getGameLeft() { return _gameLeft; }
+function getGameRight() { return _gameRight; }
 
 // ═══════════════════════════════════════════════════════════
 // §12  SPAWNING
@@ -532,13 +538,14 @@ function spawnAlien() {
   const typeData = randPick(available);
   const diff = difficultyForLevel(lvl);
   const problem = generateSpaceProblem(diff, { level: state.level });
-  const gameTop = getGameTop();
-  const padding = 40;
+  const gTop = getGameTop();
+  const gLeft = getGameLeft();
+  const gRight = getGameRight();
 
   const alien = {
     id: nextAlienId++,
-    x: padding + Math.random() * (canvasW - padding * 2),
-    y: gameTop - 30,
+    x: gLeft + Math.random() * (gRight - gLeft),
+    y: gTop - 20,
     baseSpeed: alienSpeed(lvl) * typeData.speedMod,
     typeData,
     hp: typeData.hp,
@@ -573,7 +580,7 @@ function update(dt) {
     // Drift
     if (a.drift > 0) {
       a.x += Math.sin((time - a.spawnTime) * 2 + a.driftPhase) * a.drift * 30 * sec;
-      a.x = Math.max(20, Math.min(canvasW - 20, a.x));
+      a.x = Math.max(_gameLeft, Math.min(_gameRight, a.x));
     }
     // Reached bottom
     if (a.y > gameBottom - 10) {
@@ -1069,6 +1076,8 @@ function renderGameUI() {
 
   bindNumpad();
   bindGameTouch();
+  // Measure game area after DOM settles
+  requestAnimationFrame(measureGameArea);
 }
 
 function hudHTML() {
