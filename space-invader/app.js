@@ -1010,6 +1010,22 @@ function gameOver() {
 // ═══════════════════════════════════════════════════════════
 // §17  RENDERING (HTML OVERLAY)
 // ═══════════════════════════════════════════════════════════
+
+// Universal button binder that works on both touch and mouse/click
+function bindButton(id, fn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  let touched = false;
+  el.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    touched = true;
+    fn();
+  }, { passive: false });
+  el.addEventListener('click', (e) => {
+    if (touched) { touched = false; return; } // skip ghost click after touch
+    fn();
+  });
+}
 function renderUI() {
   if (state.screen === 'menu') {
     renderMenu();
@@ -1037,10 +1053,8 @@ function renderMenu() {
       <a href="../index.html" class="menu-btn back-home">&larr; STEM Home</a>
     </div>
   `;
-  document.getElementById('btn-play').addEventListener('touchstart', startGame, { passive: true });
-  document.getElementById('btn-play').addEventListener('click', startGame);
-  document.getElementById('btn-lb').addEventListener('touchstart', (e) => { e.preventDefault(); showLeaderboard(); }, { passive: false });
-  document.getElementById('btn-lb').addEventListener('click', showLeaderboard);
+  bindButton('btn-play', startGame);
+  bindButton('btn-lb', showLeaderboard);
 }
 
 function renderGameUI() {
@@ -1186,8 +1200,7 @@ function numpadHTML() {
 function bindNumpad() {
   const buttons = overlay.querySelectorAll('.numpad-btn');
   for (const btn of buttons) {
-    const handler = (e) => {
-      e.preventDefault();
+    const doAction = () => {
       const val = btn.dataset.val;
       const action = btn.dataset.action;
       if (val !== undefined) {
@@ -1210,30 +1223,38 @@ function bindNumpad() {
       }
       renderInput();
     };
-    btn.addEventListener('touchstart', handler, { passive: false });
-    btn.addEventListener('mousedown', (e) => { e.preventDefault(); handler(e); });
+    let touched = false;
+    btn.addEventListener('touchstart', (e) => {
+      e.preventDefault();
+      touched = true;
+      doAction();
+    }, { passive: false });
+    btn.addEventListener('click', (e) => {
+      if (touched) { touched = false; return; }
+      doAction();
+    });
   }
 
   // Audio toggle
   const audioBtn = document.getElementById('btn-audio');
   if (audioBtn) {
-    const toggleAudio = (e) => {
-      e.preventDefault();
+    let audioTouched = false;
+    const toggle = () => {
       AudioManager.init();
       AudioManager.toggleMute();
       audioBtn.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A';
     };
-    audioBtn.addEventListener('touchstart', toggleAudio, { passive: false });
-    audioBtn.addEventListener('click', toggleAudio);
+    audioBtn.addEventListener('touchstart', (e) => { e.preventDefault(); audioTouched = true; toggle(); }, { passive: false });
+    audioBtn.addEventListener('click', () => { if (audioTouched) { audioTouched = false; return; } toggle(); });
   }
 
   // Target arrow buttons
   const arrows = overlay.querySelectorAll('.target-arrow');
   for (const arrow of arrows) {
     const dir = parseInt(arrow.dataset.dir);
-    const handler = (e) => { e.preventDefault(); cycleTarget(dir); };
-    arrow.addEventListener('touchstart', handler, { passive: false });
-    arrow.addEventListener('mousedown', (e) => { e.preventDefault(); handler(e); });
+    let arrowTouched = false;
+    arrow.addEventListener('touchstart', (e) => { e.preventDefault(); arrowTouched = true; cycleTarget(dir); }, { passive: false });
+    arrow.addEventListener('click', () => { if (arrowTouched) { arrowTouched = false; return; } cycleTarget(dir); });
   }
 }
 
@@ -1282,14 +1303,10 @@ function renderHUD() {
     // Re-bind audio button
     const audioBtn = document.getElementById('btn-audio');
     if (audioBtn) {
-      const toggleAudio = (e) => {
-        e.preventDefault();
-        AudioManager.init();
-        AudioManager.toggleMute();
-        audioBtn.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A';
-      };
-      audioBtn.addEventListener('touchstart', toggleAudio, { passive: false });
-      audioBtn.addEventListener('click', toggleAudio);
+      let at = false;
+      const toggle = () => { AudioManager.init(); AudioManager.toggleMute(); audioBtn.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A'; };
+      audioBtn.addEventListener('touchstart', (e) => { e.preventDefault(); at = true; toggle(); }, { passive: false });
+      audioBtn.addEventListener('click', () => { if (at) { at = false; return; } toggle(); });
     }
   }
   // Boss bar
@@ -1352,22 +1369,14 @@ function renderGameOver() {
     </div>
   `;
 
-  const bindBtn = (id, fn) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.addEventListener('touchstart', (e) => { e.preventDefault(); fn(); }, { passive: false });
-      el.addEventListener('click', fn);
-    }
-  };
-
-  bindBtn('btn-save', () => {
+  bindButton('btn-save', () => {
     const name = (document.getElementById('name-input')?.value || '').trim() || 'Anonymous';
     Leaderboard.addScore(name, state.score, state.level, state.aliensDefeated, state.maxCombo);
     showLeaderboard();
   });
-  bindBtn('btn-retry', startGame);
-  bindBtn('btn-lb', showLeaderboard);
-  bindBtn('btn-menu', () => { state.screen = 'menu'; renderUI(); });
+  bindButton('btn-retry', startGame);
+  bindButton('btn-lb', showLeaderboard);
+  bindButton('btn-menu', () => { state.screen = 'menu'; renderUI(); });
 }
 
 function renderLevelComplete() {
@@ -1386,11 +1395,7 @@ function renderLevelComplete() {
       <button class="menu-btn play" id="btn-next">NEXT LEVEL</button>
     </div>
   `;
-  const el = document.getElementById('btn-next');
-  if (el) {
-    el.addEventListener('touchstart', (e) => { e.preventDefault(); nextLevel(); }, { passive: false });
-    el.addEventListener('click', nextLevel);
-  }
+  bindButton('btn-next', nextLevel);
 }
 
 function showLeaderboard() {
@@ -1421,12 +1426,7 @@ function renderLeaderboard() {
       <button class="menu-btn play" id="btn-back" style="margin-top:20px">BACK</button>
     </div>
   `;
-  const el = document.getElementById('btn-back');
-  if (el) {
-    const back = () => { state.screen = 'menu'; renderUI(); };
-    el.addEventListener('touchstart', (e) => { e.preventDefault(); back(); }, { passive: false });
-    el.addEventListener('click', back);
-  }
+  bindButton('btn-back', () => { state.screen = 'menu'; renderUI(); });
 }
 
 // ═══════════════════════════════════════════════════════════

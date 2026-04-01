@@ -56,7 +56,19 @@ html, body {
   flex-direction: column;
   pointer-events: none;
 }
-#ui-overlay > * { pointer-events: auto; }
+#ui-overlay > *,
+#ui-overlay .game-col,
+#ui-overlay .game-col > *,
+#ui-overlay .input-col,
+#ui-overlay .input-col > *,
+#ui-overlay .menu-screen,
+#ui-overlay .menu-screen > *,
+#ui-overlay .gameover-screen,
+#ui-overlay .gameover-screen > *,
+#ui-overlay .levelcomplete-screen,
+#ui-overlay .levelcomplete-screen > *,
+#ui-overlay .leaderboard-screen,
+#ui-overlay .leaderboard-screen > * { pointer-events: auto; }
 
 /* ── HUD Bar ───────────────────────────────────────────────── */
 .hud {
