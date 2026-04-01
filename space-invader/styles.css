@@ -157,6 +157,9 @@ html, body {
   -webkit-backdrop-filter: blur(8px);
   border-top: 1px solid var(--border);
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .problem-text {
   font-size: 22px;
@@ -164,6 +167,7 @@ html, body {
   letter-spacing: 0.5px;
   color: var(--text);
   min-height: 28px;
+  flex: 1;
 }
 .problem-text .category-tag {
   font-size: 10px;
@@ -171,6 +175,32 @@ html, body {
   font-weight: 400;
   display: block;
   margin-top: 2px;
+}
+.problem-text .target-count {
+  font-size: 10px;
+  color: var(--text-dim);
+  font-weight: 400;
+  margin-left: 8px;
+}
+.target-arrow {
+  background: var(--numpad-btn);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--glow-cyan);
+  font-size: 16px;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.1s, transform 0.08s;
+  -webkit-tap-highlight-color: transparent;
+}
+.target-arrow:active {
+  background: var(--numpad-active);
+  transform: scale(0.92);
 }
 
 /* ── Input Display ─────────────────────────────────────────── */

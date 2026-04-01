@@ -706,6 +706,33 @@ function autoTarget() {
   state.responseStart = performance.now();
 }
 
+function cycleTarget(direction) {
+  if (state.aliens.length === 0) return;
+  if (state.aliens.length === 1) {
+    state.selectedAlien = state.aliens[0].id;
+    state.responseStart = performance.now();
+    renderProblem();
+    return;
+  }
+  // Sort aliens left-to-right by x position for intuitive cycling
+  const sorted = [...state.aliens].sort((a, b) => a.x - b.x);
+  const currentIdx = sorted.findIndex(a => a.id === state.selectedAlien);
+  let nextIdx;
+  if (currentIdx < 0) {
+    nextIdx = 0;
+  } else if (direction === 1) {
+    nextIdx = (currentIdx + 1) % sorted.length;
+  } else {
+    nextIdx = (currentIdx - 1 + sorted.length) % sorted.length;
+  }
+  state.selectedAlien = sorted[nextIdx].id;
+  state.responseStart = performance.now();
+  state.inputValue = '';
+  renderInput();
+  renderProblem();
+  AudioManager.play('click');
+}
+
 function loseLife() {
   // Check for shield
   const shieldIdx = state.activePowerUps.findIndex(p => p.type === 'shield');
@@ -1096,11 +1123,15 @@ function problemBarHTML() {
       category = alien.problem.category;
     }
   }
+  const showArrows = state.screen === 'game' && state.aliens.length > 1;
   return `
     <div class="problem-bar">
+      ${showArrows ? '<button class="target-arrow target-prev" data-dir="-1">\u25C0</button>' : ''}
       <div class="problem-text">${text || 'Get ready...'}
         ${category ? `<span class="category-tag">${category}</span>` : ''}
+        ${showArrows ? `<span class="target-count">${state.aliens.findIndex(a => a.id === state.selectedAlien) + 1} / ${state.aliens.length}</span>` : ''}
       </div>
+      ${showArrows ? '<button class="target-arrow target-next" data-dir="1">\u25B6</button>' : ''}
     </div>
   `;
 }
@@ -1178,17 +1209,25 @@ function bindNumpad() {
     audioBtn.addEventListener('touchstart', toggleAudio, { passive: false });
     audioBtn.addEventListener('click', toggleAudio);
   }
+
+  // Target arrow buttons
+  const arrows = overlay.querySelectorAll('.target-arrow');
+  for (const arrow of arrows) {
+    const dir = parseInt(arrow.dataset.dir);
+    const handler = (e) => { e.preventDefault(); cycleTarget(dir); };
+    arrow.addEventListener('touchstart', handler, { passive: false });
+    arrow.addEventListener('mousedown', (e) => { e.preventDefault(); handler(e); });
+  }
 }
 
 function bindGameTouch() {
   const area = document.getElementById('game-touch-area');
   if (!area) return;
-  area.addEventListener('touchstart', (e) => {
-    const touch = e.touches[0];
+
+  function selectAlienAt(clientX, clientY) {
     const rect = canvas.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    // Find closest alien to tap
+    const x = clientX - rect.left;
+    const y = clientY - rect.top;
     let closest = null, closestDist = 60;
     for (const a of state.aliens) {
       const dist = Math.hypot(a.x - x, a.y - y);
@@ -1200,9 +1239,20 @@ function bindGameTouch() {
     if (closest) {
       state.selectedAlien = closest.id;
       state.responseStart = performance.now();
+      state.inputValue = '';
+      renderInput();
       renderProblem();
+      AudioManager.play('click');
     }
+  }
+
+  area.addEventListener('touchstart', (e) => {
+    selectAlienAt(e.touches[0].clientX, e.touches[0].clientY);
   }, { passive: true });
+
+  area.addEventListener('click', (e) => {
+    selectAlienAt(e.clientX, e.clientY);
+  });
 }
 
 // Partial re-renders
@@ -1461,6 +1511,15 @@ document.addEventListener('keydown', (e) => {
     renderInput();
   } else if (e.key === 'Enter') {
     submitAnswer();
+  } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+    e.preventDefault();
+    cycleTarget(-1);
+  } else if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+    e.preventDefault();
+    cycleTarget(1);
+  } else if (e.key === 'Tab') {
+    e.preventDefault();
+    cycleTarget(e.shiftKey ? -1 : 1);
   }
 });
 
