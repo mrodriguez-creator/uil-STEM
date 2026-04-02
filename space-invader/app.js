@@ -1147,15 +1147,16 @@ function problemBarHTML() {
       category = alien.problem.category;
     }
   }
-  const showArrows = state.screen === 'game' && state.aliens.length > 1;
+  const inGame = state.screen === 'game' && state.aliens.length > 0;
+  const alienIdx = state.aliens.findIndex(a => a.id === state.selectedAlien) + 1;
   return `
     <div class="problem-bar">
-      ${showArrows ? '<button class="target-arrow target-prev" data-dir="-1">\u25C0</button>' : ''}
+      ${inGame ? '<button class="target-arrow target-prev" data-dir="-1">\u25C0</button>' : ''}
       <div class="problem-text">${text || 'Get ready...'}
         ${category ? `<span class="category-tag">${category}</span>` : ''}
-        ${showArrows ? `<span class="target-count">${state.aliens.findIndex(a => a.id === state.selectedAlien) + 1} / ${state.aliens.length}</span>` : ''}
+        ${inGame && state.aliens.length > 1 ? `<span class="target-count">${alienIdx} / ${state.aliens.length}</span>` : ''}
       </div>
-      ${showArrows ? '<button class="target-arrow target-next" data-dir="1">\u25B6</button>' : ''}
+      ${inGame ? '<button class="target-arrow target-next" data-dir="1">\u25B6</button>' : ''}
     </div>
   `;
 }
