@@ -58,7 +58,7 @@ function initState() {
     screen: 'menu',
     score: 0,
     level: 1,
-    lives: 3,
+    lives: 5,
     combo: 0,
     maxCombo: 0,
     multiplier: 1,
@@ -674,25 +674,7 @@ function update(dt) {
     // Scramble timer
     if (boss.scrambleTimer > 0) boss.scrambleTimer -= dt;
 
-    // Mothership mini-spawn
-    if (boss.def.mechanic === 'spawns') {
-      boss.miniSpawnTimer -= dt;
-      if (boss.miniSpawnTimer <= 0) {
-        boss.miniSpawnTimer = 6000;
-        spawnAlien(); // spawns a regular alien
-      }
-    }
-
-    // Still have regular aliens from mothership
-    const gameBottom2 = getGameBottom();
-    for (let i = state.aliens.length - 1; i >= 0; i--) {
-      const a = state.aliens[i];
-      a.y += a.baseSpeed * speedMult * sec;
-      if (a.y > gameBottom2 - 10) {
-        loseLife();
-        state.aliens.splice(i, 1);
-      }
-    }
+    // Boss fight is 1-on-1: no regular aliens spawn or fall
   }
 
   // Check game over
@@ -951,6 +933,10 @@ function collectPowerUp(type) {
 // ═══════════════════════════════════════════════════════════
 function startBoss() {
   state.screen = 'boss';
+  // Clear any remaining aliens so the player can focus on the boss
+  state.aliens = [];
+  state.selectedAlien = null;
+  state.powerUpDrops = [];
   const bossIdx = (state.level - 1) % BOSS_TYPES.length;
   const def = BOSS_TYPES[bossIdx];
   const diff = def.mechanic === 'hard'
