@@ -44,6 +44,7 @@ html, body {
   width: 100%; height: 100%;
   display: block;
   z-index: 0;
+  pointer-events: none;
 }
 
 /* ── UI Overlay ────────────────────────────────────────────── */
@@ -54,21 +55,8 @@ html, body {
   z-index: 1;
   display: flex;
   flex-direction: column;
-  pointer-events: none;
 }
-#ui-overlay > *,
-#ui-overlay .game-col,
-#ui-overlay .game-col > *,
-#ui-overlay .input-col,
-#ui-overlay .input-col > *,
-#ui-overlay .menu-screen,
-#ui-overlay .menu-screen > *,
-#ui-overlay .gameover-screen,
-#ui-overlay .gameover-screen > *,
-#ui-overlay .levelcomplete-screen,
-#ui-overlay .levelcomplete-screen > *,
-#ui-overlay .leaderboard-screen,
-#ui-overlay .leaderboard-screen > * { pointer-events: auto; }
+#ui-overlay * { pointer-events: auto; }
 
 /* ── HUD Bar ───────────────────────────────────────────────── */
 .hud {
@@ -206,6 +194,8 @@ html, body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
+  -webkit-appearance: none;
   flex-shrink: 0;
   transition: background 0.1s, transform 0.08s;
   -webkit-tap-highlight-color: transparent;
@@ -262,6 +252,8 @@ html, body {
   cursor: pointer;
   transition: background 0.1s, transform 0.08s;
   -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+  -webkit-appearance: none;
 }
 .numpad-btn:active, .numpad-btn.pressed {
   background: var(--numpad-active);
@@ -328,6 +320,8 @@ html, body {
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.2s;
   letter-spacing: 0.5px;
+  touch-action: manipulation;
+  -webkit-appearance: none;
 }
 .menu-btn:active { transform: scale(0.96); }
 .menu-btn.play {
@@ -477,10 +471,10 @@ html, body {
 
 /* ── Screen flash effects ──────────────────────────────────── */
 .flash-overlay {
-  position: fixed;
+  position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  pointer-events: none;
-  z-index: 5;
+  pointer-events: none !important;
+  z-index: -1;
   opacity: 0;
   transition: opacity 0.15s;
 }

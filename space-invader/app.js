@@ -32,11 +32,11 @@ const POWERUP_TYPES = [
   { type: 'life',   icon: '\u2764', label: '+1 Life',    color: '#ff69b4', duration: 0 },
 ];
 
-const BASE_SPAWN_INTERVAL = 3000;
-const MIN_SPAWN_INTERVAL = 800;
-const BASE_ALIEN_SPEED = 22;       // px/s at level 1
-const ALIEN_SPEED_PER_LEVEL = 3;
-const MAX_ALIEN_SPEED = 60;
+const BASE_SPAWN_INTERVAL = 4000;
+const MIN_SPAWN_INTERVAL = 1200;
+const BASE_ALIEN_SPEED = 15;       // px/s at level 1
+const ALIEN_SPEED_PER_LEVEL = 2;
+const MAX_ALIEN_SPEED = 45;
 const BEAM_DURATION = 300;
 const MAX_PARTICLES = 200;
 const MAX_LIVES = 5;
@@ -498,7 +498,8 @@ function drawPowerUpDrops(time) {
 // §11  GAME AREA MEASUREMENTS
 // ═══════════════════════════════════════════════════════════
 // Cached game area bounds, recalculated when UI renders
-let _gameTop = 42, _gameBottom = 400, _gameLeft = 0, _gameRight = 800;
+// Defaults are generous so aliens survive until real measurement happens
+let _gameTop = 50, _gameBottom = 600, _gameLeft = 20, _gameRight = 400;
 
 function measureGameArea() {
   const spacer = document.getElementById('game-touch-area');
@@ -1011,20 +1012,11 @@ function gameOver() {
 // §17  RENDERING (HTML OVERLAY)
 // ═══════════════════════════════════════════════════════════
 
-// Universal button binder that works on both touch and mouse/click
+// Simple click-only button binder — most reliable across all devices
 function bindButton(id, fn) {
   const el = document.getElementById(id);
   if (!el) return;
-  let touched = false;
-  el.addEventListener('touchstart', (e) => {
-    e.preventDefault();
-    touched = true;
-    fn();
-  }, { passive: false });
-  el.addEventListener('click', (e) => {
-    if (touched) { touched = false; return; } // skip ghost click after touch
-    fn();
-  });
+  el.addEventListener('click', () => fn());
 }
 function renderUI() {
   if (state.screen === 'menu') {
@@ -1090,7 +1082,8 @@ function renderGameUI() {
 
   bindNumpad();
   bindGameTouch();
-  // Measure game area after DOM settles
+  // Measure game area immediately and again after layout settles
+  measureGameArea();
   requestAnimationFrame(measureGameArea);
 }
 
@@ -1200,7 +1193,7 @@ function numpadHTML() {
 function bindNumpad() {
   const buttons = overlay.querySelectorAll('.numpad-btn');
   for (const btn of buttons) {
-    const doAction = () => {
+    btn.addEventListener('click', () => {
       const val = btn.dataset.val;
       const action = btn.dataset.action;
       if (val !== undefined) {
@@ -1222,39 +1215,22 @@ function bindNumpad() {
         return;
       }
       renderInput();
-    };
-    let touched = false;
-    btn.addEventListener('touchstart', (e) => {
-      e.preventDefault();
-      touched = true;
-      doAction();
-    }, { passive: false });
-    btn.addEventListener('click', (e) => {
-      if (touched) { touched = false; return; }
-      doAction();
     });
   }
 
   // Audio toggle
-  const audioBtn = document.getElementById('btn-audio');
-  if (audioBtn) {
-    let audioTouched = false;
-    const toggle = () => {
-      AudioManager.init();
-      AudioManager.toggleMute();
-      audioBtn.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A';
-    };
-    audioBtn.addEventListener('touchstart', (e) => { e.preventDefault(); audioTouched = true; toggle(); }, { passive: false });
-    audioBtn.addEventListener('click', () => { if (audioTouched) { audioTouched = false; return; } toggle(); });
-  }
+  bindButton('btn-audio', () => {
+    AudioManager.init();
+    AudioManager.toggleMute();
+    const el = document.getElementById('btn-audio');
+    if (el) el.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+  });
 
   // Target arrow buttons
   const arrows = overlay.querySelectorAll('.target-arrow');
   for (const arrow of arrows) {
     const dir = parseInt(arrow.dataset.dir);
-    let arrowTouched = false;
-    arrow.addEventListener('touchstart', (e) => { e.preventDefault(); arrowTouched = true; cycleTarget(dir); }, { passive: false });
-    arrow.addEventListener('click', () => { if (arrowTouched) { arrowTouched = false; return; } cycleTarget(dir); });
+    arrow.addEventListener('click', () => cycleTarget(dir));
   }
 }
 
@@ -1284,10 +1260,6 @@ function bindGameTouch() {
     }
   }
 
-  area.addEventListener('touchstart', (e) => {
-    selectAlienAt(e.touches[0].clientX, e.touches[0].clientY);
-  }, { passive: true });
-
   area.addEventListener('click', (e) => {
     selectAlienAt(e.clientX, e.clientY);
   });
@@ -1301,13 +1273,12 @@ function renderHUD() {
     temp.innerHTML = hudHTML();
     hudEl.replaceWith(temp.firstElementChild);
     // Re-bind audio button
-    const audioBtn = document.getElementById('btn-audio');
-    if (audioBtn) {
-      let at = false;
-      const toggle = () => { AudioManager.init(); AudioManager.toggleMute(); audioBtn.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A'; };
-      audioBtn.addEventListener('touchstart', (e) => { e.preventDefault(); at = true; toggle(); }, { passive: false });
-      audioBtn.addEventListener('click', () => { if (at) { at = false; return; } toggle(); });
-    }
+    bindButton('btn-audio', () => {
+      AudioManager.init();
+      AudioManager.toggleMute();
+      const ab = document.getElementById('btn-audio');
+      if (ab) ab.textContent = AudioManager.isMuted() ? '\uD83D\uDD07' : '\uD83D\uDD0A';
+    });
   }
   // Boss bar
   const bossBar = overlay.querySelector('.boss-bar');
@@ -1433,16 +1404,27 @@ function renderLeaderboard() {
 // §19  START GAME
 // ═══════════════════════════════════════════════════════════
 function startGame() {
+  // Cancel current loop to prevent stale frame processing
+  cancelAnimationFrame(animFrame);
   initState();
   state.screen = 'game';
   state.levelStartTime = performance.now();
   initStars();
   nextAlienId = 1;
   renderUI();
+  // Restart game loop fresh after DOM is ready
+  requestAnimationFrame(() => {
+    measureGameArea();
+    state.lastTimestamp = 0;
+    animFrame = requestAnimationFrame(gameLoop);
+  });
   // First spawn after brief delay
   setTimeout(() => {
-    if (state.screen === 'game') spawnAlien();
-  }, 800);
+    if (state.screen === 'game') {
+      measureGameArea();
+      spawnAlien();
+    }
+  }, 1000);
 }
 
 // ═══════════════════════════════════════════════════════════
