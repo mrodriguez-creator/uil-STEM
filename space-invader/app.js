@@ -1312,6 +1312,12 @@ function renderProblem() {
     const temp = document.createElement('div');
     temp.innerHTML = problemBarHTML();
     el.replaceWith(temp.firstElementChild);
+    // Re-bind arrow buttons (they were destroyed by replaceWith)
+    const arrows = overlay.querySelectorAll('.target-arrow');
+    for (const arrow of arrows) {
+      const dir = parseInt(arrow.dataset.dir);
+      arrow.addEventListener('click', () => cycleTarget(dir));
+    }
   }
 }
 
